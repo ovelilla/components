@@ -18,7 +18,7 @@ const DatepickerMonthHook = ({
 }: DatepickerMonthHookPropsType): DatepickerMonthHookReturnType => {
   const isMobile = useMediaQuery(MEDIA_QUERY);
   const month = getMonth({ currentDate, locale });
-  console.log('isMobile', isMobile);
+
   const {
     handleNextMonthButtonClick,
     handlePrevMonthButtonClick,
