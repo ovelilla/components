@@ -1,4 +1,4 @@
-const DEFAULT_BORDER = {
+const DEFAULT_BORDERS = {
   border0: '0',
   border1: '1px',
   border2: '2px',
@@ -6,4 +6,4 @@ const DEFAULT_BORDER = {
   border8: '8px',
 } as const;
 
-export { DEFAULT_BORDER };
+export { DEFAULT_BORDERS };

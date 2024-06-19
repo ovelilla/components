@@ -1,0 +1,3 @@
+const TOTAL_MONTHS_IN_YEAR = 12;
+
+export { TOTAL_MONTHS_IN_YEAR };

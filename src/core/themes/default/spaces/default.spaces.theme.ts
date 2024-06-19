@@ -34,6 +34,8 @@ const DEFAULT_SPACES = {
   space288: '288px',
   space320: '320px',
   space384: '384px',
+  spaceAuto: 'auto',
+  spaceFull: '100%',
 } as const;
 
 export { DEFAULT_SPACES };

@@ -1,7 +1,7 @@
 // Vendors
 import React from 'react';
-// Enumerations
-import { LinkComponentSizesEnumeration } from '../enumerations/link.component.enumerations';
+// Enums
+import { LinkComponentSizesEnum } from '../enums/link.component.enums';
 
 type LinkComponentPropsType = {
   bold?: boolean;
@@ -9,7 +9,7 @@ type LinkComponentPropsType = {
   disabled?: boolean;
   href?: string;
   onClick?: VoidFunction;
-  size?: LinkComponentSizesEnumeration;
+  size?: LinkComponentSizesEnum;
   underline?: boolean;
   uppercase?: boolean;
 };

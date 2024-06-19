@@ -2,13 +2,13 @@
 import styled from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
-// Enumerations
-import { LinkComponentSizesEnumeration } from './enumerations/link.component.enumerations';
+// Enums
+import { LinkComponentSizesEnum } from './enums/link.component.enums';
 
 type LinkComponentPropsType = {
   bold: boolean;
   disabled?: boolean;
-  size: LinkComponentSizesEnumeration;
+  size: LinkComponentSizesEnum;
   theme: DefaultTheme;
   underline: boolean;
   uppercase: boolean;
@@ -19,13 +19,13 @@ const getLinkFontSize = ({
   theme,
 }: Pick<LinkComponentPropsType, 'size' | 'theme'>): string => {
   const sizesMap: Record<string, string> = {
-    [LinkComponentSizesEnumeration.SMALL]: theme.fontSizes.fontSize14,
-    [LinkComponentSizesEnumeration.MEDIUM]: theme.fontSizes.fontSize16,
-    [LinkComponentSizesEnumeration.LARGE]: theme.fontSizes.fontSize18,
-    [LinkComponentSizesEnumeration.XLARGE]: theme.fontSizes.fontSize20,
-    [LinkComponentSizesEnumeration.XXLARGE]: theme.fontSizes.fontSize24,
+    [LinkComponentSizesEnum.SMALL]: theme.fontSizes.size14,
+    [LinkComponentSizesEnum.MEDIUM]: theme.fontSizes.size16,
+    [LinkComponentSizesEnum.LARGE]: theme.fontSizes.size18,
+    [LinkComponentSizesEnum.XLARGE]: theme.fontSizes.size20,
+    [LinkComponentSizesEnum.XXLARGE]: theme.fontSizes.size24,
   };
-  return sizesMap[size] || theme.fontSizes.fontSize16;
+  return sizesMap[size] || theme.sizes.size16;
 };
 
 const LinkComponentStyled = styled(Link).withConfig({

@@ -1,22 +1,38 @@
 // Vendors
 import React from 'react';
-// Enumerations
+// Enums
 import {
-  ButtonComponentBorderRadiusEnumeration,
-  ButtonComponentSizesEnumeration,
-  ButtonComponentTypesEnumeration,
-  ButtonComponentVariantsEnumeration,
-} from '../enumerations/button.component.enumerations';
+  ButtonComponentAlignmentEnum,
+  ButtonComponentBorderRadiusEnum,
+  ButtonComponentFontSizeEnum,
+  ButtonComponentFontWeightEnum,
+  ButtonComponentGapEnum,
+  ButtonComponentModeEnum,
+  ButtonComponentOpacityEnum,
+  ButtonComponentPaddingEnum,
+  ButtonComponentShapeEnum,
+  ButtonComponentSizeEnum,
+  ButtonComponentVariantEnum,
+} from '../enums/button.component.enums';
 
 type ButtonComponentPropsType = {
-  borderRadius?: ButtonComponentBorderRadiusEnumeration;
-  buttonType?: ButtonComponentTypesEnumeration;
+  alignment?: ButtonComponentAlignmentEnum;
+  borderRadius?: ButtonComponentBorderRadiusEnum;
   children: React.ReactNode;
   disabled?: boolean;
+  fontSize?: ButtonComponentFontSizeEnum;
+  fontWeight?: ButtonComponentFontWeightEnum;
+  fullWidth?: boolean;
+  gap?: ButtonComponentGapEnum;
+  href?: string;
   loading?: boolean;
+  mode?: ButtonComponentModeEnum;
   onClick?: VoidFunction;
-  size?: ButtonComponentSizesEnumeration;
-  variant?: ButtonComponentVariantsEnumeration;
+  opacity?: ButtonComponentOpacityEnum;
+  padding?: ButtonComponentPaddingEnum;
+  shape?: ButtonComponentShapeEnum;
+  size?: ButtonComponentSizeEnum;
+  variant?: ButtonComponentVariantEnum;
 };
 
 export { ButtonComponentPropsType };

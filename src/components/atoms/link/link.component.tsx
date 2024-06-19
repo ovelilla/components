@@ -7,8 +7,8 @@ import {
   DEFAULT_UNDERLINE,
   DEFAULT_UPPERCASE,
 } from './constants/link.component.constants';
-// Enumerations
-import { LinkComponentSizesEnumeration } from './enumerations/link.component.enumerations';
+// Enums
+import { LinkComponentSizesEnum } from './enums/link.component.enums';
 // Styles
 import { LinkComponentStyled } from './link.component.styled';
 // Types
@@ -20,7 +20,7 @@ const LinkComponent = ({
   disabled,
   href = DEFAULT_HREF,
   onClick,
-  size = LinkComponentSizesEnumeration.MEDIUM,
+  size = LinkComponentSizesEnum.MEDIUM,
   underline = DEFAULT_UNDERLINE,
   uppercase = DEFAULT_UPPERCASE,
   ...props

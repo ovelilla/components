@@ -1,22 +1,25 @@
 // Components
-import { LogoComponent } from './components/logo/logo.component';
+import { LogoComponent } from '../logo/logo.component';
 import { ModeToggleComponent } from './components/mode-toggle/mode-toggle.component';
-import { MobileDrawerComponent } from './components/mobile-drawer/mobile-drawer.component';
+// import { MobileDrawerComponent } from './components/mobile-drawer/mobile-drawer.component';
 // Styles
 import {
   HeaderComponentStyled,
   HeaderComponentLeftStyled,
+  HeaderComponentLogoWrapperStyled,
   HeaderComponentRightStyled,
 } from './header.component.styled';
 
 const HeaderComponent = (): React.ReactElement => (
   <HeaderComponentStyled>
     <HeaderComponentLeftStyled>
-      <LogoComponent />
+      <HeaderComponentLogoWrapperStyled>
+        <LogoComponent />
+      </HeaderComponentLogoWrapperStyled>
     </HeaderComponentLeftStyled>
     <HeaderComponentRightStyled>
       <ModeToggleComponent />
-      <MobileDrawerComponent />
+      {/* <MobileDrawerComponent /> */}
     </HeaderComponentRightStyled>
   </HeaderComponentStyled>
 );
