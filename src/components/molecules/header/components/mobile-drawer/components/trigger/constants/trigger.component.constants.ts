@@ -1,9 +1,9 @@
 // Enums
-import { ButtonComponentTypesEnum } from 'components/atoms/button/enums/button.enums';
+import { ButtonComponentShapeEnum } from 'components/atoms/button/enums/button.component.enums';
 
 const BUTTON_PROPS = {
   'aria-label': 'Open mobile drawer',
-  buttonType: ButtonComponentTypesEnum.ICON,
+  shape: ButtonComponentShapeEnum.CIRCLE,
   type: 'button',
 } as const;
 
