@@ -1,3 +1,5 @@
-export type GetLocalePropsType = {
+type GetLocalePropsType = {
   localeCode: string;
 };
+
+export { GetLocalePropsType };

@@ -2,6 +2,7 @@
 import { ButtonComponent } from 'components/atoms/button/button.component';
 import { ListComponent } from 'components/atoms/list/list.component';
 import { ListItemComponent } from 'components/atoms/list/components/list-item/list-item.component';
+import { ScrollareaComponent } from 'components/atoms/scrollarea/scrollarea.component';
 // Configurations
 import { getMonthButtonConfiguration } from './configurations/datepicker-monthpicker.configurations';
 // Hooks
@@ -29,21 +30,23 @@ const DatepickerMonthpickerComponent = ({
 
   return (
     <DatepickerMonthpickerComponentStyled>
-      <ListComponent>
-        {monthDates.map((monthDate, index) => (
-          <ListItemComponent key={index}>
-            <ButtonComponent
-              {...getMonthButtonConfiguration({
-                currentDate,
-                handleMonthButtonClick,
-                monthDate,
-                monthRefs,
-              })}>
-              {getMonthString({ locale, monthDate })}
-            </ButtonComponent>
-          </ListItemComponent>
-        ))}
-      </ListComponent>
+      <ScrollareaComponent>
+        <ListComponent>
+          {monthDates.map((monthDate, index) => (
+            <ListItemComponent key={index}>
+              <ButtonComponent
+                {...getMonthButtonConfiguration({
+                  currentDate,
+                  handleMonthButtonClick,
+                  monthDate,
+                  monthRefs,
+                })}>
+                {getMonthString({ locale, monthDate })}
+              </ButtonComponent>
+            </ListItemComponent>
+          ))}
+        </ListComponent>
+      </ScrollareaComponent>
     </DatepickerMonthpickerComponentStyled>
   );
 };

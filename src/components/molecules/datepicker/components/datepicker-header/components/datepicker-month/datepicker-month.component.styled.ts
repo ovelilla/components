@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const DatepickerMonthComponentStyled = styled.div`
   display: flex;
-  flex: 3;
+  grid-column: 1 / 2;
 `;
 
 const DatepickerMonthLeftStyled = styled.div`

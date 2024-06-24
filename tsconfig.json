@@ -28,7 +28,7 @@
   },
   "include": [
     "src"
-  ],
+, "src/components/atoms/scrollarea/handlers/types/scrollarea-handlers.return.type.ts"  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

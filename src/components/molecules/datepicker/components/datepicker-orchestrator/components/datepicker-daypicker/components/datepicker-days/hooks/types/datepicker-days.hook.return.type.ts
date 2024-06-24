@@ -1,3 +1,5 @@
-export type DatepickerDaysHookReturnType = {
+type DatepickerDaysHookReturnType = {
   dates: Date[];
 };
+
+export { DatepickerDaysHookReturnType };

@@ -2,7 +2,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Locale } from 'date-fns';
 
-export type DatepickerHookReturnType = {
+type DatepickerHookReturnType = {
   currentDate: Date;
   datepickerRef: React.RefObject<HTMLDivElement>;
   locale: Locale;
@@ -14,3 +14,5 @@ export type DatepickerHookReturnType = {
   showMonthpicker: boolean;
   showYearpicker: boolean;
 };
+
+export { DatepickerHookReturnType };

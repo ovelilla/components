@@ -1,6 +1,8 @@
 // Vendors
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from 'react';
 
-export type MobileDrawerHandlersPropsType = {
+type MobileDrawerHandlersPropsType = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
+
+export { MobileDrawerHandlersPropsType };

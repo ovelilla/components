@@ -2,6 +2,7 @@
 import { ButtonComponent } from 'components/atoms/button/button.component';
 import { ListComponent } from 'components/atoms/list/list.component';
 import { ListItemComponent } from 'components/atoms/list/components/list-item/list-item.component';
+import { ScrollareaComponent } from 'components/atoms/scrollarea/scrollarea.component';
 // Configurations
 import { getYearButtonConfiguration } from './configurations/datepicker-yearpicker.configurations';
 // Hooks
@@ -31,22 +32,24 @@ const DatepickerYearpickerComponent = ({
 
   return (
     <DatepickerYearpickerComponentStyled>
-      <ListComponent>
-        {yearDates.map((yearDate, index) => (
-          <ListItemComponent key={index}>
-            <ButtonComponent
-              {...getYearButtonConfiguration({
-                currentDate,
-                handleYearButtonClick,
-                yearDate,
-                yearsRange,
-                yearRefs,
-              })}>
-              {getYearString({ locale, yearDate })}
-            </ButtonComponent>
-          </ListItemComponent>
-        ))}
-      </ListComponent>
+      <ScrollareaComponent>
+        <ListComponent>
+          {yearDates.map((yearDate, index) => (
+            <ListItemComponent key={index}>
+              <ButtonComponent
+                {...getYearButtonConfiguration({
+                  currentDate,
+                  handleYearButtonClick,
+                  yearDate,
+                  yearsRange,
+                  yearRefs,
+                })}>
+                {getYearString({ locale, yearDate })}
+              </ButtonComponent>
+            </ListItemComponent>
+          ))}
+        </ListComponent>
+      </ScrollareaComponent>
     </DatepickerYearpickerComponentStyled>
   );
 };

@@ -1,3 +1,5 @@
-export type SetInitialCurrentDatePropsType = {
+type SetInitialCurrentDatePropsType = {
   value?: string;
 };
+
+export { SetInitialCurrentDatePropsType };

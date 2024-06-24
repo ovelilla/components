@@ -1,6 +1,8 @@
 // Vendors
 import { Dispatch, SetStateAction } from 'react';
 
-export type MobileDrawerCloseHandlerPropsType = {
+type MobileDrawerCloseHandlerPropsType = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
+
+export { MobileDrawerCloseHandlerPropsType };

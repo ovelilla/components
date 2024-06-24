@@ -27,6 +27,14 @@ const SIDENAV = [
         name: 'Link',
         link: '/components/atoms/link',
       },
+      {
+        name: 'Paragraph',
+        link: '/components/atoms/paragraph',
+      },
+      {
+        name: 'Scrollarea',
+        link: '/components/atoms/scrollarea',
+      },
     ],
   },
   {
@@ -49,6 +57,15 @@ const SIDENAV = [
   {
     title: 'Pages',
     items: [],
+  },
+  {
+    title: 'Theme',
+    items: [
+      {
+        name: 'Colors',
+        link: '/components/theme/colors',
+      },
+    ],
   },
 ] as const;
 

@@ -3,7 +3,7 @@ import { getMonth, set } from 'date-fns';
 // Constants
 import { SCROLL_INTO_VIEW_OPTIONS } from './constants/datepicker-mothpicker.component.constants';
 // Types
-import { DatepickerMontpickerhHandlersPropsType } from './types/datepicker-monthpicker.handlers.props.type';
+import { DatepickerMonthpickerhHandlersPropsType } from './types/datepicker-monthpicker.handlers.props.type';
 import { DatepickerMonthpickerHandlersReturnType } from './types/datepicker-monthpicker.handlers.return.type';
 import { MonthButtonClickHandlerPropsType } from './types/month-button-click-handler.handlers.props.type';
 import { ScrollToCurrentMonthHandlerPropsType } from './types/scroll-to-current-month-handler.handlers.props.type';
@@ -29,7 +29,7 @@ const DatepickerMonthpickerHandlers = ({
   monthRefs,
   setCurrentDate,
   setShowMonthpicker,
-}: DatepickerMontpickerhHandlersPropsType): DatepickerMonthpickerHandlersReturnType => {
+}: DatepickerMonthpickerhHandlersPropsType): DatepickerMonthpickerHandlersReturnType => {
   return {
     handleMonthButtonClick: (monthDate) =>
       monthButtonClickHandler({ monthDate, setCurrentDate, setShowMonthpicker }),

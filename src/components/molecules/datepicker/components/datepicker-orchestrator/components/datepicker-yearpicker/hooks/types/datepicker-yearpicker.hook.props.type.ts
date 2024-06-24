@@ -1,7 +1,7 @@
 // Vendors
 import { Dispatch, SetStateAction } from 'react';
 
-export type DatepickerYearHookPropsType = {
+type DatepickerYearHookPropsType = {
   currentDate: Date;
   setCurrentDate: Dispatch<SetStateAction<Date>>;
   setShowYearpicker: Dispatch<SetStateAction<boolean>>;
@@ -11,3 +11,5 @@ export type DatepickerYearHookPropsType = {
     start: number;
   };
 };
+
+export { DatepickerYearHookPropsType };

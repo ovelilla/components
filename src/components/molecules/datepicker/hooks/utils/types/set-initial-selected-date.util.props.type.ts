@@ -1,3 +1,5 @@
-export type SetInitialSelectedDatePropsType = {
+type SetInitialSelectedDatePropsType = {
   value?: string;
 };
+
+export { SetInitialSelectedDatePropsType };

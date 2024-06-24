@@ -1,0 +1,3 @@
+type ScrollareaHookPropsType = {};
+
+export { ScrollareaHookPropsType };

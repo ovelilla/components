@@ -2,13 +2,9 @@
 import styled from 'styled-components';
 
 const DatepickerHeaderComponentStyled = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(max-content, 3fr) minmax(0, 1fr) minmax(max-content, 3fr);
   padding: ${({ theme }) => theme.spaces.space8};
 `;
 
-const DatepickerHeaderComponenCenterStyled = styled.div`
-  flex: 1;
-`;
-
-export { DatepickerHeaderComponentStyled, DatepickerHeaderComponenCenterStyled };
+export { DatepickerHeaderComponentStyled };

@@ -2,10 +2,7 @@
 import { DatepickerMonthComponent } from './components/datepicker-month/datepicker-month.component';
 import { DatepickerYearComponent } from './components/datepicker-year/datepicker-year.component';
 // Styles
-import {
-  DatepickerHeaderComponentStyled,
-  DatepickerHeaderComponenCenterStyled,
-} from './datepicker-header.component.styled';
+import { DatepickerHeaderComponentStyled } from './datepicker-header.component.styled';
 // Types
 import { DatepickerHeaderComponentPropsType } from './types/datepicker-header.component.props.type';
 
@@ -29,7 +26,6 @@ const DatepickerHeaderComponent = ({
         showYearpicker,
       }}
     />
-    <DatepickerHeaderComponenCenterStyled />
     <DatepickerYearComponent
       {...{
         currentDate,

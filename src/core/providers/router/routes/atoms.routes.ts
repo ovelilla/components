@@ -13,6 +13,20 @@ const atomsRoutes = [
       return { Component: LinkPage };
     },
   },
+  {
+    path: '/components/atoms/paragraph',
+    async lazy() {
+      const { ParagraphPage } = await import('pages/atoms/paragraph/paragraph.page');
+      return { Component: ParagraphPage };
+    },
+  },
+  {
+    path: '/components/atoms/scrollarea',
+    async lazy() {
+      const { ScrollareaPage } = await import('pages/atoms/scrollarea/scrollarea.page');
+      return { Component: ScrollareaPage };
+    },
+  },
 ];
 
 export { atomsRoutes };
