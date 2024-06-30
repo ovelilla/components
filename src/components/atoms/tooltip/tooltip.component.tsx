@@ -38,7 +38,7 @@ const TooltipComponent = ({
   hideDelay = DEFAULT_HIDE_DELAY,
   opacity = TooltipComponentOpacityEnum.HIGH,
   padding = TooltipComponentPaddingEnum.MEDIUM,
-  placement = TooltipComponentPlacementEnum.TOP,
+  placement: initialPlacement = TooltipComponentPlacementEnum.TOP,
   // showArrow = DEFAULT_SHOW_ARROW,
   showDelay = DEFAULT_SHOW_DELAY,
   size = TooltipComponentSizeEnum.MEDIUM,
@@ -51,7 +51,7 @@ const TooltipComponent = ({
     contentRef,
     triggerRef,
     visible,
-  } = TooltipHook({ gap, hideDelay, placement, showDelay });
+  } = TooltipHook({ gap, hideDelay, initialPlacement, showDelay });
   return (
     <TooltipComponentStyled>
       <TooltipComponentTriggerStyled

@@ -54,6 +54,24 @@ const getArrowTopPosition = ({
   return { left: 0, top: 0 };
 };
 
+const getPlacement = ({
+  contentRef,
+  gap,
+  placement,
+  triggerRef,
+}: GetTooltipPositionPropsType): TooltipComponentPlacementEnum => {
+  return {
+    [TooltipComponentPlacementEnum.BOTTOM]: getTooltipBottomPosition({
+      contentRef,
+      gap,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.LEFT]: getTooltipLeftPosition({ contentRef, gap, triggerRef }),
+    [TooltipComponentPlacementEnum.RIGHT]: getTooltipRightPosition({ contentRef, gap, triggerRef }),
+    [TooltipComponentPlacementEnum.TOP]: getTooltipTopPosition({ contentRef, gap, triggerRef }),
+  }[placement];
+};
+
 const getTooltipBottomPosition = ({
   contentRef,
   gap,
@@ -189,4 +207,4 @@ const getTooltipTopPosition = ({
   };
 };
 
-export { getTooltipPosition };
+export { getPlacement, getTooltipPosition };

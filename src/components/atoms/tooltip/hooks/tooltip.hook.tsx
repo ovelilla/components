@@ -1,27 +1,30 @@
 // Vendors
 import { useEffect, useRef, useState } from 'react';
+// Enums
+import { TooltipComponentPlacementEnum } from '../enums/tooltip.component.enums';
 // Handlers
 import { TooltipHandlers } from '../handlers/tooltip.handlers';
 import { TooltipHookPropsType } from './types/tooltip.hook.props.type';
 import { TooltipHookReturnType } from './types/tooltip.hook.return.type';
 // Utils
-import { getTooltipPosition } from '../utils/tooltip.utils';
+import { getPlacement, getTooltipPosition } from '../utils/tooltip.utils';
 
 const TooltipHook = ({
   gap,
   hideDelay,
-  placement,
+  initialPlacement,
   showDelay,
 }: TooltipHookPropsType): TooltipHookReturnType => {
   const [arrowPosition, setArrowPosition] = useState<{ left: number; top: number }>({
     left: 0,
     top: 0,
   });
-  const [visible, setVisible] = useState<boolean>(false);
+  const [placement, setPlacement] = useState<TooltipComponentPlacementEnum>(initialPlacement);
   const [tooltipPosition, setTooltipPosition] = useState<{ left: number; top: number }>({
     left: 0,
     top: 0,
   });
+  const [visible, setVisible] = useState<boolean>(false);
 
   const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -39,6 +42,7 @@ const TooltipHook = ({
 
   useEffect(() => {
     if (visible) {
+      setPlacement(getPlacement({ contentRef, gap, placement, triggerRef }));
       setTooltipPosition(getTooltipPosition({ contentRef, gap, placement, triggerRef }));
     }
   }, [gap, placement, visible]);

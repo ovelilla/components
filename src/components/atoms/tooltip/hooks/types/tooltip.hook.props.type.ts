@@ -4,7 +4,7 @@ import { TooltipComponentPlacementEnum } from '../../enums/tooltip.component.enu
 type TooltipHookPropsType = {
   gap: number;
   hideDelay: number;
-  placement: TooltipComponentPlacementEnum;
+  initialPlacement: TooltipComponentPlacementEnum;
   showDelay: number;
 };
 
