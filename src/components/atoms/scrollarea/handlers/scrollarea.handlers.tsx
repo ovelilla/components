@@ -4,20 +4,35 @@ import { ScrollareaHandlersReturnType } from './types/scrollarea.handlers.return
 import { MouseEnterEventHandlerPropsType } from './types/mouse-enter-event-handler.props.type';
 import { MouseLeaveEventHandlerPropsType } from './types/mouse-leave-event-handler.props.type';
 
-const mouseEnterEventHandler = ({ setIsHovered }: MouseEnterEventHandlerPropsType): void => {
-  setIsHovered(true);
+const mouseEnterEventHandler = ({
+  setShowScrollbar,
+  timerRef,
+}: MouseEnterEventHandlerPropsType): void => {
+  setShowScrollbar(true);
+  if (timerRef.current) {
+    clearTimeout(timerRef.current);
+    timerRef.current = null;
+  }
 };
 
-const mouseLeaveEventHandler = ({ setIsHovered }: MouseLeaveEventHandlerPropsType): void => {
-  setIsHovered(false);
+const mouseLeaveEventHandler = ({
+  hideDelay,
+  setShowScrollbar,
+  timerRef,
+}: MouseLeaveEventHandlerPropsType): void => {
+  timerRef.current = setTimeout(() => {
+    setShowScrollbar(false);
+  }, hideDelay);
 };
 
 const ScrollareaHandlers = ({
-  setIsHovered,
+  hideDelay,
+  setShowScrollbar,
+  timerRef,
 }: ScrollareaHandlersPropsType): ScrollareaHandlersReturnType => {
   return {
-    handleMouseEnterEvent: () => mouseEnterEventHandler({ setIsHovered }),
-    handleMouseLeaveEvent: () => mouseLeaveEventHandler({ setIsHovered }),
+    handleMouseEnterEvent: () => mouseEnterEventHandler({ setShowScrollbar, timerRef }),
+    handleMouseLeaveEvent: () => mouseLeaveEventHandler({ hideDelay, setShowScrollbar, timerRef }),
   };
 };
 

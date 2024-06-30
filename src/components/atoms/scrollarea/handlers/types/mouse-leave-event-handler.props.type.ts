@@ -2,7 +2,9 @@
 import { Dispatch, SetStateAction } from 'react';
 
 type MouseLeaveEventHandlerPropsType = {
-  setIsHovered: Dispatch<SetStateAction<boolean>>;
+  hideDelay: number;
+  setShowScrollbar: Dispatch<SetStateAction<boolean>>;
+  timerRef: React.MutableRefObject<number | null>;
 };
 
 export { MouseLeaveEventHandlerPropsType };

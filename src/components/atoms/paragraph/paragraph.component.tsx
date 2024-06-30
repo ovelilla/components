@@ -1,7 +1,7 @@
 // Vendors
 import React from 'react';
 // Styles
-import { ParagraphComponentStyled } from './paragraph.component.styled';
+import { ParagraphComponentStyled } from './styles/paragraph.component.styled';
 // Types
 import { ParagraphComponentPropsType } from './types/paragraph.component.props.type';
 

@@ -4,10 +4,13 @@ import React from 'react';
 import { ScrollareaContentComponent } from './components/scrollarea-content/scrollarea-content.component';
 import { ScrollareaThumbComponent } from './components/scroll-area-thumb/scrollarea-thumb.component';
 import { ScrollareaTrackComponent } from './components/scrollarea-track/scrollarea-track.component';
+// Constants
+import { DEFAULT_HIDE_DELAY, DEFAULT_SHOW_TRACK } from './constants/scrollarea.component.constants';
 // Enums
 import {
   ScrollareaComponentBorderRadiusEnum,
   ScrollareaComponentGapEnum,
+  ScrollareaComponentPositionEnum,
   ScrollareaComponentSizeEnum,
   ScrollareaComponentVariantEnum,
 } from './enums/scrollarea.component.enums';
@@ -22,6 +25,9 @@ const ScrollareaComponent = ({
   borderRadius = ScrollareaComponentBorderRadiusEnum.FULL,
   children,
   gap = ScrollareaComponentGapEnum.NONE,
+  hideDelay = DEFAULT_HIDE_DELAY,
+  position = ScrollareaComponentPositionEnum.RELATIVE,
+  showTrack = DEFAULT_SHOW_TRACK,
   size = ScrollareaComponentSizeEnum.MEDIUM,
   variant = ScrollareaComponentVariantEnum.VISIBLE,
 }: ScrollareaComponentPropsType): React.ReactElement<ScrollareaComponentPropsType> => {
@@ -32,36 +38,52 @@ const ScrollareaComponent = ({
     initialPointerY,
     initialScrollTop,
     isDragging,
-    isHovered,
     setInitialPointerY,
     setInitialScrollTop,
     setIsDragging,
+    setShowScrollbar,
     setThumbHeight,
     setThumbTranslateY,
+    showScrollbar,
     thumbHeight,
     thumbRef,
     thumbTranslateY,
+    timerRef,
     trackRef,
-  } = ScrollareaHook();
+  } = ScrollareaHook({ hideDelay });
   return (
     <ScrollareaComponentStyled
       {...{
         gap,
         onMouseEnter: handleMouseEnterEvent,
         onMouseLeave: handleMouseLeaveEvent,
+        position,
+        size,
         variant,
       }}>
-      <ScrollareaContentComponent {...{ contentRef, setThumbTranslateY, thumbRef, trackRef }}>
+      <ScrollareaContentComponent
+        {...{
+          contentRef,
+          hideDelay,
+          setShowScrollbar,
+          setThumbTranslateY,
+          thumbRef,
+          timerRef,
+          trackRef,
+        }}>
         {children}
       </ScrollareaContentComponent>
       <ScrollareaTrackComponent
         {...{
           borderRadius,
           contentRef,
-          isHovered,
+          isDragging,
+          showScrollbar,
+          position,
           setInitialScrollTop,
           setInitialPointerY,
           setIsDragging,
+          showTrack,
           size,
           thumbRef,
           trackRef,

@@ -35,6 +35,10 @@ const SIDENAV = [
         name: 'Scrollarea',
         link: '/components/atoms/scrollarea',
       },
+      {
+        name: 'Tooltip',
+        link: '/components/atoms/tooltip',
+      },
     ],
   },
   {

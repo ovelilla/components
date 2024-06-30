@@ -1,3 +1,3 @@
-const EXCLUDED_PROPS = ['borderRadius', 'size'];
+const EXCLUDED_PROPS = ['borderRadius', 'position', 'showTrack', 'size'];
 
 export { EXCLUDED_PROPS };

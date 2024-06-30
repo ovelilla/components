@@ -6,7 +6,14 @@ import {
 // Types
 import { ScrollareaComponentTrackStyledPropsType } from '../types/scrollarea-track.component.styled.props.type';
 
-const getBorderRadius = ({
+const getTrackBackgroundColor = ({
+  showTrack,
+  theme,
+}: Pick<ScrollareaComponentTrackStyledPropsType, 'showTrack' | 'theme'>): string => {
+  return showTrack ? theme.colors.primaryForeground : theme.colors.transparent;
+};
+
+const getTrackBorderRadius = ({
   borderRadius,
   theme,
 }: Pick<ScrollareaComponentTrackStyledPropsType, 'borderRadius' | 'theme'>): string => {
@@ -20,16 +27,16 @@ const getBorderRadius = ({
   return borderRadiusMap[borderRadius];
 };
 
-const getButtonSize = ({
+const getTrackWidth = ({
   size,
   theme,
 }: Pick<ScrollareaComponentTrackStyledPropsType, 'size' | 'theme'>): string => {
-  const sizesMap: Record<string, string> = {
+  const widthsMap: Record<string, string> = {
     [ScrollareaComponentSizeEnum.SMALL]: theme.spaces.space8,
     [ScrollareaComponentSizeEnum.MEDIUM]: theme.spaces.space12,
     [ScrollareaComponentSizeEnum.LARGE]: theme.spaces.space16,
   };
-  return sizesMap[size];
+  return widthsMap[size];
 };
 
-export { getBorderRadius, getButtonSize };
+export { getTrackBackgroundColor, getTrackBorderRadius, getTrackWidth };

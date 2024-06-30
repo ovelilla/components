@@ -1,3 +1,3 @@
-const EXCLUDED_PROPS = ['gap', 'variant'];
+const EXCLUDED_PROPS = ['gap', 'position', 'size', 'variant'];
 
 export { EXCLUDED_PROPS };

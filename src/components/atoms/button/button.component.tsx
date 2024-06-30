@@ -13,7 +13,7 @@ import {
   ButtonComponentVariantEnum,
 } from './enums/button.component.enums';
 // Styles
-import { ButtonComponentStyled } from './button.component.styled';
+import { ButtonComponentStyled } from './styles/button.component.styled';
 // Types
 import { ButtonComponentPropsType } from './types/button.component.props.type';
 // Utils

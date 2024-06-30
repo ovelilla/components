@@ -10,7 +10,7 @@ import {
 // Enums
 import { LinkComponentSizesEnum } from './enums/link.component.enums';
 // Styles
-import { LinkComponentStyled } from './link.component.styled';
+import { LinkComponentStyled } from './styles/link.component.styled';
 // Types
 import { LinkComponentPropsType } from './types/link.component.props.type';
 

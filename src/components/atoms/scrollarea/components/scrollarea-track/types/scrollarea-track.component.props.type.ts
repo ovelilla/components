@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 // Enums
 import {
   ScrollareaComponentBorderRadiusEnum,
+  ScrollareaComponentPositionEnum,
   ScrollareaComponentSizeEnum,
   ScrollareaComponentVariantEnum,
 } from 'components/atoms/scrollarea/enums/scrollarea.component.enums';
@@ -10,11 +11,14 @@ import {
 type ScrollareaTrackComponentPropsType = {
   borderRadius: ScrollareaComponentBorderRadiusEnum;
   children: React.ReactNode;
-  isHovered: boolean;
+  isDragging: boolean;
+  showScrollbar: boolean;
   contentRef: React.RefObject<HTMLDivElement>;
+  position: ScrollareaComponentPositionEnum;
   setInitialScrollTop: Dispatch<SetStateAction<number>>;
   setInitialPointerY: Dispatch<SetStateAction<number>>;
   setIsDragging: Dispatch<SetStateAction<boolean>>;
+  showTrack: boolean;
   size: ScrollareaComponentSizeEnum;
   thumbRef: React.RefObject<HTMLDivElement>;
   trackRef: React.RefObject<HTMLDivElement>;

@@ -98,6 +98,7 @@ const thumbTouchMoveEventHandler = ({
   trackRef,
 }: ThumbTouchMoveEventHandlerPropsType): void => {
   if (isDragging && contentRef.current) {
+    event.preventDefault();
     contentRef.current.scrollTop = getContentScrollTop({
       contentRef,
       clientY: event.touches[0].clientY,

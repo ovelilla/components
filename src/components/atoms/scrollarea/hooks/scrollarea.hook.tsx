@@ -3,16 +3,16 @@ import { useLayoutEffect, useRef, useState } from 'react';
 // Handlers
 import { ScrollareaHandlers } from '../handlers/scrollarea.handlers';
 // Types
-// import { ScrollareaHookPropsType } from './types/scrollarea.hook.props.type';
+import { ScrollareaHookPropsType } from './types/scrollarea.hook.props.type';
 import { ScrollareaHookReturnType } from './types/scrollarea.hook.return.type';
 // Utils
 import { getThumbHeight } from '../utils/scrollarea.utils';
 
-const ScrollareaHook = (): ScrollareaHookReturnType => {
+const ScrollareaHook = ({ hideDelay }: ScrollareaHookPropsType): ScrollareaHookReturnType => {
   const [initialPointerY, setInitialPointerY] = useState<number>(0);
   const [initialScrollTop, setInitialScrollTop] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [showScrollbar, setShowScrollbar] = useState<boolean>(false);
   const [thumbHeight, setThumbHeight] = useState<number>(0);
   const [thumbTranslateY, setThumbTranslateY] = useState<number>(0);
 
@@ -20,13 +20,18 @@ const ScrollareaHook = (): ScrollareaHookReturnType => {
   const thumbRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  const { handleMouseEnterEvent, handleMouseLeaveEvent } = ScrollareaHandlers({ setIsHovered });
+  const timerRef = useRef<number | null>(null);
 
-  // useLayoutEffect(() => {
-  //   console.log('useLayoutEffect', contentRef, trackRef);
-  //   const thumbHeight = getThumbHeight({ contentRef, trackRef });
-  //   setThumbHeight(thumbHeight);
-  // }, [contentRef, trackRef, isHovered]);
+  const { handleMouseEnterEvent, handleMouseLeaveEvent } = ScrollareaHandlers({
+    hideDelay,
+    setShowScrollbar,
+    timerRef,
+  });
+
+  useLayoutEffect(() => {
+    const thumbHeight = getThumbHeight({ contentRef, trackRef });
+    setThumbHeight(thumbHeight);
+  }, [showScrollbar]);
 
   return {
     contentRef,
@@ -35,15 +40,17 @@ const ScrollareaHook = (): ScrollareaHookReturnType => {
     initialPointerY,
     initialScrollTop,
     isDragging,
-    isHovered,
     setInitialPointerY,
     setInitialScrollTop,
     setIsDragging,
+    setShowScrollbar,
     setThumbHeight,
     setThumbTranslateY,
+    showScrollbar,
     thumbHeight,
     thumbRef,
     thumbTranslateY,
+    timerRef,
     trackRef,
   };
 };

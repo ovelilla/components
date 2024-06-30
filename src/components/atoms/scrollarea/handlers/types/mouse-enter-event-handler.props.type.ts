@@ -2,7 +2,8 @@
 import { Dispatch, SetStateAction } from 'react';
 
 type MouseEnterEventHandlerPropsType = {
-  setIsHovered: Dispatch<SetStateAction<boolean>>;
+  setShowScrollbar: Dispatch<SetStateAction<boolean>>;
+  timerRef: React.MutableRefObject<number | null>;
 };
 
 export { MouseEnterEventHandlerPropsType };

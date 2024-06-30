@@ -13,6 +13,11 @@ enum ScrollareaComponentGapEnum {
   SMALL = 'small',
 }
 
+enum ScrollareaComponentPositionEnum {
+  ABSOLUTE = 'absolute',
+  RELATIVE = 'relative',
+}
+
 enum ScrollareaComponentSizeEnum {
   LARGE = 'large',
   MEDIUM = 'medium',
@@ -28,6 +33,7 @@ enum ScrollareaComponentVariantEnum {
 export {
   ScrollareaComponentBorderRadiusEnum,
   ScrollareaComponentGapEnum,
+  ScrollareaComponentPositionEnum,
   ScrollareaComponentSizeEnum,
   ScrollareaComponentVariantEnum,
 };

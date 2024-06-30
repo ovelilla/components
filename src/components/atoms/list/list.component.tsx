@@ -1,5 +1,5 @@
 // Styles
-import { ListComponentStyled } from './list.component.styled';
+import { ListComponentStyled } from './styles/list.component.styled';
 // Types
 import { ListComponentPropsType } from './types/list.component.props.type';
 

@@ -1,3 +1,5 @@
-type ScrollareaHookPropsType = {};
+type ScrollareaHookPropsType = {
+  hideDelay: number;
+};
 
 export { ScrollareaHookPropsType };

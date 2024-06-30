@@ -13,10 +13,13 @@ const ScrollareaTrackComponent = ({
   borderRadius,
   children,
   contentRef,
-  isHovered,
+  isDragging,
+  showScrollbar,
+  position,
   setInitialScrollTop,
   setInitialPointerY,
   setIsDragging,
+  showTrack,
   size,
   thumbRef,
   trackRef,
@@ -32,7 +35,7 @@ const ScrollareaTrackComponent = ({
   });
   if (
     variant === ScrollareaComponentVariantEnum.HIDDEN ||
-    (variant === ScrollareaComponentVariantEnum.HOVER && !isHovered)
+    (variant === ScrollareaComponentVariantEnum.HOVER && !showScrollbar && !isDragging)
   ) {
     return null;
   }
@@ -42,7 +45,9 @@ const ScrollareaTrackComponent = ({
         borderRadius,
         onMouseDown: handleTrackMouseDownEvent,
         onTouchStart: handleTrackTouchStartEvent,
+        position,
         ref: trackRef,
+        showTrack,
         size,
         variant,
       }}>

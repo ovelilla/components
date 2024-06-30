@@ -27,6 +27,13 @@ const atomsRoutes = [
       return { Component: ScrollareaPage };
     },
   },
+  {
+    path: '/components/atoms/tooltip',
+    async lazy() {
+      const { TooltipPage } = await import('pages/atoms/tooltip/tooltip.page');
+      return { Component: TooltipPage };
+    },
+  },
 ];
 
 export { atomsRoutes };
