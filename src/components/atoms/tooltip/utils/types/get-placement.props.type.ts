@@ -1,9 +1,12 @@
 // Enums
-import { TooltipComponentPlacementEnum } from '../../enums/tooltip.component.enums';
+import {
+  TooltipComponentGapEnum,
+  TooltipComponentPlacementEnum,
+} from '../../enums/tooltip.component.enums';
 
 type GetPlacementPropsType = {
   contentRef: React.RefObject<HTMLDivElement>;
-  gap: number;
+  gap: TooltipComponentGapEnum;
   placement: TooltipComponentPlacementEnum;
   triggerRef: React.RefObject<HTMLDivElement>;
 };

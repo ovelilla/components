@@ -1,5 +1,5 @@
 // Vendors
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 // Enums
 import { TooltipComponentPlacementEnum } from '../enums/tooltip.component.enums';
 // Handlers
@@ -10,9 +10,11 @@ import { TooltipHookReturnType } from './types/tooltip.hook.return.type';
 import { getArrowPosition, getTooltipPlacement, getTooltipPosition } from '../utils/tooltip.utils';
 
 const TooltipHook = ({
+  arrowSize,
   gap,
   hideDelay,
   initialPlacement,
+  showArrow,
   showDelay,
 }: TooltipHookPropsType): TooltipHookReturnType => {
   const [arrowPosition, setArrowPosition] = useState<{ left: number; top: number }>({
@@ -25,10 +27,8 @@ const TooltipHook = ({
     top: 0,
   });
   const [visible, setVisible] = useState<boolean>(false);
-
   const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
-
   const hideTimeRef = useRef<number | null>(null);
   const showTimeRef = useRef<number | null>(null);
 
@@ -40,19 +40,25 @@ const TooltipHook = ({
     showTimeRef,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (visible) {
-      setPlacement(getTooltipPlacement({ contentRef, gap, placement, triggerRef }));
+      setPlacement(
+        getTooltipPlacement({ contentRef, gap, placement: initialPlacement, triggerRef })
+      );
+    }
+  }, [gap, initialPlacement, visible]);
+
+  useLayoutEffect(() => {
+    if (visible) {
       setTooltipPosition(getTooltipPosition({ contentRef, gap, placement, triggerRef }));
-      setArrowPosition(getArrowPosition({ contentRef, placement, triggerRef }));
     }
   }, [gap, placement, visible]);
 
-  useEffect(() => {
-    if (visible) {
-      setArrowPosition(getArrowPosition({ contentRef, placement, triggerRef }));
+  useLayoutEffect(() => {
+    if (showArrow && visible) {
+      setArrowPosition(getArrowPosition({ arrowSize, contentRef, placement, triggerRef }));
     }
-  }, [tooltipPosition]);
+  }, [arrowSize, placement, showArrow, tooltipPosition, visible]);
 
   return {
     arrowPosition,

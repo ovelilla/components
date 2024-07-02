@@ -1,6 +1,5 @@
-const DEFAULT_GAP = 12 as const;
 const DEFAULT_HIDE_DELAY = 0 as const;
-const DEFAULT_SHOW_ARROW = false as const;
+const DEFAULT_SHOW_ARROW = true as const;
 const DEFAULT_SHOW_DELAY = 0 as const;
 
-export { DEFAULT_GAP, DEFAULT_HIDE_DELAY, DEFAULT_SHOW_ARROW, DEFAULT_SHOW_DELAY };
+export { DEFAULT_HIDE_DELAY, DEFAULT_SHOW_ARROW, DEFAULT_SHOW_DELAY };

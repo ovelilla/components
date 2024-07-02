@@ -1,3 +1,9 @@
+enum TooltipComponentArrowSizeEnum {
+  LARGE = 8,
+  MEDIUM = 6,
+  SMALL = 4,
+}
+
 enum TooltipComponentBorderRadiusEnum {
   FULL = 'full',
   LARGE = 'large',
@@ -22,6 +28,12 @@ enum TooltipComponentFontWeightEnum {
   NORMAL = 'normal',
   SEMIBOLD = 'semibold',
   THIN = 'thin',
+}
+
+enum TooltipComponentGapEnum {
+  LARGE = 16,
+  MEDIUM = 12,
+  SMALL = 8,
 }
 
 enum TooltipComponentOpacityEnum {
@@ -51,9 +63,11 @@ enum TooltipComponentPlacementEnum {
 }
 
 export {
+  TooltipComponentArrowSizeEnum,
   TooltipComponentBorderRadiusEnum,
   TooltipComponentFontSizeEnum,
   TooltipComponentFontWeightEnum,
+  TooltipComponentGapEnum,
   TooltipComponentOpacityEnum,
   TooltipComponentPaddingEnum,
   TooltipComponentSizeEnum,

@@ -1,14 +1,43 @@
 // Enums
 import { TooltipComponentPlacementEnum } from '../enums/tooltip.component.enums';
 // Types
+import { GetArrowPositionPropsType } from './types/get-arrow-position.props.type';
+import { GetArrowPositionReturnType } from './types/get-arrow-position.return.type';
 import { GetPlacementPropsType } from './types/get-placement.props.type';
 import { GetTooltipPositionPropsType } from './types/get-tooltip-position.props.type';
 import { GetTooltipPositionReturnType } from './types/get-tooltip-position.return.type';
 
-const getArrowBottomPosition = ({
+const getArrowPosition = ({
+  arrowSize,
+  contentRef,
+  placement,
+  triggerRef,
+}: GetArrowPositionPropsType): GetArrowPositionReturnType => {
+  return {
+    [TooltipComponentPlacementEnum.BOTTOM]: getArrowPositionBottom({
+      arrowSize,
+      contentRef,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.LEFT]: getArrowPositionLeft({
+      arrowSize,
+      contentRef,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.RIGHT]: getArrowPositionRight({
+      arrowSize,
+      contentRef,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.TOP]: getArrowPositionTop({ arrowSize, contentRef, triggerRef }),
+  }[placement];
+};
+
+const getArrowPositionBottom = ({
+  arrowSize,
   contentRef,
   triggerRef,
-}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+}: Omit<GetArrowPositionPropsType, 'placement'>): GetArrowPositionReturnType => {
   if (!contentRef.current || !triggerRef.current) {
     return { left: 0, top: 0 };
   }
@@ -18,9 +47,10 @@ const getArrowBottomPosition = ({
 
   const contentLeft = contentRect.left;
   const triggerLeft = triggerRect.left;
+  const triggerWidth = triggerRect.width;
 
-  const arrowLeft = triggerLeft - contentLeft + 16 / 2;
-  const arrowTop = -16;
+  const arrowLeft = triggerLeft - contentLeft + (triggerWidth - arrowSize * 2) / 2;
+  const arrowTop = -arrowSize * 2;
 
   return {
     left: arrowLeft,
@@ -28,9 +58,10 @@ const getArrowBottomPosition = ({
   };
 };
 
-const getArrowLeftPosition = ({
+const getArrowPositionLeft = ({
+  arrowSize,
   contentRef,
-}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+}: Omit<GetArrowPositionPropsType, 'placement'>): GetArrowPositionReturnType => {
   if (!contentRef.current) {
     return { left: 0, top: 0 };
   }
@@ -41,7 +72,7 @@ const getArrowLeftPosition = ({
   const contentWidth = contentRect.width;
 
   const arrowLeft = contentWidth;
-  const arrowTop = contentHeight / 2 - 16 / 2;
+  const arrowTop = (contentHeight - arrowSize * 2) / 2;
 
   return {
     left: arrowLeft,
@@ -49,22 +80,10 @@ const getArrowLeftPosition = ({
   };
 };
 
-const getArrowPosition = ({
+const getArrowPositionRight = ({
+  arrowSize,
   contentRef,
-  placement,
-  triggerRef,
-}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
-  return {
-    [TooltipComponentPlacementEnum.BOTTOM]: getArrowBottomPosition({ contentRef, triggerRef }),
-    [TooltipComponentPlacementEnum.LEFT]: getArrowLeftPosition({ contentRef, triggerRef }),
-    [TooltipComponentPlacementEnum.RIGHT]: getArrowRightPosition({ contentRef, triggerRef }),
-    [TooltipComponentPlacementEnum.TOP]: getArrowTopPosition({ contentRef, triggerRef }),
-  }[placement];
-};
-
-const getArrowRightPosition = ({
-  contentRef,
-}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+}: Omit<GetArrowPositionPropsType, 'placement'>): GetArrowPositionReturnType => {
   if (!contentRef.current) {
     return { left: 0, top: 0 };
   }
@@ -73,8 +92,8 @@ const getArrowRightPosition = ({
 
   const contentHeight = contentRect.height;
 
-  const arrowLeft = -16;
-  const arrowTop = contentHeight / 2 - 16 / 2;
+  const arrowLeft = -arrowSize * 2;
+  const arrowTop = (contentHeight - arrowSize * 2) / 2;
 
   return {
     left: arrowLeft,
@@ -82,10 +101,11 @@ const getArrowRightPosition = ({
   };
 };
 
-const getArrowTopPosition = ({
+const getArrowPositionTop = ({
+  arrowSize,
   contentRef,
   triggerRef,
-}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+}: Omit<GetArrowPositionPropsType, 'placement'>): GetArrowPositionReturnType => {
   if (!contentRef.current || !triggerRef.current) {
     return { left: 0, top: 0 };
   }
@@ -94,9 +114,11 @@ const getArrowTopPosition = ({
   const triggerRect = triggerRef.current.getBoundingClientRect();
 
   const contentHeight = contentRect.height;
+  const contentLeft = contentRect.left;
   const triggerLeft = triggerRect.left;
+  const triggerWidth = triggerRect.width;
 
-  const arrowLeft = triggerLeft - contentRect.left + 16 / 2;
+  const arrowLeft = triggerLeft - contentLeft + (triggerWidth - arrowSize * 2) / 2;
   const arrowTop = contentHeight;
 
   return {

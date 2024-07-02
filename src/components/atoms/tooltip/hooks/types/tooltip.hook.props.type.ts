@@ -1,10 +1,16 @@
 // Enums
-import { TooltipComponentPlacementEnum } from '../../enums/tooltip.component.enums';
+import {
+  TooltipComponentArrowSizeEnum,
+  TooltipComponentGapEnum,
+  TooltipComponentPlacementEnum,
+} from '../../enums/tooltip.component.enums';
 
 type TooltipHookPropsType = {
-  gap: number;
+  arrowSize: TooltipComponentArrowSizeEnum;
+  gap: TooltipComponentGapEnum;
   hideDelay: number;
   initialPlacement: TooltipComponentPlacementEnum;
+  showArrow: boolean;
   showDelay: number;
 };
 

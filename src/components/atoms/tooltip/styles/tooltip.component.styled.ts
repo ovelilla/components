@@ -22,18 +22,20 @@ const TooltipComponentContentStyled = styled.div.withConfig({
 })<TooltipComponentStyledPropsType>`
   ${({
     arrowPosition,
+    arrowSize,
     borderRadius,
     fontSize,
     fontWeight,
     opacity,
     padding,
     placement,
-    tooltipPosition,
+    showArrow,
     size,
     theme,
+    tooltipPosition,
   }) => css`
-    background-color: hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })});
     backdrop-filter: blur(4px);
+    background-color: hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })});
     border-radius: ${getTooltipBorderRadius({ borderRadius, theme })};
     color: hsl(${({ theme }) => theme.colors.primaryForeground} / 1);
     font-size: ${getTooltipFontSize({ fontSize, theme })};
@@ -45,15 +47,19 @@ const TooltipComponentContentStyled = styled.div.withConfig({
     position: fixed;
     top: ${tooltipPosition.top}px;
 
-    &::after {
-      border-color: ${getArrowBorderColor({ opacity, placement, theme })};
-      border-style: solid;
-      border-width: 8px;
-      content: '';
-      left: ${arrowPosition.left}px;
-      position: absolute;
-      top: ${arrowPosition.top}px;
-    }
+    ${showArrow &&
+    css`
+      &::after {
+        border-color: ${getArrowBorderColor({ opacity, placement, theme })};
+        border-style: solid;
+        border-width: ${arrowSize}px;
+        content: '';
+        left: ${arrowPosition.left}px;
+        pointer-events: none;
+        position: absolute;
+        top: ${arrowPosition.top}px;
+      }
+    `};
   `};
 `;
 

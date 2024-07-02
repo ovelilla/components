@@ -30,17 +30,17 @@ const mouseLeaveEventHandler = ({
   setVisible,
   showTimeRef,
 }: MouseLeaveEventHandlerPropsType): void => {
-  // if (showTimeRef.current) {
-  //   clearTimeout(showTimeRef.current);
-  //   showTimeRef.current = null;
-  // }
-  // if (hideDelay > 0) {
-  //   hideTimeRef.current = setTimeout(() => {
-  //     setVisible(false);
-  //   }, hideDelay);
-  // } else {
-  //   setVisible(false);
-  // }
+  if (showTimeRef.current) {
+    clearTimeout(showTimeRef.current);
+    showTimeRef.current = null;
+  }
+  if (hideDelay > 0) {
+    hideTimeRef.current = setTimeout(() => {
+      setVisible(false);
+    }, hideDelay);
+  } else {
+    setVisible(false);
+  }
 };
 
 const TooltipHandlers = ({

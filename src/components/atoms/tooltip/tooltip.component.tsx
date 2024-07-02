@@ -2,16 +2,17 @@
 import ReactDOM from 'react-dom';
 // Constants
 import {
-  DEFAULT_GAP,
   DEFAULT_HIDE_DELAY,
-  // DEFAULT_SHOW_ARROW,
+  DEFAULT_SHOW_ARROW,
   DEFAULT_SHOW_DELAY,
 } from './constants/tooltip.component.constants';
 // Enums
 import {
+  TooltipComponentArrowSizeEnum,
   TooltipComponentBorderRadiusEnum,
   TooltipComponentFontSizeEnum,
   TooltipComponentFontWeightEnum,
+  TooltipComponentGapEnum,
   TooltipComponentOpacityEnum,
   TooltipComponentPaddingEnum,
   TooltipComponentSizeEnum,
@@ -30,16 +31,17 @@ import {
 import { TooltipComponentPropsType } from './types/tooltip.component.props.type';
 
 const TooltipComponent = ({
+  arrowSize = TooltipComponentArrowSizeEnum.LARGE,
   borderRadius = TooltipComponentBorderRadiusEnum.MEDIUM,
   children,
   fontSize = TooltipComponentFontSizeEnum.MEDIUM,
   fontWeight = TooltipComponentFontWeightEnum.NORMAL,
-  gap = DEFAULT_GAP,
+  gap = TooltipComponentGapEnum.MEDIUM,
   hideDelay = DEFAULT_HIDE_DELAY,
   opacity = TooltipComponentOpacityEnum.HIGH,
   padding = TooltipComponentPaddingEnum.MEDIUM,
   placement: initialPlacement = TooltipComponentPlacementEnum.TOP,
-  // showArrow = DEFAULT_SHOW_ARROW,
+  showArrow = DEFAULT_SHOW_ARROW,
   showDelay = DEFAULT_SHOW_DELAY,
   size = TooltipComponentSizeEnum.MEDIUM,
   title,
@@ -53,7 +55,8 @@ const TooltipComponent = ({
     tooltipPosition,
     triggerRef,
     visible,
-  } = TooltipHook({ gap, hideDelay, initialPlacement, showDelay });
+  } = TooltipHook({ arrowSize, gap, hideDelay, initialPlacement, showArrow, showDelay });
+
   return (
     <TooltipComponentStyled>
       <TooltipComponentTriggerStyled
@@ -69,14 +72,15 @@ const TooltipComponent = ({
           <TooltipComponentContentStyled
             {...{
               arrowPosition,
+              arrowSize,
               borderRadius,
               fontSize,
               fontWeight,
-              gap,
               opacity,
               padding,
               placement,
               ref: contentRef,
+              showArrow,
               size,
               tooltipPosition,
             }}>

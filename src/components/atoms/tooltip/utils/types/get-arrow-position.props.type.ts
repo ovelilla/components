@@ -1,14 +1,14 @@
 // Enums
 import {
-  TooltipComponentGapEnum,
+  TooltipComponentArrowSizeEnum,
   TooltipComponentPlacementEnum,
 } from 'components/atoms/tooltip/enums/tooltip.component.enums';
 
-type GetTooltipPositionPropsType = {
+type GetArrowPositionPropsType = {
+  arrowSize: TooltipComponentArrowSizeEnum;
   contentRef: React.RefObject<HTMLDivElement>;
-  gap: TooltipComponentGapEnum;
   placement: TooltipComponentPlacementEnum;
   triggerRef: React.RefObject<HTMLDivElement>;
 };
 
-export { GetTooltipPositionPropsType };
+export { GetArrowPositionPropsType };
