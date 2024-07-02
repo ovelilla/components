@@ -1,82 +1,149 @@
 // Enums
 import { TooltipComponentPlacementEnum } from '../enums/tooltip.component.enums';
 // Types
+import { GetPlacementPropsType } from './types/get-placement.props.type';
 import { GetTooltipPositionPropsType } from './types/get-tooltip-position.props.type';
 import { GetTooltipPositionReturnType } from './types/get-tooltip-position.return.type';
 
 const getArrowBottomPosition = ({
   contentRef,
-  gap,
   triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
-  return { left: 0, top: 0 };
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+  if (!contentRef.current || !triggerRef.current) {
+    return { left: 0, top: 0 };
+  }
+
+  const contentRect = contentRef.current.getBoundingClientRect();
+  const triggerRect = triggerRef.current.getBoundingClientRect();
+
+  const contentLeft = contentRect.left;
+  const triggerLeft = triggerRect.left;
+
+  const arrowLeft = triggerLeft - contentLeft + 16 / 2;
+  const arrowTop = -16;
+
+  return {
+    left: arrowLeft,
+    top: arrowTop,
+  };
 };
 
 const getArrowLeftPosition = ({
   contentRef,
-  gap,
-  triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
-  return { left: 0, top: 0 };
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+  if (!contentRef.current) {
+    return { left: 0, top: 0 };
+  }
+
+  const contentRect = contentRef.current.getBoundingClientRect();
+
+  const contentHeight = contentRect.height;
+  const contentWidth = contentRect.width;
+
+  const arrowLeft = contentWidth;
+  const arrowTop = contentHeight / 2 - 16 / 2;
+
+  return {
+    left: arrowLeft,
+    top: arrowTop,
+  };
 };
 
 const getArrowPosition = ({
+  contentRef,
+  placement,
+  triggerRef,
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+  return {
+    [TooltipComponentPlacementEnum.BOTTOM]: getArrowBottomPosition({ contentRef, triggerRef }),
+    [TooltipComponentPlacementEnum.LEFT]: getArrowLeftPosition({ contentRef, triggerRef }),
+    [TooltipComponentPlacementEnum.RIGHT]: getArrowRightPosition({ contentRef, triggerRef }),
+    [TooltipComponentPlacementEnum.TOP]: getArrowTopPosition({ contentRef, triggerRef }),
+  }[placement];
+};
+
+const getArrowRightPosition = ({
+  contentRef,
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+  if (!contentRef.current) {
+    return { left: 0, top: 0 };
+  }
+
+  const contentRect = contentRef.current.getBoundingClientRect();
+
+  const contentHeight = contentRect.height;
+
+  const arrowLeft = -16;
+  const arrowTop = contentHeight / 2 - 16 / 2;
+
+  return {
+    left: arrowLeft,
+    top: arrowTop,
+  };
+};
+
+const getArrowTopPosition = ({
+  contentRef,
+  triggerRef,
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+  if (!contentRef.current || !triggerRef.current) {
+    return { left: 0, top: 0 };
+  }
+
+  const contentRect = contentRef.current.getBoundingClientRect();
+  const triggerRect = triggerRef.current.getBoundingClientRect();
+
+  const contentHeight = contentRect.height;
+  const triggerLeft = triggerRect.left;
+
+  const arrowLeft = triggerLeft - contentRect.left + 16 / 2;
+  const arrowTop = contentHeight;
+
+  return {
+    left: arrowLeft,
+    top: arrowTop,
+  };
+};
+
+const getTooltipPosition = ({
   contentRef,
   gap,
   placement,
   triggerRef,
 }: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
   return {
-    [TooltipComponentPlacementEnum.BOTTOM]: getArrowBottomPosition({
+    [TooltipComponentPlacementEnum.BOTTOM]: getTooltipPositionBottom({
       contentRef,
       gap,
+      placement,
       triggerRef,
     }),
-    [TooltipComponentPlacementEnum.LEFT]: getArrowLeftPosition({ contentRef, gap, triggerRef }),
-    [TooltipComponentPlacementEnum.RIGHT]: getArrowRightPosition({ contentRef, gap, triggerRef }),
-    [TooltipComponentPlacementEnum.TOP]: getArrowTopPosition({ contentRef, gap, triggerRef }),
+    [TooltipComponentPlacementEnum.LEFT]: getTooltipPositionLeft({
+      contentRef,
+      gap,
+      placement,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.RIGHT]: getTooltipPositionRight({
+      contentRef,
+      gap,
+      placement,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.TOP]: getTooltipPositionTop({
+      contentRef,
+      gap,
+      placement,
+      triggerRef,
+    }),
   }[placement];
 };
 
-const getArrowRightPosition = ({
+const getTooltipPositionBottom = ({
   contentRef,
   gap,
   triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
-  return { left: 0, top: 0 };
-};
-
-const getArrowTopPosition = ({
-  contentRef,
-  gap,
-  triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
-  return { left: 0, top: 0 };
-};
-
-const getPlacement = ({
-  contentRef,
-  gap,
-  placement,
-  triggerRef,
-}: GetTooltipPositionPropsType): TooltipComponentPlacementEnum => {
-  return {
-    [TooltipComponentPlacementEnum.BOTTOM]: getTooltipBottomPosition({
-      contentRef,
-      gap,
-      triggerRef,
-    }),
-    [TooltipComponentPlacementEnum.LEFT]: getTooltipLeftPosition({ contentRef, gap, triggerRef }),
-    [TooltipComponentPlacementEnum.RIGHT]: getTooltipRightPosition({ contentRef, gap, triggerRef }),
-    [TooltipComponentPlacementEnum.TOP]: getTooltipTopPosition({ contentRef, gap, triggerRef }),
-  }[placement];
-};
-
-const getTooltipBottomPosition = ({
-  contentRef,
-  gap,
-  triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
   if (!contentRef.current || !triggerRef.current) {
     return { left: 0, top: 0 };
   }
@@ -93,7 +160,6 @@ const getTooltipBottomPosition = ({
   const initialLeft = triggerLeft + (triggerWidth - contentWidth) / 2;
   const maxLeft = window.innerWidth - contentWidth - gap;
   const contentLeft = Math.min(maxLeft, Math.max(gap, initialLeft));
-
   const contentTop = triggerTop + triggerHeight + gap;
 
   return {
@@ -102,58 +168,11 @@ const getTooltipBottomPosition = ({
   };
 };
 
-const getTooltipLeftPosition = ({
+const getTooltipPositionLeft = ({
   contentRef,
   gap,
-  triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
-  if (!contentRef.current || !triggerRef.current) {
-    return { left: 0, top: 0 };
-  }
-
-  const contentRect = contentRef.current.getBoundingClientRect();
-  const triggerRect = triggerRef.current.getBoundingClientRect();
-
-  const contentHeight = contentRect.height;
-  const contentWidth = contentRect.width;
-  const triggerLeft = triggerRect.left;
-  const triggerTop = triggerRect.top;
-  const triggerWidth = triggerRect.width;
-
-  const initialLeft = triggerLeft - contentWidth - gap;
-  const adjustedLeft = triggerLeft + triggerWidth + gap;
-  const contentLeft = initialLeft >= 0 ? initialLeft : adjustedLeft;
-  const contentTop = triggerTop + (triggerWidth - contentHeight) / 2;
-
-  return {
-    left: contentLeft,
-    top: contentTop,
-  };
-};
-
-const getTooltipPosition = ({
-  contentRef,
-  gap,
-  placement,
   triggerRef,
 }: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
-  return {
-    [TooltipComponentPlacementEnum.BOTTOM]: getTooltipBottomPosition({
-      contentRef,
-      gap,
-      triggerRef,
-    }),
-    [TooltipComponentPlacementEnum.LEFT]: getTooltipLeftPosition({ contentRef, gap, triggerRef }),
-    [TooltipComponentPlacementEnum.RIGHT]: getTooltipRightPosition({ contentRef, gap, triggerRef }),
-    [TooltipComponentPlacementEnum.TOP]: getTooltipTopPosition({ contentRef, gap, triggerRef }),
-  }[placement];
-};
-
-const getTooltipRightPosition = ({
-  contentRef,
-  gap,
-  triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
   if (!contentRef.current || !triggerRef.current) {
     return { left: 0, top: 0 };
   }
@@ -163,13 +182,37 @@ const getTooltipRightPosition = ({
 
   const contentHeight = contentRect.height;
   const contentWidth = contentRect.width;
+  const triggerHeigh = triggerRect.height;
+  const triggerLeft = triggerRect.left;
+  const triggerTop = triggerRect.top;
+
+  const contentLeft = triggerLeft - contentWidth - gap;
+  const contentTop = triggerTop + (triggerHeigh - contentHeight) / 2;
+
+  return {
+    left: contentLeft,
+    top: contentTop,
+  };
+};
+
+const getTooltipPositionRight = ({
+  contentRef,
+  gap,
+  triggerRef,
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
+  if (!contentRef.current || !triggerRef.current) {
+    return { left: 0, top: 0 };
+  }
+
+  const contentRect = contentRef.current.getBoundingClientRect();
+  const triggerRect = triggerRef.current.getBoundingClientRect();
+
+  const contentHeight = contentRect.height;
   const triggerLeft = triggerRect.left;
   const triggerTop = triggerRect.top;
   const triggerWidth = triggerRect.width;
 
-  const initialLeft = triggerLeft + triggerWidth + gap;
-  const adjustedLeft = triggerLeft - contentWidth - gap;
-  const contentLeft = initialLeft + contentWidth <= window.innerWidth ? initialLeft : adjustedLeft;
+  const contentLeft = triggerLeft + triggerWidth + gap;
   const contentTop = triggerTop + (triggerWidth - contentHeight) / 2;
 
   return {
@@ -178,11 +221,11 @@ const getTooltipRightPosition = ({
   };
 };
 
-const getTooltipTopPosition = ({
+const getTooltipPositionTop = ({
   contentRef,
   gap,
   triggerRef,
-}: Omit<GetTooltipPositionPropsType, 'placement'>): GetTooltipPositionReturnType => {
+}: GetTooltipPositionPropsType): GetTooltipPositionReturnType => {
   if (!contentRef.current || !triggerRef.current) {
     return { left: 0, top: 0 };
   }
@@ -207,4 +250,109 @@ const getTooltipTopPosition = ({
   };
 };
 
-export { getPlacement, getTooltipPosition };
+const getTooltipPlacement = ({
+  contentRef,
+  gap,
+  placement,
+  triggerRef,
+}: GetPlacementPropsType): TooltipComponentPlacementEnum => {
+  return {
+    [TooltipComponentPlacementEnum.BOTTOM]: getTooltipPlacementBottom({
+      contentRef,
+      gap,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.LEFT]: getTooltipPlacementLeft({ contentRef, gap, triggerRef }),
+    [TooltipComponentPlacementEnum.RIGHT]: getTooltipPlacementRight({
+      contentRef,
+      gap,
+      triggerRef,
+    }),
+    [TooltipComponentPlacementEnum.TOP]: getTooltipPlacementTop({ contentRef, gap, triggerRef }),
+  }[placement];
+};
+
+const getTooltipPlacementBottom = ({
+  contentRef,
+  gap,
+  triggerRef,
+}: Omit<GetPlacementPropsType, 'placement'>): TooltipComponentPlacementEnum => {
+  if (!contentRef.current || !triggerRef.current) {
+    return TooltipComponentPlacementEnum.BOTTOM;
+  }
+  const contentRect = contentRef.current.getBoundingClientRect();
+  const triggerRect = triggerRef.current.getBoundingClientRect();
+
+  const contentHeight = contentRect.height;
+  const triggerBottom = triggerRect.bottom;
+
+  const contentBottom = triggerBottom + contentHeight + gap;
+
+  return contentBottom <= window.innerHeight
+    ? TooltipComponentPlacementEnum.BOTTOM
+    : TooltipComponentPlacementEnum.TOP;
+};
+
+const getTooltipPlacementLeft = ({
+  contentRef,
+  gap,
+  triggerRef,
+}: Omit<GetPlacementPropsType, 'placement'>): TooltipComponentPlacementEnum => {
+  if (!contentRef.current || !triggerRef.current) {
+    return TooltipComponentPlacementEnum.LEFT;
+  }
+
+  const contentRect = contentRef.current.getBoundingClientRect();
+  const triggerRect = triggerRef.current.getBoundingClientRect();
+
+  const contentWidth = contentRect.width;
+  const triggerLeft = triggerRect.left;
+
+  const initialLeft = triggerLeft - contentWidth - gap;
+  return initialLeft >= 0
+    ? TooltipComponentPlacementEnum.LEFT
+    : TooltipComponentPlacementEnum.RIGHT;
+};
+
+const getTooltipPlacementRight = ({
+  contentRef,
+  gap,
+  triggerRef,
+}: Omit<GetPlacementPropsType, 'placement'>): TooltipComponentPlacementEnum => {
+  if (!contentRef.current || !triggerRef.current) {
+    return TooltipComponentPlacementEnum.RIGHT;
+  }
+
+  const contentRect = contentRef.current.getBoundingClientRect();
+  const triggerRect = triggerRef.current.getBoundingClientRect();
+
+  const contentWidth = contentRect.width;
+  const triggerRight = triggerRect.right;
+
+  const contentRight = triggerRight + contentWidth + gap;
+
+  return contentRight <= window.innerWidth
+    ? TooltipComponentPlacementEnum.RIGHT
+    : TooltipComponentPlacementEnum.LEFT;
+};
+
+const getTooltipPlacementTop = ({
+  contentRef,
+  gap,
+  triggerRef,
+}: Omit<GetPlacementPropsType, 'placement'>): TooltipComponentPlacementEnum => {
+  if (!contentRef.current || !triggerRef.current) {
+    return TooltipComponentPlacementEnum.TOP;
+  }
+  const contentRect = contentRef.current.getBoundingClientRect();
+  const triggerRect = triggerRef.current.getBoundingClientRect();
+
+  const contentHeight = contentRect.height;
+  const triggerTop = triggerRect.top;
+
+  const contentTop = triggerTop - contentHeight - gap;
+
+  return contentTop >= 0 ? TooltipComponentPlacementEnum.TOP : TooltipComponentPlacementEnum.BOTTOM;
+};
+
+export { getArrowPosition, getTooltipPlacement, getTooltipPosition };

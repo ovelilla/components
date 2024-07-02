@@ -45,10 +45,12 @@ const TooltipComponent = ({
   title,
 }: TooltipComponentPropsType): React.ReactElement<TooltipComponentPropsType> => {
   const {
+    arrowPosition,
+    contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    placement,
     tooltipPosition,
-    contentRef,
     triggerRef,
     visible,
   } = TooltipHook({ gap, hideDelay, initialPlacement, showDelay });
@@ -66,15 +68,17 @@ const TooltipComponent = ({
         ReactDOM.createPortal(
           <TooltipComponentContentStyled
             {...{
+              arrowPosition,
               borderRadius,
               fontSize,
               fontWeight,
               gap,
               opacity,
               padding,
-              tooltipPosition,
+              placement,
               ref: contentRef,
               size,
+              tooltipPosition,
             }}>
             <TooltipComponentTitleStyled>{title}</TooltipComponentTitleStyled>
           </TooltipComponentContentStyled>,

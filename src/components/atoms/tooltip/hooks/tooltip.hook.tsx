@@ -7,7 +7,7 @@ import { TooltipHandlers } from '../handlers/tooltip.handlers';
 import { TooltipHookPropsType } from './types/tooltip.hook.props.type';
 import { TooltipHookReturnType } from './types/tooltip.hook.return.type';
 // Utils
-import { getPlacement, getTooltipPosition } from '../utils/tooltip.utils';
+import { getArrowPosition, getTooltipPlacement, getTooltipPosition } from '../utils/tooltip.utils';
 
 const TooltipHook = ({
   gap,
@@ -42,16 +42,25 @@ const TooltipHook = ({
 
   useEffect(() => {
     if (visible) {
-      setPlacement(getPlacement({ contentRef, gap, placement, triggerRef }));
+      setPlacement(getTooltipPlacement({ contentRef, gap, placement, triggerRef }));
       setTooltipPosition(getTooltipPosition({ contentRef, gap, placement, triggerRef }));
+      setArrowPosition(getArrowPosition({ contentRef, placement, triggerRef }));
     }
   }, [gap, placement, visible]);
 
+  useEffect(() => {
+    if (visible) {
+      setArrowPosition(getArrowPosition({ contentRef, placement, triggerRef }));
+    }
+  }, [tooltipPosition]);
+
   return {
+    arrowPosition,
+    contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    placement,
     tooltipPosition,
-    contentRef,
     triggerRef,
     visible,
   };

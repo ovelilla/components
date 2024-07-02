@@ -1,10 +1,12 @@
 const EXCLUDED_PROPS = [
+  'arrowPosition',
   'borderRadius',
   'fontSize',
   'fontWeight',
   'opacity',
   'padding',
-  'tooltipPosition',
+  'placement',
   'size',
+  'tooltipPosition',
 ];
 export { EXCLUDED_PROPS };

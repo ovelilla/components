@@ -5,12 +5,27 @@ import {
   TooltipComponentFontWeightEnum,
   TooltipComponentOpacityEnum,
   TooltipComponentPaddingEnum,
+  TooltipComponentPlacementEnum,
   TooltipComponentSizeEnum,
 } from '../../enums/tooltip.component.enums';
 // Types
 import { TooltipComponentStyledPropsType } from '../types/tooltip.component.styled.props.type';
 
-const getBorderRadius = ({
+const getArrowBorderColor = ({
+  opacity,
+  placement,
+  theme,
+}: Pick<TooltipComponentStyledPropsType, 'opacity' | 'placement' | 'theme'>): string => {
+  const borderColorMap: Record<string, string> = {
+    [TooltipComponentPlacementEnum.BOTTOM]: `transparent transparent hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })}) transparent`,
+    [TooltipComponentPlacementEnum.LEFT]: `transparent transparent transparent hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })})`,
+    [TooltipComponentPlacementEnum.RIGHT]: `transparent hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })}) transparent transparent`,
+    [TooltipComponentPlacementEnum.TOP]: `hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })}) transparent transparent transparent`,
+  };
+  return borderColorMap[placement];
+};
+
+const getTooltipBorderRadius = ({
   borderRadius,
   theme,
 }: Pick<TooltipComponentStyledPropsType, 'borderRadius' | 'theme'>): string => {
@@ -107,7 +122,8 @@ const getTooltipYPadding = ({
 };
 
 export {
-  getBorderRadius,
+  getArrowBorderColor,
+  getTooltipBorderRadius,
   getTooltipFontSize,
   getTooltipFontWeight,
   getTooltipOpacity,

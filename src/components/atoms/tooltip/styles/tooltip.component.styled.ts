@@ -6,7 +6,8 @@ import { EXCLUDED_PROPS } from './constants/tooltip.component.styled.constants';
 import { TooltipComponentStyledPropsType } from './types/tooltip.component.styled.props.type';
 // Utils
 import {
-  getBorderRadius,
+  getArrowBorderColor,
+  getTooltipBorderRadius,
   getTooltipFontSize,
   getTooltipFontWeight,
   getTooltipOpacity,
@@ -19,10 +20,21 @@ const TooltipComponentStyled = styled.div``;
 const TooltipComponentContentStyled = styled.div.withConfig({
   shouldForwardProp: (prop: string): boolean => !EXCLUDED_PROPS.includes(prop),
 })<TooltipComponentStyledPropsType>`
-  ${({ borderRadius, fontSize, fontWeight, opacity, padding, tooltipPosition, size, theme }) => css`
+  ${({
+    arrowPosition,
+    borderRadius,
+    fontSize,
+    fontWeight,
+    opacity,
+    padding,
+    placement,
+    tooltipPosition,
+    size,
+    theme,
+  }) => css`
     background-color: hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })});
     backdrop-filter: blur(4px);
-    border-radius: ${getBorderRadius({ borderRadius, theme })};
+    border-radius: ${getTooltipBorderRadius({ borderRadius, theme })};
     color: hsl(${({ theme }) => theme.colors.primaryForeground} / 1);
     font-size: ${getTooltipFontSize({ fontSize, theme })};
     font-weight: ${getTooltipFontWeight({ fontWeight, theme })};
@@ -34,18 +46,13 @@ const TooltipComponentContentStyled = styled.div.withConfig({
     top: ${tooltipPosition.top}px;
 
     &::after {
-      /* border-color: hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })})
-        transparent transparent transparent; */
-      border-color: transparent transparent
-        hsl(${theme.colors.primary} / ${getTooltipOpacity({ opacity, theme })}) transparent;
+      border-color: ${getArrowBorderColor({ opacity, placement, theme })};
       border-style: solid;
-      border-width: 10px;
+      border-width: 8px;
       content: '';
-      left: 50%;
+      left: ${arrowPosition.left}px;
       position: absolute;
-      /* top: 100%; */
-      bottom: 100%;
-      transform: translateX(-50%);
+      top: ${arrowPosition.top}px;
     }
   `};
 `;
