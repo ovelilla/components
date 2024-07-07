@@ -51,7 +51,7 @@ const getBorderRadius = ({
   return borderRadiusMap[borderRadius];
 };
 
-const getButtonBackgroundColor = ({
+const getBackgroundColor = ({
   theme,
   variant,
 }: Pick<ButtonComponentStyledPropsType, 'theme' | 'variant'>): string => {
@@ -65,7 +65,7 @@ const getButtonBackgroundColor = ({
   return `hsl(${colorsMap[variant]})`;
 };
 
-const getButtonColor = ({
+const getColor = ({
   theme,
   variant,
 }: Pick<ButtonComponentStyledPropsType, 'theme' | 'variant'>): string => {
@@ -79,7 +79,7 @@ const getButtonColor = ({
   return `hsl(${colorsMap[variant]})`;
 };
 
-const getButtonHoverBackgroundColor = ({
+const getHoverBackgroundColor = ({
   theme,
   variant,
 }: Pick<ButtonComponentStyledPropsType, 'theme' | 'variant'>): string => {
@@ -93,7 +93,7 @@ const getButtonHoverBackgroundColor = ({
   return `hsl(${colorsMap[variant]})`;
 };
 
-const getButtonHoverColor = ({
+const getHoverColor = ({
   theme,
   variant,
 }: Pick<ButtonComponentStyledPropsType, 'theme' | 'variant'>): string => {
@@ -107,7 +107,7 @@ const getButtonHoverColor = ({
   return `hsl(${colorsMap[variant]})`;
 };
 
-const getButtonFontSize = ({
+const getFontSize = ({
   fontSize,
   theme,
 }: Pick<ButtonComponentStyledPropsType, 'fontSize' | 'theme'>): string => {
@@ -119,7 +119,7 @@ const getButtonFontSize = ({
   return fontSizesMap[fontSize];
 };
 
-const getButtonFontWeight = ({
+const getFontWeight = ({
   fontWeight,
   theme,
 }: Pick<ButtonComponentStyledPropsType, 'fontWeight' | 'theme'>): number => {
@@ -137,10 +137,7 @@ const getButtonFontWeight = ({
   return fontWeightsMap[fontWeight];
 };
 
-const getButtonGap = ({
-  gap,
-  theme,
-}: Pick<ButtonComponentStyledPropsType, 'gap' | 'theme'>): string => {
+const getGap = ({ gap, theme }: Pick<ButtonComponentStyledPropsType, 'gap' | 'theme'>): string => {
   const gapsMap: Record<string, string> = {
     [ButtonComponentGapEnum.LARGE]: theme.spaces.space16,
     [ButtonComponentGapEnum.MEDIUM]: theme.spaces.space8,
@@ -150,7 +147,7 @@ const getButtonGap = ({
   return gapsMap[gap];
 };
 
-const getButtonHeight = ({
+const getHeight = ({
   size,
   theme,
 }: Pick<ButtonComponentStyledPropsType, 'size' | 'theme'>): string => {
@@ -162,7 +159,7 @@ const getButtonHeight = ({
   return sizesMap[size] || theme.spaces.space48;
 };
 
-const getButtonOpacity = ({
+const getOpacity = ({
   disabled,
   opacity,
   theme,
@@ -182,7 +179,7 @@ const getButtonOpacity = ({
   return 1;
 };
 
-const getButtonPadding = ({
+const getPadding = ({
   padding,
   shape,
   size,
@@ -205,7 +202,7 @@ const getButtonPadding = ({
   return padding ? paddingsMap[padding] : sizesMap[size];
 };
 
-const getButtonVisibility = ({
+const getVisibility = ({
   variant,
   theme,
 }: Pick<ButtonComponentStyledPropsType, 'variant' | 'theme'>): string => {
@@ -215,7 +212,7 @@ const getButtonVisibility = ({
   return visibilityMap[variant] || 'visible';
 };
 
-const getButtonWidth = ({
+const getWidth = ({
   fullWidth,
   shape,
   size,
@@ -238,16 +235,16 @@ export {
   getAlignment,
   getBorder,
   getBorderRadius,
-  getButtonBackgroundColor,
-  getButtonColor,
-  getButtonFontSize,
-  getButtonFontWeight,
-  getButtonGap,
-  getButtonHeight,
-  getButtonHoverBackgroundColor,
-  getButtonHoverColor,
-  getButtonOpacity,
-  getButtonPadding,
-  getButtonVisibility,
-  getButtonWidth,
+  getBackgroundColor,
+  getColor,
+  getFontSize,
+  getFontWeight,
+  getGap,
+  getHeight,
+  getHoverBackgroundColor,
+  getHoverColor,
+  getOpacity,
+  getPadding,
+  getVisibility,
+  getWidth,
 };

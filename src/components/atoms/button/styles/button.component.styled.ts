@@ -9,18 +9,18 @@ import {
   getAlignment,
   getBorder,
   getBorderRadius,
-  getButtonBackgroundColor,
-  getButtonColor,
-  getButtonFontSize,
-  getButtonFontWeight,
-  getButtonGap,
-  getButtonHeight,
-  getButtonHoverBackgroundColor,
-  getButtonHoverColor,
-  getButtonOpacity,
-  getButtonPadding,
-  getButtonVisibility,
-  getButtonWidth,
+  getBackgroundColor,
+  getColor,
+  getFontSize,
+  getFontWeight,
+  getGap,
+  getHeight,
+  getHoverBackgroundColor,
+  getHoverColor,
+  getOpacity,
+  getPadding,
+  getVisibility,
+  getWidth,
 } from './utils/button.component.styled.utils';
 
 const ButtonComponentStyled = styled.button.withConfig({
@@ -42,29 +42,29 @@ const ButtonComponentStyled = styled.button.withConfig({
     variant,
   }) => css`
     align-items: center;
-    background-color: ${getButtonBackgroundColor({ theme, variant })};
+    background-color: ${getBackgroundColor({ theme, variant })};
     border-radius: ${getBorderRadius({ borderRadius, shape, theme })};
     border: ${getBorder({ theme, variant })};
-    color: ${getButtonColor({ theme, variant })};
+    color: ${getColor({ theme, variant })};
     cursor: pointer;
     display: flex;
     flex-shrink: 0;
-    font-size: ${getButtonFontSize({ fontSize, theme })};
-    font-weight: ${getButtonFontWeight({ fontWeight, theme })};
-    gap: ${getButtonGap({ gap, theme })};
-    height: ${getButtonHeight({ size, theme })};
+    font-size: ${getFontSize({ fontSize, theme })};
+    font-weight: ${getFontWeight({ fontWeight, theme })};
+    gap: ${getGap({ gap, theme })};
+    height: ${getHeight({ size, theme })};
     justify-content: ${getAlignment({ alignment })};
     line-height: 1;
-    opacity: ${getButtonOpacity({ disabled, opacity, theme })};
-    padding: 0 ${getButtonPadding({ padding, shape, size, theme })};
+    opacity: ${getOpacity({ disabled, opacity, theme })};
+    padding: 0 ${getPadding({ padding, shape, size, theme })};
     text-decoration: none;
-    visibility: ${getButtonVisibility({ variant, theme })};
+    visibility: ${getVisibility({ variant, theme })};
     white-space: nowrap;
-    width: ${getButtonWidth({ fullWidth, shape, size, theme })};
+    width: ${getWidth({ fullWidth, shape, size, theme })};
 
     &:hover {
-      background-color: ${getButtonHoverBackgroundColor({ theme, variant })};
-      color: ${getButtonHoverColor({ theme, variant })};
+      background-color: ${getHoverBackgroundColor({ theme, variant })};
+      color: ${getHoverColor({ theme, variant })};
     }
 
     &:disabled {

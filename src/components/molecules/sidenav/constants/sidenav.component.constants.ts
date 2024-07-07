@@ -48,6 +48,10 @@ const SIDENAV = [
         name: 'Datepicker',
         link: '/components/molecules/datepicker',
       },
+      {
+        name: 'Dialog',
+        link: '/components/molecules/dialog',
+      },
     ],
   },
   {

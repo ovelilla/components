@@ -6,6 +6,13 @@ const moleculesRoutes = [
       return { Component: DatepickerPage };
     },
   },
+  {
+    path: '/components/molecules/dialog',
+    async lazy() {
+      const { DialogPage } = await import('pages/molecules/dialog/dialog.page');
+      return { Component: DialogPage };
+    },
+  },
 ];
 
 export { moleculesRoutes };
