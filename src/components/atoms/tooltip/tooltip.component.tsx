@@ -54,6 +54,8 @@ const TooltipComponent = ({
     contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    handleTouchEndEvent,
+    handleTouchStartEvent,
     placement,
     tooltipPosition,
     triggerRef,
@@ -69,6 +71,8 @@ const TooltipComponent = ({
         {...{
           onMouseEnter: handleMouseEnterEvent,
           onMouseLeave: handleMouseLeaveEvent,
+          onTouchEnd: handleTouchEndEvent,
+          onTouchStart: handleTouchStartEvent,
           ref: triggerRef,
         }}>
         {children}

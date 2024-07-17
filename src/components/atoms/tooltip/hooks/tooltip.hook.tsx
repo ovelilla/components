@@ -28,13 +28,18 @@ const TooltipHook = ({
     top: 0,
   });
   const [visible, setVisible] = useState<boolean>(false);
-  
+
   const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const hideTimeRef = useRef<number | null>(null);
   const showTimeRef = useRef<number | null>(null);
 
-  const { handleMouseEnterEvent, handleMouseLeaveEvent } = TooltipHandlers({
+  const {
+    handleMouseEnterEvent,
+    handleMouseLeaveEvent,
+    handleTouchStartEvent,
+    handleTouchEndEvent,
+  } = TooltipHandlers({
     hideDelay,
     hideTimeRef,
     setVisible,
@@ -67,6 +72,8 @@ const TooltipHook = ({
     contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    handleTouchEndEvent,
+    handleTouchStartEvent,
     placement,
     tooltipPosition,
     triggerRef,
