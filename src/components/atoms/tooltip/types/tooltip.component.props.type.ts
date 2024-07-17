@@ -14,7 +14,7 @@ import {
 type TooltipComponentPropsType = {
   arrowSize?: TooltipComponentArrowSizeEnum;
   borderRadius?: TooltipComponentBorderRadiusEnum;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   fontSize?: TooltipComponentFontSizeEnum;
   fontWeight?: TooltipComponentFontWeightEnum;
   gap?: TooltipComponentGapEnum;
@@ -22,6 +22,7 @@ type TooltipComponentPropsType = {
   opacity?: TooltipComponentOpacityEnum;
   padding?: TooltipComponentPaddingEnum;
   placement?: TooltipComponentPlacementEnum;
+  show?: boolean;
   showArrow?: boolean;
   showDelay?: number;
   size?: TooltipComponentSizeEnum;

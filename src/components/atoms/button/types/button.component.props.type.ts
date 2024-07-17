@@ -18,7 +18,7 @@ import {
 type ButtonComponentPropsType = {
   alignment?: ButtonComponentAlignmentEnum;
   borderRadius?: ButtonComponentBorderRadiusEnum;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   disabled?: boolean;
   fontSize?: ButtonComponentFontSizeEnum;
   fontWeight?: ButtonComponentFontWeightEnum;
@@ -31,6 +31,7 @@ type ButtonComponentPropsType = {
   opacity?: ButtonComponentOpacityEnum;
   padding?: ButtonComponentPaddingEnum;
   shape?: ButtonComponentShapeEnum;
+  show?: boolean;
   size?: ButtonComponentSizeEnum;
   variant?: ButtonComponentVariantEnum;
 };

@@ -1,8 +1,10 @@
 // Vendors
+import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 // Constants
 import {
   DEFAULT_HIDE_DELAY,
+  DEFAULT_SHOW,
   DEFAULT_SHOW_ARROW,
   DEFAULT_SHOW_DELAY,
 } from './constants/tooltip.component.constants';
@@ -41,6 +43,7 @@ const TooltipComponent = ({
   opacity = TooltipComponentOpacityEnum.HIGH,
   padding = TooltipComponentPaddingEnum.MEDIUM,
   placement: initialPlacement = TooltipComponentPlacementEnum.TOP,
+  show = DEFAULT_SHOW,
   showArrow = DEFAULT_SHOW_ARROW,
   showDelay = DEFAULT_SHOW_DELAY,
   size = TooltipComponentSizeEnum.MEDIUM,
@@ -56,6 +59,9 @@ const TooltipComponent = ({
     triggerRef,
     visible,
   } = TooltipHook({ arrowSize, gap, hideDelay, initialPlacement, showArrow, showDelay });
+  if (!show || !title) {
+    return <Fragment>{children}</Fragment>;
+  }
 
   return (
     <TooltipComponentStyled>

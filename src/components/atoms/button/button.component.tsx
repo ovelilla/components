@@ -1,5 +1,7 @@
 // Vendors
 import React, { forwardRef } from 'react';
+// Constants
+import { DEFAULT_SHOW } from './constants/button.component.constants';
 // Enums
 import {
   ButtonComponentAlignmentEnum,
@@ -37,37 +39,44 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonComponentPropsType>(
       opacity,
       padding,
       shape = ButtonComponentShapeEnum.RECTANGLE,
+      show = DEFAULT_SHOW,
       size = ButtonComponentSizeEnum.MEDIUM,
       variant = ButtonComponentVariantEnum.PRIMARY,
       ...props
     }: ButtonComponentPropsType,
     ref
-  ): React.ReactElement<ButtonComponentPropsType> => (
-    <ButtonComponentStyled
-      {...{
-        alignment,
-        as: getStyledAs({ mode }),
-        borderRadius,
-        disabled,
-        fontSize,
-        fontWeight,
-        fullWidth,
-        gap,
-        loading,
-        mode,
-        onClick,
-        opacity,
-        padding,
-        ref,
-        shape,
-        size,
-        to: href,
-        variant,
-        ...props,
-      }}>
-      {children}
-    </ButtonComponentStyled>
-  )
+  ): React.ReactElement<ButtonComponentPropsType> | null => {
+    if (!show) {
+      return null;
+    }
+
+    return (
+      <ButtonComponentStyled
+        {...{
+          alignment,
+          as: getStyledAs({ mode }),
+          borderRadius,
+          disabled,
+          fontSize,
+          fontWeight,
+          fullWidth,
+          gap,
+          loading,
+          mode,
+          onClick,
+          opacity,
+          padding,
+          ref,
+          shape,
+          size,
+          to: href,
+          variant,
+          ...props,
+        }}>
+        {children}
+      </ButtonComponentStyled>
+    );
+  }
 );
 
 export { ButtonComponent };

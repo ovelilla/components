@@ -13,7 +13,6 @@ const DialogHook = ({ open }: DialogHookPropsType): DialogHookReturnType => {
 
   const overlayRef = useRef<HTMLDivElement>(null);
 
-
   const { handleCheckScroll } = DialogHandlers({
     open,
     setHasHorizontalScroll,

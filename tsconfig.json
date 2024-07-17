@@ -27,8 +27,10 @@
     "useDefineForClassFields": true,
   },
   "include": [
-    "src"
-, "src/components/atoms/scrollarea/handlers/types/scrollarea-handlers.return.type.ts"  ],
+    "src",
+    "src/components/atoms/scrollarea/handlers/types/scrollarea-handlers.return.type.ts",
+    "src/components/molecules/dialog/components/dialog-container/components/dialog-slide-animation/configurations/types/get-slide-animation-configuration.return.type.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

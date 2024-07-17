@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // Configurations
 import { getOverlayConfiguration } from './configurations/dialog-overlay.configurations';
+// Enums
+import { DialogOverlayComponentOpacityEnum } from './enums/dialog-overlay.component.enums';
 // Hooks
 import { DialogOverlayHook } from './hooks/dialog-overlay.hook';
 // Styles
@@ -15,6 +17,7 @@ const DialogOverlayComponent = ({
   children,
   hasAnimation,
   onClose,
+  opacity = DialogOverlayComponentOpacityEnum.MEDIUM,
   overlayRef,
   setShouldClose,
   shouldClose,
@@ -34,6 +37,7 @@ const DialogOverlayComponent = ({
         onMouseUp: handleMouseUpEvent,
         onTouchStart: handleTouchStartEvent,
         onTouchEnd: handleTouchEndEvent,
+        opacity,
         ref: overlayRef,
       }}>
       {children}

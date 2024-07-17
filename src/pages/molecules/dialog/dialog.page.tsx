@@ -17,7 +17,22 @@ const DialogPage = (): React.ReactElement => {
   return (
     <DialogPageStyled>
       <ButtonComponent {...{ onClick: handleOpen }}>Open Dialog</ButtonComponent>
-      <DialogComponent {...{ open, onClose: handleClose, title: 'Lorem ipsum' }}>
+      <DialogComponent
+        {...{
+          closeButtonProps: {
+            tooltipProps: {
+              title: 'Close dialog',
+            },
+          },
+          fullScreenButtonProps: {
+            tooltipProps: {
+              title: 'Full screen',
+            },
+          },
+          onClose: handleClose,
+          open,
+          title: 'Lorem ipsum',
+        }}>
         <ParagraphComponent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero nec
           ultricies. Integer nec sapien sit amet nulla ultrices ultricies. Sed nec metus id augue

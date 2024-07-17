@@ -2,22 +2,13 @@
 import { AnimatePresence } from 'framer-motion';
 import React, { Fragment } from 'react';
 // Components
-import { DialogContentComponent } from './components/dialog-content/dialog-content.component';
+import { DialogContainerComponent } from './components/dialog-container/dialog-container.component';
 import { DialogOverlayComponent } from './components/dialog-overlay/dialog-overlay.component';
 // Constants
 import {
   DEFAULT_ANIMATION_DURATION,
   DEFAULT_HAS_ANIMATION,
-  DEFAULT_MAX_WIDTH,
-  DEFAULT_SHOW_CLOSE_BUTTON,
-  DEFAULT_SHOW_FULL_SCREEN_BUTTON,
-  DEFAULT_SHOW_TOOLTIPS,
 } from './constants/dialog.component.constants';
-// Enums
-import {
-  DialogContentComponentBorderRadiusEnum,
-  DialogContentComponentPaddingEnum,
-} from './components/dialog-content/enums/dialog-content.component.enums';
 // Hooks
 import { DialogHook } from './hooks/dialog.hook';
 // Styles
@@ -28,15 +19,14 @@ import { DialogComponentPropsType } from './types/dialog.component.props.type';
 const DialogComponent = ({
   animationDuration = DEFAULT_ANIMATION_DURATION,
   children,
-  contentBorderRadius = DialogContentComponentBorderRadiusEnum.MEDIUM,
-  contentPadding = DialogContentComponentPaddingEnum.NONE,
+  closeButtonProps,
+  contentProps,
+  fullScreenButtonProps,
   hasAnimation = DEFAULT_HAS_ANIMATION,
-  maxWidth = DEFAULT_MAX_WIDTH,
   onClose,
   open,
-  showCloseButton = DEFAULT_SHOW_CLOSE_BUTTON,
-  showFullScreenButton = DEFAULT_SHOW_FULL_SCREEN_BUTTON,
-  showTooltips = DEFAULT_SHOW_TOOLTIPS,
+  overlayProps,
+  size,
   title,
 }: DialogComponentPropsType): React.ReactElement<DialogComponentPropsType> | null => {
   const { hasHorizontalScroll, hasVerticalScroll, overlayRef, setShouldClose, shouldClose } =
@@ -46,8 +36,10 @@ const DialogComponent = ({
     <AnimatePresence>
       {open && (
         <Fragment>
+          <GlobalStyle {...{ hasHorizontalScroll, hasVerticalScroll }} />
           <DialogOverlayComponent
             {...{
+              ...overlayProps,
               animationDuration,
               hasAnimation,
               onClose,
@@ -56,24 +48,21 @@ const DialogComponent = ({
               setShouldClose,
               shouldClose,
             }}>
-            <DialogContentComponent
+            <DialogContainerComponent
               {...{
                 animationDuration,
-                borderRadius: contentBorderRadius,
+                closeButtonProps,
+                contentProps,
+                fullScreenButtonProps,
                 hasAnimation,
-                maxWidth,
                 onClose,
-                padding: contentPadding,
                 setShouldClose,
-                showCloseButton,
-                showFullScreenButton,
-                showTooltips,
+                size,
                 title,
               }}>
               {children}
-            </DialogContentComponent>
+            </DialogContainerComponent>
           </DialogOverlayComponent>
-          <GlobalStyle {...{ hasHorizontalScroll, hasVerticalScroll }} />
         </Fragment>
       )}
     </AnimatePresence>

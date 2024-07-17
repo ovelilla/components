@@ -1,5 +1,0 @@
-const DEFAULT_HIDE_DELAY = 0 as const;
-const DEFAULT_SHOW_ARROW = true as const;
-const DEFAULT_SHOW_DELAY = 0 as const;
-
-export { DEFAULT_HIDE_DELAY, DEFAULT_SHOW_ARROW, DEFAULT_SHOW_DELAY };
