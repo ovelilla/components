@@ -25,13 +25,18 @@ const DialogFullscreenButtonComponent = ({
   });
 
   return (
-    <TooltipComponent {...tooltipProps}>
+    <TooltipComponent
+      {...{
+        ...tooltipProps,
+        onMouseDown: handleStopPropagation,
+        // onTouchStart: handleStopPropagation,
+      }}>
       <ButtonComponent
         {...{
           ...buttonProps,
           onClick: handleClickEvent,
-          onMouseDown: handleStopPropagation,
-          onTouchStart: handleStopPropagation,
+          // onMouseDown: handleStopPropagation,
+          // onTouchStart: handleStopPropagation,
           shape: ButtonComponentShapeEnum.CIRCLE,
           variant: ButtonComponentVariantEnum.GHOST,
         }}>

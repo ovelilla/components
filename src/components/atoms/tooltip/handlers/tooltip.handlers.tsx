@@ -8,10 +8,15 @@ import { TouchStartEventHandlerPropsType } from './types/touch-start-event-handl
 
 const mouseEnterEventHandler = ({
   hideTimeRef,
+  isTouch,
   setVisible,
   showDelay,
   showTimeRef,
 }: MouseEnterEventHandlerPropsType): void => {
+  if (isTouch) {
+    return;
+  }
+  console.log('mouseEnterEventHandler');
   if (hideTimeRef.current) {
     clearTimeout(hideTimeRef.current);
     hideTimeRef.current = null;
@@ -29,9 +34,14 @@ const mouseEnterEventHandler = ({
 const mouseLeaveEventHandler = ({
   hideDelay,
   hideTimeRef,
+  isTouch,
   setVisible,
   showTimeRef,
 }: MouseLeaveEventHandlerPropsType): void => {
+  if (isTouch) {
+    return;
+  }
+  console.log('mouseLeaveEventHandler');
   if (showTimeRef.current) {
     clearTimeout(showTimeRef.current);
     showTimeRef.current = null;
@@ -47,10 +57,13 @@ const mouseLeaveEventHandler = ({
 
 const touchStartEventHandler = ({
   hideTimeRef,
+  setIsTouch,
   setVisible,
   showDelay,
   showTimeRef,
 }: TouchStartEventHandlerPropsType): void => {
+  console.log('touchStartEventHandler');
+  setIsTouch(true);
   if (hideTimeRef.current) {
     clearTimeout(hideTimeRef.current);
     hideTimeRef.current = null;
@@ -63,14 +76,19 @@ const touchStartEventHandler = ({
   } else {
     setVisible(true);
   }
+
+  // window.addEventListener('touc
 };
 
 const touchEndEventHandler = ({
   hideDelay,
   hideTimeRef,
+  setIsTouch,
   setVisible,
   showTimeRef,
 }: TouchEndEventHandlerPropsType): void => {
+  console.log('touchEndEventHandler');
+  setIsTouch(true);
   if (showTimeRef.current) {
     clearTimeout(showTimeRef.current);
     showTimeRef.current = null;
@@ -87,19 +105,21 @@ const touchEndEventHandler = ({
 const TooltipHandlers = ({
   hideDelay,
   hideTimeRef,
+  isTouch,
+  setIsTouch,
   setVisible,
   showDelay,
   showTimeRef,
 }: TooltipHandlersPropsType): TooltipHandlersReturnType => {
   return {
     handleMouseEnterEvent: () =>
-      mouseEnterEventHandler({ hideTimeRef, setVisible, showDelay, showTimeRef }),
+      mouseEnterEventHandler({ hideTimeRef, isTouch, setVisible, showDelay, showTimeRef }),
     handleMouseLeaveEvent: () =>
-      mouseLeaveEventHandler({ hideDelay, hideTimeRef, setVisible, showTimeRef }),
+      mouseLeaveEventHandler({ hideDelay, hideTimeRef, isTouch, setVisible, showTimeRef }),
     handleTouchStartEvent: () =>
-      touchStartEventHandler({ hideTimeRef, setVisible, showDelay, showTimeRef }),
+      touchStartEventHandler({ hideTimeRef, setIsTouch, setVisible, showDelay, showTimeRef }),
     handleTouchEndEvent: () =>
-      touchEndEventHandler({ hideDelay, hideTimeRef, setVisible, showTimeRef }),
+      touchEndEventHandler({ hideDelay, hideTimeRef, setIsTouch, setVisible, showTimeRef }),
   };
 };
 

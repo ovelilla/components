@@ -22,6 +22,7 @@ const TooltipHook = ({
     left: 0,
     top: 0,
   });
+  const [isTouch, setIsTouch] = useState<boolean>(false);
   const [placement, setPlacement] = useState<TooltipComponentPlacementEnum>(initialPlacement);
   const [tooltipPosition, setTooltipPosition] = useState<{ left: number; top: number }>({
     left: 0,
@@ -42,6 +43,8 @@ const TooltipHook = ({
   } = TooltipHandlers({
     hideDelay,
     hideTimeRef,
+    isTouch,
+    setIsTouch,
     setVisible,
     showDelay,
     showTimeRef,
