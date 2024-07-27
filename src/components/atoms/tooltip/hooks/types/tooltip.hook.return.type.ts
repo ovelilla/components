@@ -6,6 +6,8 @@ type TooltipHookReturnType = {
   contentRef: React.RefObject<HTMLDivElement>;
   handleMouseEnterEvent: VoidFunction;
   handleMouseLeaveEvent: VoidFunction;
+  handleTouchEndEvent: VoidFunction;
+  handleTouchStartEvent: VoidFunction;
   placement: TooltipComponentPlacementEnum;
   tooltipPosition: { left: number; top: number };
   triggerRef: React.RefObject<HTMLDivElement>;

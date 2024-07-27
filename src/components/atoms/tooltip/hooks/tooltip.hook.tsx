@@ -22,21 +22,29 @@ const TooltipHook = ({
     left: 0,
     top: 0,
   });
+  const [isTouch, setIsTouch] = useState<boolean>(false);
   const [placement, setPlacement] = useState<TooltipComponentPlacementEnum>(initialPlacement);
   const [tooltipPosition, setTooltipPosition] = useState<{ left: number; top: number }>({
     left: 0,
     top: 0,
   });
   const [visible, setVisible] = useState<boolean>(false);
-  
+
   const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const hideTimeRef = useRef<number | null>(null);
   const showTimeRef = useRef<number | null>(null);
 
-  const { handleMouseEnterEvent, handleMouseLeaveEvent } = TooltipHandlers({
+  const {
+    handleMouseEnterEvent,
+    handleMouseLeaveEvent,
+    handleTouchStartEvent,
+    handleTouchEndEvent,
+  } = TooltipHandlers({
     hideDelay,
     hideTimeRef,
+    isTouch,
+    setIsTouch,
     setVisible,
     showDelay,
     showTimeRef,
@@ -67,6 +75,8 @@ const TooltipHook = ({
     contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    handleTouchEndEvent,
+    handleTouchStartEvent,
     placement,
     tooltipPosition,
     triggerRef,
