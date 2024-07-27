@@ -9,11 +9,13 @@ import { TouchEndEventHandlerPropsType } from './types/touch-end-event-handler.p
 
 const mouseDownEventHandler = ({ event, setShouldClose }: MouseDownEventHandlerPropsType): void => {
   event.stopPropagation();
+  console.log('container - mouseDownEventHandler');
   setShouldClose(false);
 };
 
 const mouseUpEventHandler = ({ event }: MouseUpEventHandlerPropsType): void => {
   event.stopPropagation();
+  console.log('container - mouseUpEventHandler');
 };
 
 const setInitialPositionHandler = ({
@@ -33,11 +35,13 @@ const touchStartEventHandler = ({
   setShouldClose,
 }: TouchStartEventHandlerPropsType): void => {
   event.stopPropagation();
+  console.log('container - touchStartEventHandler');
   setShouldClose(false);
 };
 
 const touchEndEventHandler = ({ event }: TouchEndEventHandlerPropsType): void => {
   event.stopPropagation();
+  console.log('container - touchEndEventHandler');
 };
 
 const DialogContainerHandlers = ({

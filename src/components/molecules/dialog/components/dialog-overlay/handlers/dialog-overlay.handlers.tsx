@@ -8,16 +8,19 @@ import { TouchEndEventHandlerPropsType } from './types/touch-end-event-handler.p
 
 const mouseDownEventHandler = ({ event, setShouldClose }: MouseDownEventHandlerPropsType): void => {
   event.preventDefault();
+  console.log('overlay - mouseDownEventHandler');
   setShouldClose(true);
 };
 
 const mouseUpEventHandler = ({ onClose, shouldClose }: MouseUpEventHandlerPropsType): void => {
+  console.log('overlay - mouseUpEventHandler');
   if (shouldClose) {
     onClose();
   }
 };
 
 const touchStartEventHandler = ({ setShouldClose }: TouchStartEventHandlerPropsType): void => {
+  console.log('overlay - touchStartEventHandler');
   setShouldClose(true);
 };
 
@@ -26,6 +29,7 @@ const touchEndEventHandler = ({
   onClose,
   shouldClose,
 }: TouchEndEventHandlerPropsType): void => {
+  console.log('overlay - touchEndEventHandler');
   const target = event.target;
   const touch = event.changedTouches[0];
   const touchX = touch.clientX;
