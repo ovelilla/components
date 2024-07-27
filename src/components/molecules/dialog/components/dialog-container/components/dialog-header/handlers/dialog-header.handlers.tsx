@@ -50,6 +50,9 @@ const touchStartEventHandler = ({
   setTranslate,
   size,
 }: TouchStartEventHandlerPropsType): void => {
+  event.preventDefault();
+  event.stopPropagation();
+
   const initialX = event.touches[0].clientX - (isFullScreen ? 0 : translate.x);
   const initialY = event.touches[0].clientY - (isFullScreen ? 0 : translate.y);
 
