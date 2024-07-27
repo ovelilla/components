@@ -3,10 +3,10 @@ import { Dispatch, SetStateAction } from 'react';
 
 type TouchEndEventHandlerPropsType = {
   hideDelay: number;
-  hideTimeRef: React.MutableRefObject<number | null>;
+  hideTimeRef: React.MutableRefObject<ReturnType<typeof setTimeout> | null>;
   setIsTouch: Dispatch<SetStateAction<boolean>>;
   setVisible: Dispatch<SetStateAction<boolean>>;
-  showTimeRef: React.MutableRefObject<number | null>;
+  showTimeRef: React.MutableRefObject<ReturnType<typeof setTimeout> | null>;
 };
 
 export { TouchEndEventHandlerPropsType };

@@ -76,8 +76,6 @@ const touchStartEventHandler = ({
   } else {
     setVisible(true);
   }
-
-  // window.addEventListener('touc
 };
 
 const touchEndEventHandler = ({

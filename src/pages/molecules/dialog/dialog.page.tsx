@@ -16,7 +16,7 @@ const DialogPage = (): React.ReactElement => {
 
   return (
     <DialogPageStyled>
-      <ButtonComponent {...{ onClick: handleOpen }}>Open Dialog1</ButtonComponent>
+      <ButtonComponent {...{ onClick: handleOpen }}>Open Dialog2</ButtonComponent>
       <DialogComponent
         {...{
           closeButtonProps: {

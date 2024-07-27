@@ -32,8 +32,8 @@ const TooltipHook = ({
 
   const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
-  const hideTimeRef = useRef<number | null>(null);
-  const showTimeRef = useRef<number | null>(null);
+  const hideTimeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showTimeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const {
     handleMouseEnterEvent,

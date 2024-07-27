@@ -20,6 +20,8 @@ const moseDownEventHandler = ({
   const initialY = event.clientY - (isFullScreen ? 0 : translate.y);
 
   const handleMouseMoveEvent = (event: MouseEvent) => {
+    event.preventDefault();
+
     const newX = event.clientX - initialX;
     const newY = event.clientY - initialY;
     setTranslate({ x: newX, y: newY });
@@ -50,13 +52,14 @@ const touchStartEventHandler = ({
   setTranslate,
   size,
 }: TouchStartEventHandlerPropsType): void => {
-  event.preventDefault();
   event.stopPropagation();
 
   const initialX = event.touches[0].clientX - (isFullScreen ? 0 : translate.x);
   const initialY = event.touches[0].clientY - (isFullScreen ? 0 : translate.y);
 
   const handleTouchMoveEvent = (event: TouchEvent) => {
+    event.preventDefault();
+
     const newX = event.touches[0].clientX - initialX;
     const newY = event.touches[0].clientY - initialY;
     setTranslate({ x: newX, y: newY });
@@ -73,7 +76,7 @@ const touchStartEventHandler = ({
     document.removeEventListener('touchend', handleTouchEndEvent, true);
   };
 
-  document.addEventListener('touchmove', handleTouchMoveEvent);
+  document.addEventListener('touchmove', handleTouchMoveEvent, { passive: false });
   document.addEventListener('touchend', handleTouchEndEvent, true);
 };
 

@@ -3,10 +3,10 @@ import { Dispatch, SetStateAction } from 'react';
 
 type MouseLeaveEventHandlerPropsType = {
   hideDelay: number;
-  hideTimeRef: React.MutableRefObject<number | null>;
+  hideTimeRef: React.MutableRefObject<ReturnType<typeof setTimeout> | null>;
   isTouch: boolean;
   setVisible: Dispatch<SetStateAction<boolean>>;
-  showTimeRef: React.MutableRefObject<number | null>;
+  showTimeRef: React.MutableRefObject<ReturnType<typeof setTimeout> | null>;
 };
 
 export { MouseLeaveEventHandlerPropsType };
