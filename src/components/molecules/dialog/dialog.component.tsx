@@ -8,6 +8,7 @@ import { DialogOverlayComponent } from './components/dialog-overlay/dialog-overl
 import {
   DEFAULT_ANIMATION_DURATION,
   DEFAULT_HAS_ANIMATION,
+  DEFAULT_IS_FULL_SCREEN,
 } from './constants/dialog.component.constants';
 // Hooks
 import { DialogHook } from './hooks/dialog.hook';
@@ -23,6 +24,7 @@ const DialogComponent = ({
   contentProps,
   fullScreenButtonProps,
   hasAnimation = DEFAULT_HAS_ANIMATION,
+  isFullscreen = DEFAULT_IS_FULL_SCREEN,
   onClose,
   open,
   overlayProps,
@@ -55,6 +57,7 @@ const DialogComponent = ({
                 contentProps,
                 fullScreenButtonProps,
                 hasAnimation,
+                isFullscreen,
                 onClose,
                 setShouldClose,
                 size,

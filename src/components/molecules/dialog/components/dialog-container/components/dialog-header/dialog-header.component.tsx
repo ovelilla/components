@@ -17,9 +17,9 @@ import { DialogHeaderComponentPropsType } from './types/dialog-header.component.
 const DialogHeaderComponent = ({
   closeButtonProps,
   fullScreenButtonProps,
-  isFullScreen,
+  isFullscreen,
   onClose,
-  setIsFullScreen,
+  setIsFullscreen,
   setPosition,
   // setSize,
   setTranslate,
@@ -27,22 +27,21 @@ const DialogHeaderComponent = ({
   title,
   translate,
 }: DialogHeaderComponentPropsType): React.ReactElement<DialogHeaderComponentPropsType> | null => {
-  const { handleMouseDownEvent, handleTouchStartEvent } = DialogHeaderHook({
-    isFullScreen,
+  const { handlePointerDownEvent } = DialogHeaderHook({
+    isFullscreen,
     translate,
-    setIsFullScreen,
+    setIsFullscreen,
     setPosition,
     setTranslate,
     size,
   });
 
   return (
-    <DialogHeaderComponentStyled
-      {...{ onMouseDown: handleMouseDownEvent, onTouchStart: handleTouchStartEvent }}>
+    <DialogHeaderComponentStyled {...{ onPointerDown: handlePointerDownEvent }}>
       <DialogHeaderComponentTitleStyled>{title}</DialogHeaderComponentTitleStyled>
       <DialogHeaderComponentActionsStyled>
-        <DialogFullscreenButtonComponent {...{ setIsFullScreen, ...fullScreenButtonProps }} />
-        <DialogCloseButtonComponent {...{ onClose, setIsFullScreen, ...closeButtonProps }} />
+        <DialogFullscreenButtonComponent {...{ setIsFullscreen, ...fullScreenButtonProps }} />
+        <DialogCloseButtonComponent {...{ onClose, setIsFullscreen, ...closeButtonProps }} />
       </DialogHeaderComponentActionsStyled>
     </DialogHeaderComponentStyled>
   );

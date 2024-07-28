@@ -5,26 +5,23 @@ import { DialogHeaderHookPropsType } from './types/dialog-header.hook.props.type
 import { DialogHeaderHookReturnType } from './types/dialog-header.hook.return.type';
 
 const DialogHeaderHook = ({
-  isFullScreen,
+  isFullscreen,
   translate,
-  setIsFullScreen,
+  setIsFullscreen,
   setPosition,
   setTranslate,
   size,
 }: DialogHeaderHookPropsType): DialogHeaderHookReturnType => {
-  const { handleMouseDownEvent, handleTouchStartEvent } = DialogHeaderHandlers({
-    isFullScreen,
-    translate,
-    setIsFullScreen,
+  const { handlePointerDownEvent } = DialogHeaderHandlers({
+    isFullscreen,
+    setIsFullscreen,
     setPosition,
     setTranslate,
     size,
+    translate,
   });
 
-  return {
-    handleMouseDownEvent,
-    handleTouchStartEvent,
-  };
+  return { handlePointerDownEvent };
 };
 
 export { DialogHeaderHook };

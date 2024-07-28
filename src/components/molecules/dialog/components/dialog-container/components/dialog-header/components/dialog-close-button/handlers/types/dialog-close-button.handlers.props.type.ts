@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 
 type DialogCloseButtonHandlersPropsType = {
   onClose: VoidFunction;
-  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
 };
 
 export { DialogCloseButtonHandlersPropsType };

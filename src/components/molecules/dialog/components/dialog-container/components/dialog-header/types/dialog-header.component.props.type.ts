@@ -13,9 +13,9 @@ type DialogHeaderComponentPropsType = {
     buttonProps?: ButtonComponentPropsType;
     tooltipProps?: TooltipComponentPropsType;
   };
-  isFullScreen: boolean;
+  isFullscreen: boolean;
   onClose: VoidFunction;
-  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
   setPosition: Dispatch<SetStateAction<{ left: number; top: number }>>;
   setSize: Dispatch<SetStateAction<{ width: number; height: number | null }>>;
   setTranslate: Dispatch<SetStateAction<{ x: number; y: number }>>;

@@ -8,6 +8,8 @@ const DialogHeaderComponentStyled = styled.div`
   justify-content: space-between;
   padding: 16px;
   cursor: move;
+  user-select: none;
+  touch-action: none;
 `;
 
 const DialogHeaderComponentTitleStyled = styled.div``;

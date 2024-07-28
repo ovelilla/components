@@ -25,6 +25,7 @@ type DialogComponentPropsType = {
     tooltipProps?: TooltipComponentPropsType;
   };
   hasAnimation?: boolean;
+  isFullscreen?: boolean;
   onClose: VoidFunction;
   open: boolean;
   overlayProps?: {

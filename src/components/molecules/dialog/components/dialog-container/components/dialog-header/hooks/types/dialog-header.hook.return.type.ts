@@ -1,6 +1,5 @@
 type DialogHeaderHookReturnType = {
-  handleMouseDownEvent: (event: React.MouseEvent<HTMLDivElement>) => void;
-  handleTouchStartEvent: (event: React.TouchEvent<HTMLDivElement>) => void;
+  handlePointerDownEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
 };
 
 export { DialogHeaderHookReturnType };

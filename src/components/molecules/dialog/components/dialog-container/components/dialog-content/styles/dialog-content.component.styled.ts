@@ -11,9 +11,9 @@ import { getBorderRadius, getPadding } from './utils/dialog.component.styled.uti
 const DialogContentComponentStyled = styled(motion.div).withConfig({
   shouldForwardProp: (prop) => !EXCLUDED_PROPS.includes(prop),
 })<DialogContentComponentStyledPropsType>`
-  ${({ borderRadius, isFullScreen, padding, theme }) => css`
+  ${({ borderRadius, isFullscreen, padding, theme }) => css`
     background-color: hsl(${theme.colors.background});
-    border-radius: ${getBorderRadius({ borderRadius, isFullScreen, theme })};
+    border-radius: ${getBorderRadius({ borderRadius, isFullscreen, theme })};
     display: flex;
     flex-direction: column;
     height: 100%;

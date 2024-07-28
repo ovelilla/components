@@ -9,19 +9,22 @@ const DialogContainerComponentStyled = styled('div')
   .withConfig({
     shouldForwardProp: (prop) => !EXCLUDED_PROPS.includes(prop),
   })
-  .attrs<DialogContainerComponentStyledPropsType>(({ isFullScreen, translate }) => ({
+  .attrs<DialogContainerComponentStyledPropsType>(({ isFullscreen, translate }) => ({
     style: {
-      transform: isFullScreen ? 'none' : `translate(${translate.x}px, ${translate.y}px)`,
+      transform: isFullscreen ? 'none' : `translate(${translate.x}px, ${translate.y}px)`,
     },
   }))`
-  ${({ isFullScreen, position, size }) => css`
-    ${!isFullScreen && size.height && `max-height: ${size.height}px;`}
-    ${!isFullScreen && size.width && `max-width: ${size.width}px;`}
-    height: ${isFullScreen ? '100%' : 'auto'};
-    left: ${isFullScreen ? 0 : position.left}px;
+  ${({ isFullscreen, position, size }) => css`
+    ${!isFullscreen && size.height && `max-height: ${size.height}px;`}
+    ${!isFullscreen && size.width && `max-width: ${size.width}px;`}
+    height: ${isFullscreen ? '100%' : 'auto'};
+    left: ${isFullscreen ? 0 : position.left}px;
     position: absolute;
-    top: ${isFullScreen ? 0 : position.top}px;
-    width: ${isFullScreen ? '100%' : 'auto'};
+    top: ${isFullscreen ? 0 : position.top}px;
+    width: ${isFullscreen ? '100%' : 'auto'};
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    }
   `}
 `;
 

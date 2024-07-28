@@ -7,7 +7,7 @@ import {
 type DialogContentComponentPropsType = {
   borderRadius?: DialogContentComponentBorderRadiusEnum;
   children: React.ReactNode;
-  isFullScreen: boolean;
+  isFullscreen: boolean;
   padding?: DialogContentComponentPaddingEnum;
 };
 

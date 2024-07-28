@@ -13,10 +13,10 @@ import { DialogContentComponentPropsType } from './types/dialog-content.componen
 const DialogContentComponent = ({
   borderRadius = DialogContentComponentBorderRadiusEnum.MEDIUM,
   children,
-  isFullScreen,
+  isFullscreen,
   padding = DialogContentComponentPaddingEnum.NONE,
 }: DialogContentComponentPropsType): React.ReactElement<DialogContentComponentPropsType> => (
-  <DialogContentComponentStyled {...{ borderRadius, isFullScreen, padding }}>
+  <DialogContentComponentStyled {...{ borderRadius, isFullscreen, padding }}>
     {children}
   </DialogContentComponentStyled>
 );

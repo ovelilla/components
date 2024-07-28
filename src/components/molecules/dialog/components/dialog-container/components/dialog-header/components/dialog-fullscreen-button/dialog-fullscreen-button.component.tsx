@@ -12,37 +12,36 @@ import {
 import { DialogFullscreenButtonHook } from './hooks/dialog-fullscreen-button.hook';
 // Icons
 import { Expand } from 'lucide-react';
+// Styles
+import { DialogFullscreenButtonComponentStyled } from './styles/dialog-fullscreen-button.component.styled';
 // Types
 import { DialogFullscreenButtonComponentPropsType } from './types/dialog-fullscreen-button.component.props.type';
 
 const DialogFullscreenButtonComponent = ({
   buttonProps,
-  setIsFullScreen,
+  setIsFullscreen,
   tooltipProps,
 }: DialogFullscreenButtonComponentPropsType): React.ReactElement<DialogFullscreenButtonComponentPropsType> | null => {
-  const { handleClickEvent, handleStopPropagation } = DialogFullscreenButtonHook({
-    setIsFullScreen,
-  });
+  const { handleClickEvent, handlePointerDownEvent, handlePointerUpEvent } =
+    DialogFullscreenButtonHook({
+      setIsFullscreen,
+    });
 
   return (
-    <TooltipComponent
-      {...{
-        ...tooltipProps,
-        onMouseDown: handleStopPropagation,
-        // onTouchStart: handleStopPropagation,
-      }}>
-      <ButtonComponent
-        {...{
-          ...buttonProps,
-          onClick: handleClickEvent,
-          // onMouseDown: handleStopPropagation,
-          // onTouchStart: handleStopPropagation,
-          shape: ButtonComponentShapeEnum.CIRCLE,
-          variant: ButtonComponentVariantEnum.GHOST,
-        }}>
-        <Expand />
-      </ButtonComponent>
-    </TooltipComponent>
+    <DialogFullscreenButtonComponentStyled
+      {...{ onPointerDown: handlePointerDownEvent, onPointerUp: handlePointerUpEvent }}>
+      <TooltipComponent {...tooltipProps}>
+        <ButtonComponent
+          {...{
+            ...buttonProps,
+            onClick: handleClickEvent,
+            shape: ButtonComponentShapeEnum.CIRCLE,
+            variant: ButtonComponentVariantEnum.GHOST,
+          }}>
+          <Expand />
+        </ButtonComponent>
+      </TooltipComponent>
+    </DialogFullscreenButtonComponentStyled>
   );
 };
 

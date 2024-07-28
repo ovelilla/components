@@ -6,7 +6,7 @@ import { TooltipComponentPropsType } from 'components/atoms/tooltip/types/toolti
 
 type DialogFullscreenButtonComponentPropsType = {
   buttonProps?: ButtonComponentPropsType;
-  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
   tooltipProps?: TooltipComponentPropsType;
 };
 

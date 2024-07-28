@@ -1,3 +1,3 @@
-const EXCLUDED_PROPS = ['borderRadius', 'isFullScreen', 'padding'];
+const EXCLUDED_PROPS = ['borderRadius', 'isFullscreen', 'padding'];
 
 export { EXCLUDED_PROPS };

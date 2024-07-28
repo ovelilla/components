@@ -1,14 +1,14 @@
 // Vendors
 import React, { Dispatch, SetStateAction } from 'react';
 
-type TouchStartEventHandlerPropsType = {
-  event: React.TouchEvent<HTMLDivElement>;
-  isFullScreen: boolean;
+type PointerDownEventHandlerPropsType = {
+  event: React.PointerEvent<HTMLDivElement>;
+  isFullscreen: boolean;
   translate: { x: number; y: number };
-  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
   setPosition: Dispatch<SetStateAction<{ left: number; top: number }>>;
   setTranslate: Dispatch<SetStateAction<{ x: number; y: number }>>;
   size: { width: number; height: number | null };
 };
 
-export { TouchStartEventHandlerPropsType };
+export { PointerDownEventHandlerPropsType };

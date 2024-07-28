@@ -9,14 +9,13 @@ const DialogOverlayHook = ({
   setShouldClose,
   shouldClose,
 }: DialogOverlayHookPropsType): DialogOverlayHookReturnType => {
-  const { handleMouseDownEvent, handleMouseUpEvent, handleTouchStartEvent, handleTouchEndEvent } =
-    DialogOverlayHandlers({
-      onClose,
-      setShouldClose,
-      shouldClose,
-    });
+  const { handlePointerDownEvent, handlePointerUpEvent } = DialogOverlayHandlers({
+    onClose,
+    setShouldClose,
+    shouldClose,
+  });
 
-  return { handleMouseDownEvent, handleMouseUpEvent, handleTouchStartEvent, handleTouchEndEvent };
+  return { handlePointerDownEvent, handlePointerUpEvent };
 };
 
 export { DialogOverlayHook };

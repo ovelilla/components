@@ -22,21 +22,18 @@ const DialogOverlayComponent = ({
   setShouldClose,
   shouldClose,
 }: DialogOverlayComponentPropsType): React.ReactElement<DialogOverlayComponentPropsType> => {
-  const { handleMouseDownEvent, handleMouseUpEvent, handleTouchStartEvent, handleTouchEndEvent } =
-    DialogOverlayHook({
-      onClose,
-      setShouldClose,
-      shouldClose,
-    });
+  const { handlePointerDownEvent, handlePointerUpEvent } = DialogOverlayHook({
+    onClose,
+    setShouldClose,
+    shouldClose,
+  });
 
   return ReactDOM.createPortal(
     <DialogOverlayComponentStyled
       {...{
         ...getOverlayConfiguration({ animationDuration, hasAnimation }),
-        onMouseDown: handleMouseDownEvent,
-        onMouseUp: handleMouseUpEvent,
-        onTouchStart: handleTouchStartEvent,
-        onTouchEnd: handleTouchEndEvent,
+        onPointerDown: handlePointerDownEvent,
+        onPointerUp: handlePointerUpEvent,
         opacity,
         ref: overlayRef,
       }}>

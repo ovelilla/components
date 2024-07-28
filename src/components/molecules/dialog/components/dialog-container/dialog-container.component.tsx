@@ -18,6 +18,7 @@ const DialogContainerComponent = ({
   contentProps,
   fullScreenButtonProps,
   hasAnimation,
+  isFullscreen: initialIsFullscreen,
   onClose,
   setShouldClose,
   size: initialSize,
@@ -25,19 +26,18 @@ const DialogContainerComponent = ({
 }: DialogContainerComponentPropsType): React.ReactElement<DialogContainerComponentPropsType> => {
   const {
     contentRef,
-    handleMouseDownEvent,
-    handleMouseUpEvent,
-    handleTouchEndEvent,
-    handleTouchStartEvent,
-    isFullScreen,
+    handlePointerDownEvent,
+    handlePointerUpEvent,
+    isFullscreen,
     position,
-    setIsFullScreen,
+    setIsFullscreen,
     setPosition,
     setSize,
     setTranslate,
     size,
     translate,
   } = DialogContainerHook({
+    initialIsFullscreen,
     initialSize,
     setShouldClose,
   });
@@ -45,25 +45,23 @@ const DialogContainerComponent = ({
   return (
     <DialogContainerComponentStyled
       {...{
-        isFullScreen,
-        onMouseDown: handleMouseDownEvent,
-        onMouseUp: handleMouseUpEvent,
-        onTouchEnd: handleTouchEndEvent,
-        onTouchStart: handleTouchStartEvent,
+        isFullscreen,
+        onPointerDown: handlePointerDownEvent,
+        onPointerUp: handlePointerUpEvent,
         position,
         ref: contentRef,
         size,
         translate,
       }}>
       <DialogSlideAnimationComponent {...{ animationDuration, hasAnimation }}>
-        <DialogContentComponent {...{ ...contentProps, isFullScreen }}>
+        <DialogContentComponent {...{ ...contentProps, isFullscreen }}>
           <DialogHeaderComponent
             {...{
               closeButtonProps,
               fullScreenButtonProps,
-              isFullScreen,
+              isFullscreen,
               onClose,
-              setIsFullScreen,
+              setIsFullscreen,
               setPosition,
               setSize,
               setTranslate,

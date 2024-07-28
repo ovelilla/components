@@ -25,6 +25,7 @@ type DialogContainerComponentPropsType = {
     tooltipProps?: TooltipComponentPropsType;
   };
   hasAnimation: boolean;
+  isFullscreen: boolean;
   onClose: VoidFunction;
   setShouldClose: Dispatch<SetStateAction<boolean>>;
   size?: { width?: number; height?: number };

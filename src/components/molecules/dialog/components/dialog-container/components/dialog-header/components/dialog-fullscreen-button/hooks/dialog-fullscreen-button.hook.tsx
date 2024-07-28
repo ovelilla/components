@@ -5,14 +5,17 @@ import { DialogFullscreenButtonHookPropsType } from './types/dialog-fullscreen-b
 import { DialogFullscreenButtonHookReturnType } from './types/dialog-fullscreen-button.hook.return.type';
 
 const DialogFullscreenButtonHook = ({
-  setIsFullScreen,
+  setIsFullscreen,
 }: DialogFullscreenButtonHookPropsType): DialogFullscreenButtonHookReturnType => {
-  const { handleClickEvent, handleStopPropagation } = DialogFullscreenButtonHandlers({
-    setIsFullScreen,
-  });
+  const { handleClickEvent, handlePointerDownEvent, handlePointerUpEvent } =
+    DialogFullscreenButtonHandlers({
+      setIsFullscreen,
+    });
+
   return {
     handleClickEvent,
-    handleStopPropagation,
+    handlePointerDownEvent,
+    handlePointerUpEvent,
   };
 };
 

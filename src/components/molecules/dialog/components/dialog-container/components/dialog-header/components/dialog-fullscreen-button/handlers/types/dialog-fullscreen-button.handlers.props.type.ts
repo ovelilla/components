@@ -2,7 +2,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 type DialogFullscreenButtonHandlersPropsType = {
-  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
 };
 
 export { DialogFullscreenButtonHandlersPropsType };

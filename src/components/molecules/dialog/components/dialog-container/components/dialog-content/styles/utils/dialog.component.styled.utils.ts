@@ -8,11 +8,11 @@ import { DialogContentComponentStyledPropsType } from '../types/dialog-content.c
 
 const getBorderRadius = ({
   borderRadius,
-  isFullScreen,
+  isFullscreen,
   theme,
 }: Pick<
   DialogContentComponentStyledPropsType,
-  'borderRadius' | 'isFullScreen' | 'theme'
+  'borderRadius' | 'isFullscreen' | 'theme'
 >): string => {
   const borderRadiusMap: Record<string, string> = {
     [DialogContentComponentBorderRadiusEnum.LARGE]: theme.borderRadius.borderRadius16,
@@ -20,7 +20,7 @@ const getBorderRadius = ({
     [DialogContentComponentBorderRadiusEnum.NONE]: theme.borderRadius.borderRadius0,
     [DialogContentComponentBorderRadiusEnum.SMALL]: theme.borderRadius.borderRadius4,
   };
-  return isFullScreen ? theme.borderRadius.borderRadius0 : borderRadiusMap[borderRadius];
+  return isFullscreen ? theme.borderRadius.borderRadius0 : borderRadiusMap[borderRadius];
 };
 
 const getPadding = ({

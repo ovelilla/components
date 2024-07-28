@@ -3,22 +3,27 @@ import { DialogCloseButtonHandlersPropsType } from './types/dialog-close-button.
 import { DialogCloseButtonHandlersReturnType } from './types/dialog-close-button.handlers.return.type';
 import { ClickEventHandlerPropsType } from './types/click-event-handler.props.type';
 
-const clickEventHandler = ({ onClose, setIsFullScreen }: ClickEventHandlerPropsType): void => {
-  setIsFullScreen(false);
+const clickEventHandler = ({ onClose, setIsFullscreen }: ClickEventHandlerPropsType): void => {
+  setIsFullscreen(false);
   onClose();
 };
 
-const stopPropagation = (event: React.MouseEvent<HTMLButtonElement>): void => {
+const pointerDownEventHandler = (event: React.PointerEvent<HTMLDivElement>): void => {
+  event.stopPropagation();
+};
+
+const pointerUpEventHandler = (event: React.PointerEvent<HTMLDivElement>): void => {
   event.stopPropagation();
 };
 
 const DialogCloseButtonHandlers = ({
   onClose,
-  setIsFullScreen,
+  setIsFullscreen,
 }: DialogCloseButtonHandlersPropsType): DialogCloseButtonHandlersReturnType => {
   return {
-    handleClickEvent: () => clickEventHandler({ onClose, setIsFullScreen }),
-    handleStopPropagation: (event) => stopPropagation(event),
+    handleClickEvent: () => clickEventHandler({ onClose, setIsFullscreen }),
+    handlePointerDownEvent: (event) => pointerDownEventHandler(event),
+    handlePointerUpEvent: (event) => pointerUpEventHandler(event),
   };
 };
 

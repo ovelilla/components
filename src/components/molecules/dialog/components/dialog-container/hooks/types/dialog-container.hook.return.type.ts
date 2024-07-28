@@ -3,13 +3,11 @@ import { Dispatch, SetStateAction } from 'react';
 
 type DialogContainerHookReturnType = {
   contentRef: React.RefObject<HTMLDivElement>;
-  handleMouseDownEvent: (event: React.MouseEvent<HTMLDivElement>) => void;
-  handleMouseUpEvent: (event: React.MouseEvent<HTMLDivElement>) => void;
-  handleTouchEndEvent: (event: React.TouchEvent<HTMLDivElement>) => void;
-  handleTouchStartEvent: (event: React.TouchEvent<HTMLDivElement>) => void;
-  isFullScreen: boolean;
+  handlePointerDownEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
+  handlePointerUpEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
+  isFullscreen: boolean;
   position: { left: number; top: number };
-  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
   setPosition: Dispatch<SetStateAction<{ left: number; top: number }>>;
   setSize: Dispatch<SetStateAction<{ width: number; height: number | null }>>;
   setTranslate: Dispatch<SetStateAction<{ x: number; y: number }>>;

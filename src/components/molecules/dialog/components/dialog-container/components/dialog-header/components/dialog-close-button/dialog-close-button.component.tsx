@@ -12,34 +12,37 @@ import {
 import { DialogCloseButtonHook } from './hooks/dialog-close-button.hook';
 // Icons
 import { X } from 'lucide-react';
+// Styles
+import { DialogCloseButtonComponentStyled } from './styles/dialog-close-button.component.styled';
 // Types
 import { DialogCloseButtonComponentPropsType } from './types/dialog-close-button.component.props.type';
 
 const DialogCloseButtonComponent = ({
   buttonProps,
   onClose,
-  setIsFullScreen,
+  setIsFullscreen,
   tooltipProps,
 }: DialogCloseButtonComponentPropsType): React.ReactElement<DialogCloseButtonComponentPropsType> | null => {
-  const { handleClickEvent, handleStopPropagation } = DialogCloseButtonHook({
+  const { handleClickEvent, handlePointerDownEvent, handlePointerUpEvent } = DialogCloseButtonHook({
     onClose,
-    setIsFullScreen,
+    setIsFullscreen,
   });
 
   return (
-    <TooltipComponent {...tooltipProps}>
-      <ButtonComponent
-        {...{
-          ...buttonProps,
-          onClick: handleClickEvent,
-          onMouseDown: handleStopPropagation,
-          onTouchStart: handleStopPropagation,
-          shape: ButtonComponentShapeEnum.CIRCLE,
-          variant: ButtonComponentVariantEnum.GHOST,
-        }}>
-        <X />
-      </ButtonComponent>
-    </TooltipComponent>
+    <DialogCloseButtonComponentStyled
+      {...{ onPointerDown: handlePointerDownEvent, onPointerUp: handlePointerUpEvent }}>
+      <TooltipComponent {...tooltipProps}>
+        <ButtonComponent
+          {...{
+            ...buttonProps,
+            onClick: handleClickEvent,
+            shape: ButtonComponentShapeEnum.CIRCLE,
+            variant: ButtonComponentVariantEnum.GHOST,
+          }}>
+          <X />
+        </ButtonComponent>
+      </TooltipComponent>
+    </DialogCloseButtonComponentStyled>
   );
 };
 

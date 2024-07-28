@@ -8,7 +8,7 @@ import {
 
 type DialogContentComponentStyledPropsType = {
   borderRadius: DialogContentComponentBorderRadiusEnum;
-  isFullScreen: boolean;
+  isFullscreen: boolean;
   padding: DialogContentComponentPaddingEnum;
   theme: DefaultTheme;
 };

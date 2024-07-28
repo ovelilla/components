@@ -1,6 +1,7 @@
 type DialogCloseButtonHandlersReturnType = {
   handleClickEvent: VoidFunction;
-  handleStopPropagation: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handlePointerDownEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
+  handlePointerUpEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
 };
 
 export { DialogCloseButtonHandlersReturnType };

@@ -7,7 +7,7 @@ import { TooltipComponentPropsType } from 'components/atoms/tooltip/types/toolti
 type DialogCloseButtonComponentPropsType = {
   buttonProps?: ButtonComponentPropsType;
   onClose: VoidFunction;
-  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
   tooltipProps?: TooltipComponentPropsType;
 };
 

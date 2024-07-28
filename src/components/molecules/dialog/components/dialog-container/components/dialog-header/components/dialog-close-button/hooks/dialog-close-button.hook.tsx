@@ -6,16 +6,18 @@ import { DialogCloseButtonHookReturnType } from './types/dialog-close-button.hoo
 
 const DialogCloseButtonHook = ({
   onClose,
-  setIsFullScreen,
+  setIsFullscreen,
 }: DialogCloseButtonHookPropsType): DialogCloseButtonHookReturnType => {
-  const { handleClickEvent, handleStopPropagation } = DialogCloseButtonHandlers({
-    onClose,
-    setIsFullScreen,
-  });
+  const { handleClickEvent, handlePointerDownEvent, handlePointerUpEvent } =
+    DialogCloseButtonHandlers({
+      onClose,
+      setIsFullscreen,
+    });
 
   return {
     handleClickEvent,
-    handleStopPropagation,
+    handlePointerDownEvent,
+    handlePointerUpEvent,
   };
 };
 
