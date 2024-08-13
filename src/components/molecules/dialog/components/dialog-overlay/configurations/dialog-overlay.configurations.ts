@@ -1,22 +1,26 @@
 // Constants
-import { ANIMATION_PROPS } from './constants/dialog-overlay.configurations.constants';
+import {
+  ANIMATION_PROPS,
+  DEFAULT_ACTIVE,
+  DEFAULT_DURATION,
+} from './constants/dialog-overlay.configurations.constants';
 // Types
-import { GetOverlayConfigurationPropsType } from './types/get-overlay-configuration.props.type';
-import { GetOverlayConfigurationReturnType } from './types/get-overlay-configuration.return.type';
+import { GetOverlayAnimationConfigurationPropsType } from './types/get-overlay-animation-configuration.props.type';
+import { GetOverlayAnimationConfigurationReturnType } from './types/get-overlay-animation-configuration.return.type';
 
-const getOverlayConfiguration = ({
-  animationDuration,
-  hasAnimation,
-}: GetOverlayConfigurationPropsType): GetOverlayConfigurationReturnType | null => {
-  if (!hasAnimation) {
+const getOverlayAnimationConfiguration = ({
+  active = DEFAULT_ACTIVE,
+  duration = DEFAULT_DURATION,
+}: GetOverlayAnimationConfigurationPropsType): GetOverlayAnimationConfigurationReturnType | null => {
+  if (!active) {
     return null;
   }
   return {
     ...ANIMATION_PROPS,
     transition: {
-      duration: animationDuration / 1000,
+      duration: duration / 1000,
     },
   };
 };
 
-export { getOverlayConfiguration };
+export { getOverlayAnimationConfiguration };

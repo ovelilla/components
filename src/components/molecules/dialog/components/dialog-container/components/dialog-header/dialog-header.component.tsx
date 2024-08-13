@@ -15,8 +15,8 @@ import {
 import { DialogHeaderComponentPropsType } from './types/dialog-header.component.props.type';
 
 const DialogHeaderComponent = ({
-  closeButtonProps,
-  fullScreenButtonProps,
+  buttonCloseProps,
+  buttonFullscreenProps,
   isFullscreen,
   onClose,
   setIsFullscreen,
@@ -40,8 +40,8 @@ const DialogHeaderComponent = ({
     <DialogHeaderComponentStyled {...{ onPointerDown: handlePointerDownEvent }}>
       <DialogHeaderComponentTitleStyled>{title}</DialogHeaderComponentTitleStyled>
       <DialogHeaderComponentActionsStyled>
-        <DialogFullscreenButtonComponent {...{ setIsFullscreen, ...fullScreenButtonProps }} />
-        <DialogCloseButtonComponent {...{ onClose, setIsFullscreen, ...closeButtonProps }} />
+        <DialogFullscreenButtonComponent {...{ setIsFullscreen, ...buttonFullscreenProps }} />
+        <DialogCloseButtonComponent {...{ onClose, setIsFullscreen, ...buttonCloseProps }} />
       </DialogHeaderComponentActionsStyled>
     </DialogHeaderComponentStyled>
   );

@@ -4,7 +4,7 @@ import { DialogOverlayComponentOpacityEnum } from '../../enums/dialog-overlay.co
 import { DialogOverlayComponentStyledPropsType } from '../types/dialog-overlay.component.styled.props.type';
 
 const getOpacity = ({
-  opacity,
+  opacity = DialogOverlayComponentOpacityEnum.MEDIUM,
   theme,
 }: Pick<DialogOverlayComponentStyledPropsType, 'opacity' | 'theme'>): number => {
   const opacityMap: Record<string, number> = {

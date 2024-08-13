@@ -1,7 +1,7 @@
 type DialogSlideAnimationComponentPropsType = {
-  animationDuration: number;
+  active?: boolean;
   children: React.ReactNode;
-  hasAnimation: boolean;
+  duration?: number;
 };
 
 export { DialogSlideAnimationComponentPropsType };

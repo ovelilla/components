@@ -1,5 +1,5 @@
 // Vendors
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 // Handlers
 import { DialogHandlers } from '../handlers/dialog.handlers';
 // Types
@@ -10,8 +10,6 @@ const DialogHook = ({ open }: DialogHookPropsType): DialogHookReturnType => {
   const [hasHorizontalScroll, setHasHorizontalScroll] = useState<boolean>(false);
   const [hasVerticalScroll, setHasVerticalScroll] = useState<boolean>(false);
   const [shouldClose, setShouldClose] = useState<boolean>(false);
-
-  const overlayRef = useRef<HTMLDivElement>(null);
 
   const { handleCheckScroll } = DialogHandlers({
     open,
@@ -27,7 +25,6 @@ const DialogHook = ({ open }: DialogHookPropsType): DialogHookReturnType => {
   return {
     hasHorizontalScroll,
     hasVerticalScroll,
-    overlayRef,
     setShouldClose,
     shouldClose,
   };

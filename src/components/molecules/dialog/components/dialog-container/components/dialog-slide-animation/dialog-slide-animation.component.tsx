@@ -8,12 +8,11 @@ import { DialogSlideAnimationComponentStyled } from './styles/dialog-slide-anima
 import { DialogSlideAnimationComponentPropsType } from './types/dialog-slide-animation.component.props.type';
 
 const DialogSlideAnimationComponent = ({
-  animationDuration,
+  active,
   children,
-  hasAnimation,
+  duration,
 }: DialogSlideAnimationComponentPropsType): React.ReactElement<DialogSlideAnimationComponentPropsType> => (
-  <DialogSlideAnimationComponentStyled
-    {...getSlideAnimationConfiguration({ animationDuration, hasAnimation })}>
+  <DialogSlideAnimationComponentStyled {...getSlideAnimationConfiguration({ active, duration })}>
     {children}
   </DialogSlideAnimationComponentStyled>
 );

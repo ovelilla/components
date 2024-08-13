@@ -5,11 +5,7 @@ import React, { Fragment } from 'react';
 import { DialogContainerComponent } from './components/dialog-container/dialog-container.component';
 import { DialogOverlayComponent } from './components/dialog-overlay/dialog-overlay.component';
 // Constants
-import {
-  DEFAULT_ANIMATION_DURATION,
-  DEFAULT_HAS_ANIMATION,
-  DEFAULT_IS_FULL_SCREEN,
-} from './constants/dialog.component.constants';
+import { DEFAULT_IS_FULL_SCREEN } from './constants/dialog.component.constants';
 // Hooks
 import { DialogHook } from './hooks/dialog.hook';
 // Styles
@@ -18,21 +14,20 @@ import { GlobalStyle } from './styles/dialog.component.styled';
 import { DialogComponentPropsType } from './types/dialog.component.props.type';
 
 const DialogComponent = ({
-  animationDuration = DEFAULT_ANIMATION_DURATION,
+  animation,
+  buttonCloseProps,
+  buttonFullscreenProps,
   children,
-  closeButtonProps,
-  contentProps,
-  fullScreenButtonProps,
-  hasAnimation = DEFAULT_HAS_ANIMATION,
   isFullscreen = DEFAULT_IS_FULL_SCREEN,
   onClose,
   open,
-  overlayProps,
   size,
+  style,
   title,
 }: DialogComponentPropsType): React.ReactElement<DialogComponentPropsType> | null => {
-  const { hasHorizontalScroll, hasVerticalScroll, overlayRef, setShouldClose, shouldClose } =
-    DialogHook({ open });
+  const { hasHorizontalScroll, hasVerticalScroll, setShouldClose, shouldClose } = DialogHook({
+    open,
+  });
 
   return (
     <AnimatePresence>
@@ -41,26 +36,23 @@ const DialogComponent = ({
           <GlobalStyle {...{ hasHorizontalScroll, hasVerticalScroll }} />
           <DialogOverlayComponent
             {...{
-              ...overlayProps,
-              animationDuration,
-              hasAnimation,
+              animation: animation?.overlay,
               onClose,
               open,
-              overlayRef,
               setShouldClose,
               shouldClose,
+              style: style?.overlay,
             }}>
             <DialogContainerComponent
               {...{
-                animationDuration,
-                closeButtonProps,
-                contentProps,
-                fullScreenButtonProps,
-                hasAnimation,
+                animation: animation?.container,
+                buttonCloseProps,
+                buttonFullscreenProps,
                 isFullscreen,
                 onClose,
                 setShouldClose,
                 size,
+                style: style?.content,
                 title,
               }}>
               {children}

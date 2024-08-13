@@ -1,4 +1,4 @@
-type GetOverlayConfigurationReturnType = {
+type GetOverlayAnimationConfigurationReturnType = {
   animate: {
     opacity: number;
   };
@@ -13,4 +13,4 @@ type GetOverlayConfigurationReturnType = {
   };
 };
 
-export { GetOverlayConfigurationReturnType };
+export { GetOverlayAnimationConfigurationReturnType };

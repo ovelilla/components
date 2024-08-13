@@ -1,0 +1,5 @@
+type DialogResizeComponentPropsType = {
+
+};
+
+export { DialogResizeComponentPropsType };

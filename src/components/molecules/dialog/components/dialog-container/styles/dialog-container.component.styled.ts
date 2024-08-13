@@ -17,14 +17,11 @@ const DialogContainerComponentStyled = styled('div')
   ${({ isFullscreen, position, size }) => css`
     ${!isFullscreen && size.height && `max-height: ${size.height}px;`}
     ${!isFullscreen && size.width && `max-width: ${size.width}px;`}
-    height: ${isFullscreen ? '100%' : 'auto'};
+    ${isFullscreen && 'height: 100%;'}
+    ${isFullscreen && 'width: 100%;'}
     left: ${isFullscreen ? 0 : position.left}px;
     position: absolute;
     top: ${isFullscreen ? 0 : position.top}px;
-    width: ${isFullscreen ? '100%' : 'auto'};
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    }
   `}
 `;
 

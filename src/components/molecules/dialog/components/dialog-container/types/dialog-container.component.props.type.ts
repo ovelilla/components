@@ -10,25 +10,28 @@ import { ButtonComponentPropsType } from 'components/atoms/button/types/button.c
 import { TooltipComponentPropsType } from 'components/atoms/tooltip/types/tooltip.component.props.type';
 
 type DialogContainerComponentPropsType = {
-  animationDuration: number;
+  animation?: {
+    active?: boolean;
+    duration?: number;
+  };
+
+  buttonCloseProps?: {
+    buttonProps?: ButtonComponentPropsType;
+    tooltipProps?: TooltipComponentPropsType;
+  };
+  buttonFullscreenProps?: {
+    buttonProps?: ButtonComponentPropsType;
+    tooltipProps?: TooltipComponentPropsType;
+  };
   children: React.ReactNode;
-  closeButtonProps?: {
-    buttonProps?: ButtonComponentPropsType;
-    tooltipProps?: TooltipComponentPropsType;
-  };
-  contentProps?: {
-    borderRadius?: DialogContentComponentBorderRadiusEnum;
-    padding?: DialogContentComponentPaddingEnum;
-  };
-  fullScreenButtonProps?: {
-    buttonProps?: ButtonComponentPropsType;
-    tooltipProps?: TooltipComponentPropsType;
-  };
-  hasAnimation: boolean;
   isFullscreen: boolean;
   onClose: VoidFunction;
   setShouldClose: Dispatch<SetStateAction<boolean>>;
   size?: { width?: number; height?: number };
+  style?: {
+    borderRadius?: DialogContentComponentBorderRadiusEnum;
+    padding?: DialogContentComponentPaddingEnum;
+  };
   title?: string;
 };
 

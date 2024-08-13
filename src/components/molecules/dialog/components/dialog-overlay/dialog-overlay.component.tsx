@@ -2,9 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // Configurations
-import { getOverlayConfiguration } from './configurations/dialog-overlay.configurations';
-// Enums
-import { DialogOverlayComponentOpacityEnum } from './enums/dialog-overlay.component.enums';
+import { getOverlayAnimationConfiguration } from './configurations/dialog-overlay.configurations';
 // Hooks
 import { DialogOverlayHook } from './hooks/dialog-overlay.hook';
 // Styles
@@ -13,16 +11,14 @@ import { DialogOverlayComponentStyled } from './styles/dialog-overlay.component.
 import { DialogOverlayComponentPropsType } from './types/dialog-overlay.component.props.type';
 
 const DialogOverlayComponent = ({
-  animationDuration,
+  animation,
   children,
-  hasAnimation,
   onClose,
-  opacity = DialogOverlayComponentOpacityEnum.MEDIUM,
-  overlayRef,
   setShouldClose,
   shouldClose,
+  style,
 }: DialogOverlayComponentPropsType): React.ReactElement<DialogOverlayComponentPropsType> => {
-  const { handlePointerDownEvent, handlePointerUpEvent } = DialogOverlayHook({
+  const { handlePointerDownEvent, handlePointerUpEvent, overlayRef } = DialogOverlayHook({
     onClose,
     setShouldClose,
     shouldClose,
@@ -31,10 +27,10 @@ const DialogOverlayComponent = ({
   return ReactDOM.createPortal(
     <DialogOverlayComponentStyled
       {...{
-        ...getOverlayConfiguration({ animationDuration, hasAnimation }),
+        ...getOverlayAnimationConfiguration({ ...animation }),
+        ...style,
         onPointerDown: handlePointerDownEvent,
         onPointerUp: handlePointerUpEvent,
-        opacity,
         ref: overlayRef,
       }}>
       {children}

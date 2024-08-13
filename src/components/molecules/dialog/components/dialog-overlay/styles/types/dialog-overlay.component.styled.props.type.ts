@@ -4,7 +4,7 @@ import { DefaultTheme } from 'styled-components';
 import { DialogOverlayComponentOpacityEnum } from '../../enums/dialog-overlay.component.enums';
 
 type DialogOverlayComponentStyledPropsType = {
-  opacity: DialogOverlayComponentOpacityEnum;
+  opacity?: DialogOverlayComponentOpacityEnum;
   theme: DefaultTheme;
 };
 

@@ -12,16 +12,15 @@ import { DialogContainerComponentStyled } from './styles/dialog-container.compon
 import { DialogContainerComponentPropsType } from './types/dialog-container.component.props.type';
 
 const DialogContainerComponent = ({
-  animationDuration,
+  animation,
+  buttonCloseProps,
+  buttonFullscreenProps,
   children,
-  closeButtonProps,
-  contentProps,
-  fullScreenButtonProps,
-  hasAnimation,
   isFullscreen: initialIsFullscreen,
   onClose,
   setShouldClose,
   size: initialSize,
+  style,
   title,
 }: DialogContainerComponentPropsType): React.ReactElement<DialogContainerComponentPropsType> => {
   const {
@@ -53,12 +52,12 @@ const DialogContainerComponent = ({
         size,
         translate,
       }}>
-      <DialogSlideAnimationComponent {...{ animationDuration, hasAnimation }}>
-        <DialogContentComponent {...{ ...contentProps, isFullscreen }}>
+      <DialogSlideAnimationComponent {...animation}>
+        <DialogContentComponent {...{ ...style, isFullscreen }}>
           <DialogHeaderComponent
             {...{
-              closeButtonProps,
-              fullScreenButtonProps,
+              buttonCloseProps,
+              buttonFullscreenProps,
               isFullscreen,
               onClose,
               setIsFullscreen,

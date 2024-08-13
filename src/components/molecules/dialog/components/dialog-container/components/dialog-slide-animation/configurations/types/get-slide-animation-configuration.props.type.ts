@@ -1,6 +1,6 @@
 type GetSlideAnimationConfigurationPropsType = {
-  animationDuration: number;
-  hasAnimation: boolean;
+  active?: boolean;
+  duration?: number;
 };
 
 export { GetSlideAnimationConfigurationPropsType };

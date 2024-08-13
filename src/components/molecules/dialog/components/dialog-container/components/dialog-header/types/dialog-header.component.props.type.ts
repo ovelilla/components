@@ -5,11 +5,11 @@ import { ButtonComponentPropsType } from 'components/atoms/button/types/button.c
 import { TooltipComponentPropsType } from 'components/atoms/tooltip/types/tooltip.component.props.type';
 
 type DialogHeaderComponentPropsType = {
-  closeButtonProps?: {
+  buttonCloseProps?: {
     buttonProps?: ButtonComponentPropsType;
     tooltipProps?: TooltipComponentPropsType;
   };
-  fullScreenButtonProps?: {
+  buttonFullscreenProps?: {
     buttonProps?: ButtonComponentPropsType;
     tooltipProps?: TooltipComponentPropsType;
   };
