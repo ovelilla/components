@@ -21,7 +21,6 @@ const DialogHeaderComponent = ({
   onClose,
   setIsFullscreen,
   setPosition,
-  // setSize,
   setTranslate,
   size,
   title,

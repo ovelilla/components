@@ -10,14 +10,8 @@ import { TooltipComponentPropsType } from 'components/atoms/tooltip/types/toolti
 
 type DialogComponentPropsType = {
   animation?: {
-    container?: {
-      active?: boolean;
-      duration?: number;
-    };
-    overlay?: {
-      active?: boolean;
-      duration?: number;
-    };
+    container?: { active?: boolean; duration?: number };
+    overlay?: { active?: boolean; duration?: number };
   };
   children: React.ReactNode;
   buttonCloseProps?: {
@@ -29,20 +23,17 @@ type DialogComponentPropsType = {
     tooltipProps?: TooltipComponentPropsType;
   };
   isFullscreen?: boolean;
+  minSize?: { height?: number; width?: number };
   onClose: VoidFunction;
   open: boolean;
-  size?: {
-    height?: number;
-    width?: number;
-  };
+  position?: { left?: number; top?: number };
+  size?: { height?: number; width?: number };
   style?: {
     content?: {
       borderRadius?: DialogContentComponentBorderRadiusEnum;
       padding?: DialogContentComponentPaddingEnum;
     };
-    overlay?: {
-      opacity?: DialogOverlayComponentOpacityEnum;
-    };
+    overlay?: { opacity?: DialogOverlayComponentOpacityEnum };
   };
   title?: string;
 };

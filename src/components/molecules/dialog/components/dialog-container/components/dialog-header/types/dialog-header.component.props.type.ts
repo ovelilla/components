@@ -17,7 +17,6 @@ type DialogHeaderComponentPropsType = {
   onClose: VoidFunction;
   setIsFullscreen: Dispatch<SetStateAction<boolean>>;
   setPosition: Dispatch<SetStateAction<{ left: number; top: number }>>;
-  setSize: Dispatch<SetStateAction<{ width: number; height: number | null }>>;
   setTranslate: Dispatch<SetStateAction<{ x: number; y: number }>>;
   size: { width: number; height: number | null };
   title?: string;

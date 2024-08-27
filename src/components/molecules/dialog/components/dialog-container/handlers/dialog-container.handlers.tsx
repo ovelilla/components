@@ -18,26 +18,27 @@ const pointerUpEventHandler = ({ event }: PointerUpEventHandlerPropsType): void 
 };
 
 const setInitialPositionHandler = ({
-  contentRef,
+  containerRef,
   setPosition,
 }: SetInitialPositionHandlerPropsType): void => {
-  if (contentRef.current) {
+  if (containerRef.current) {
     setPosition({
-      left: (window.innerWidth - contentRef.current.offsetWidth) / 2,
-      top: (window.innerHeight - contentRef.current.offsetHeight) / 2,
+      left: (window.innerWidth - containerRef.current.offsetWidth) / 2,
+      top: (window.innerHeight - containerRef.current.offsetHeight) / 2,
     });
   }
 };
 
+
 const DialogContainerHandlers = ({
-  contentRef,
+  containerRef,
   setPosition,
   setShouldClose,
 }: DialogContainerHandlersPropsType): DialogContainerHandlersReturnType => {
   return {
     handlePointerDownEvent: (event) => pointerDownEventHandler({ event, setShouldClose }),
     handlePointerUpEvent: (event) => pointerUpEventHandler({ event }),
-    handleSetInitialPosition: () => setInitialPositionHandler({ contentRef, setPosition }),
+    handleSetInitialPosition: () => setInitialPositionHandler({ containerRef, setPosition }),
   };
 };
 

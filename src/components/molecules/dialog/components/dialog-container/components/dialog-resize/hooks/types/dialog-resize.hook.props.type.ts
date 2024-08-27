@@ -1,7 +1,7 @@
 // Vendors
 import { Dispatch, SetStateAction } from 'react';
 
-type DialogResizeComponentPropsType = {
+type DialogResizeHookPropsType = {
   isFullscreen: boolean;
   minSize: { width: number; height: number };
   setSize: Dispatch<SetStateAction<{ width: number; height: number | null }>>;
@@ -10,4 +10,4 @@ type DialogResizeComponentPropsType = {
   translate: { x: number; y: number };
 };
 
-export { DialogResizeComponentPropsType };
+export { DialogResizeHookPropsType };

@@ -1,0 +1,7 @@
+Refactorizar scrollarea
+
+En dialog, max width y max height no tienen sentido
+
+En dialog creo que se puede quitar el componente de animacion DialogSlideAnimationComponent y aplicar la animacion directamente en el componente DialogContainerComponentStyled a partir del estado tranlate.
+
+Creo que el componente Resize puede ser un padre que recibe children y por tanto ser un componente agnostico.

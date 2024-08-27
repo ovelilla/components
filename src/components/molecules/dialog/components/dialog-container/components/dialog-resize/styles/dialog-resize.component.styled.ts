@@ -2,28 +2,74 @@
 import styled from 'styled-components';
 
 const DialogResizeComponentStyled = styled.div`
-  height: 100%;
-  left: 0;
   position: absolute;
-  top: 0;
-  width: 100%;
+  user-select: none;
+  touch-action: none;
 `;
 
-const DialogResizeComponentTopRigtCornerStyled = styled.div``;
+const DialogResizeComponentTopRigtCornerStyled = styled(DialogResizeComponentStyled)`
+  cursor: ne-resize;
+  height: 16px;
+  left: calc(100% - 8px);
+  top: -8px;
+  width: 16px;
+`;
 
-const DialogResizeComponentTopLeftCornerStyled = styled.div``;
+const DialogResizeComponentTopLeftCornerStyled = styled(DialogResizeComponentStyled)`
+  cursor: nw-resize;
+  height: 16px;
+  left: -8px;
+  top: -8px;
+  width: 16px;
+`;
 
-const DialogResizeComponentBottomRightCornerStyled = styled.div``;
+const DialogResizeComponentBottomRightCornerStyled = styled(DialogResizeComponentStyled)`
+  cursor: se-resize;
+  height: 16px;
+  left: calc(100% - 8px);
+  top: calc(100% - 8px);
+  width: 16px;
+`;
 
-const DialogResizeComponentBottomLeftCornerStyled = styled.div``;
+const DialogResizeComponentBottomLeftCornerStyled = styled(DialogResizeComponentStyled)`
+  cursor: sw-resize;
+  height: 16px;
+  left: -8px;
+  top: calc(100% - 8px);
+  width: 16px;
+`;
 
-const DialogResizeComponentTopSideStyled = styled.div``;
+const DialogResizeComponentTopSideStyled = styled(DialogResizeComponentStyled)`
+  cursor: n-resize;
+  height: 16px;
+  left: 8px;
+  top: -8px;
+  width: calc(100% - 16px);
+`;
 
-const DialogResizeComponentRightSideStyled = styled.div``;
+const DialogResizeComponentRightSideStyled = styled(DialogResizeComponentStyled)`
+  cursor: e-resize;
+  height: calc(100% - 16px);
+  left: calc(100% - 8px);
+  top: 8px;
+  width: 16px;
+`;
 
-const DialogResizeComponentBottomSideStyled = styled.div``;
+const DialogResizeComponentBottomSideStyled = styled(DialogResizeComponentStyled)`
+  cursor: s-resize;
+  height: 16px;
+  left: 8px;
+  top: calc(100% - 8px);
+  width: calc(100% - 16px);
+`;
 
-const DialogResizeComponentLeftSideStyled = styled.div``;
+const DialogResizeComponentLeftSideStyled = styled(DialogResizeComponentStyled)`
+  cursor: w-resize;
+  height: calc(100% - 16px);
+  left: -8px;
+  top: 8px;
+  width: 16px;
+`;
 
 export {
   DialogResizeComponentBottomLeftCornerStyled,
@@ -31,7 +77,6 @@ export {
   DialogResizeComponentBottomSideStyled,
   DialogResizeComponentLeftSideStyled,
   DialogResizeComponentRightSideStyled,
-  DialogResizeComponentStyled,
   DialogResizeComponentTopLeftCornerStyled,
   DialogResizeComponentTopRigtCornerStyled,
   DialogResizeComponentTopSideStyled,
