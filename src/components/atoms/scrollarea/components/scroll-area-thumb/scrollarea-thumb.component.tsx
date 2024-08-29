@@ -10,7 +10,7 @@ import { ScrollareaThumbComponentPropsType } from './types/scrollarea-thumb.comp
 const ScrollareaThumbComponent = ({
   borderRadius,
   contentRef,
-  // setIsDragging,
+  setIsDragging,
   size,
   thumbHeight,
   thumbRef,
@@ -19,6 +19,7 @@ const ScrollareaThumbComponent = ({
 }: ScrollareaThumbComponentPropsType): React.ReactElement<ScrollareaThumbComponentPropsType> => {
   const { handleThumbPointerDownEvent } = ScrollareaThumbHook({
     contentRef,
+    setIsDragging,
     trackRef,
   });
   return (
