@@ -3,7 +3,6 @@ import { Dispatch, SetStateAction } from 'react';
 
 type DialogContainerHookReturnType = {
   containerRef: React.RefObject<HTMLDivElement>;
-  handleAnimationEndEvent: VoidFunction;
   handlePointerDownEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
   handlePointerUpEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
   isFullscreen: boolean;

@@ -27,7 +27,6 @@ const DialogContainerComponent = ({
 }: DialogContainerComponentPropsType): React.ReactElement<DialogContainerComponentPropsType> => {
   const {
     containerRef,
-    handleAnimationEndEvent,
     handlePointerDownEvent,
     handlePointerUpEvent,
     isFullscreen,
@@ -44,7 +43,6 @@ const DialogContainerComponent = ({
     initialMinSize,
     initialPosition,
     initialSize,
-    open,
     setShouldClose,
   });
 
@@ -55,7 +53,6 @@ const DialogContainerComponent = ({
         animation,
         isFullscreen,
         minSize,
-        onAnimationEnd: handleAnimationEndEvent,
         onPointerDown: handlePointerDownEvent,
         onPointerUp: handlePointerUpEvent,
         open,

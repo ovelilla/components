@@ -21,7 +21,6 @@ const DialogContainerHook = ({
   initialMinSize,
   initialPosition,
   initialSize,
-  open,
   setShouldClose,
 }: DialogContainerHookPropsType): DialogContainerHookReturnType => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -36,20 +35,16 @@ const DialogContainerHook = ({
   const [position, setPosition] = useState<{ left: number; top: number }>(
     getInitialPosition({ containerRef, initialPosition })
   );
-  const [shouldRender, setShouldRender] = useState(open);
   const [size, setSize] = useState<{ width: number; height: number | null }>(
     getInitialSize({ containerRef, initialSize })
   );
   const [translate, setTranslate] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  const { handleAnimationEndEvent, handlePointerDownEvent, handlePointerUpEvent } =
-    DialogContainerHandlers({
-      containerRef,
-      open,
-      setPosition,
-      setShouldClose,
-      setShouldRender,
-    });
+  const { handlePointerDownEvent, handlePointerUpEvent } = DialogContainerHandlers({
+    containerRef,
+    setPosition,
+    setShouldClose,
+  });
 
   useLayoutEffect(() => {
     setSize(getInitialSize({ containerRef, initialSize }));
@@ -67,15 +62,8 @@ const DialogContainerHook = ({
     setIsFullscreen(getInitailIsFullscreen({ initialIsFullscreen, isMobile }));
   }, [initialIsFullscreen, isMobile]);
 
-  useEffect(() => {
-    if (open) {
-      setShouldRender(true);
-    }
-  }, [open]);
-
   return {
     containerRef,
-    handleAnimationEndEvent,
     handlePointerDownEvent,
     handlePointerUpEvent,
     isFullscreen,
