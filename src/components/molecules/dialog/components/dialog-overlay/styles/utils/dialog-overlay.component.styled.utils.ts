@@ -1,7 +1,22 @@
+// Constants
+import {
+  DEFAULT_ACTIVE,
+  DEFAULT_DURATION,
+  DEFAULT_TYPE,
+} from './constants/dialog-overlay.component.styled.utils.constants';
 // Enums
 import { DialogOverlayComponentOpacityEnum } from '../../enums/dialog-overlay.component.enums';
 // Types
 import { DialogOverlayComponentStyledPropsType } from '../types/dialog-overlay.component.styled.props.type';
+
+const getAnimation = ({
+  animation: { active = DEFAULT_ACTIVE, duration = DEFAULT_DURATION, type = DEFAULT_TYPE } = {},
+}: Pick<DialogOverlayComponentStyledPropsType, 'animation'>) => {
+  if (!active) {
+    return 'none';
+  }
+  return `${duration}ms ${type}`;
+};
 
 const getOpacity = ({
   opacity = DialogOverlayComponentOpacityEnum.MEDIUM,
@@ -17,4 +32,4 @@ const getOpacity = ({
   return opacityMap[opacity];
 };
 
-export { getOpacity };
+export { getAnimation, getOpacity };

@@ -1,3 +1,0 @@
-const MIN_THUMB_HEIGHT = 40;
-
-export { MIN_THUMB_HEIGHT };

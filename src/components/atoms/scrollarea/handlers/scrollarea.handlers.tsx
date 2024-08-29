@@ -17,9 +17,13 @@ const mouseEnterEventHandler = ({
 
 const mouseLeaveEventHandler = ({
   hideDelay,
+  isDragging,
   setShowScrollbar,
   timerRef,
 }: MouseLeaveEventHandlerPropsType): void => {
+  if (isDragging) {
+    return;
+  }
   timerRef.current = setTimeout(() => {
     setShowScrollbar(false);
   }, hideDelay);
@@ -27,12 +31,14 @@ const mouseLeaveEventHandler = ({
 
 const ScrollareaHandlers = ({
   hideDelay,
+  isDragging,
   setShowScrollbar,
   timerRef,
 }: ScrollareaHandlersPropsType): ScrollareaHandlersReturnType => {
   return {
     handleMouseEnterEvent: () => mouseEnterEventHandler({ setShowScrollbar, timerRef }),
-    handleMouseLeaveEvent: () => mouseLeaveEventHandler({ hideDelay, setShowScrollbar, timerRef }),
+    handleMouseLeaveEvent: () =>
+      mouseLeaveEventHandler({ hideDelay, isDragging, setShowScrollbar, timerRef }),
   };
 };
 

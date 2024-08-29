@@ -1,9 +1,7 @@
 // Vendors
 import React from 'react';
 // Components
-import { DialogContentComponent } from './components/dialog-content/dialog-content.component';
 import { DialogHeaderComponent } from './components/dialog-header/dialog-header.component';
-import { DialogSlideAnimationComponent } from './components/dialog-slide-animation/dialog-slide-animation.component';
 import { DialogResizeComponent } from './components/dialog-resize/dialog-resize.component';
 // Hooks
 import { DialogContainerHook } from './hooks/dialog-container.hook';
@@ -20,6 +18,7 @@ const DialogContainerComponent = ({
   isFullscreen: initialIsFullscreen,
   minSize: initialMinSize,
   onClose,
+  open,
   position: initialPosition,
   setShouldClose,
   size: initialSize,
@@ -28,6 +27,7 @@ const DialogContainerComponent = ({
 }: DialogContainerComponentPropsType): React.ReactElement<DialogContainerComponentPropsType> => {
   const {
     containerRef,
+    handleAnimationEndEvent,
     handlePointerDownEvent,
     handlePointerUpEvent,
     isFullscreen,
@@ -44,51 +44,51 @@ const DialogContainerComponent = ({
     initialMinSize,
     initialPosition,
     initialSize,
+    open,
     setShouldClose,
   });
 
   return (
     <DialogContainerComponentStyled
       {...{
+        ...style,
+        animation,
         isFullscreen,
         minSize,
+        onAnimationEnd: handleAnimationEndEvent,
         onPointerDown: handlePointerDownEvent,
         onPointerUp: handlePointerUpEvent,
+        open,
         position,
         ref: containerRef,
         size,
         translate,
       }}>
-      <DialogSlideAnimationComponent {...animation}>
-        <DialogContentComponent {...{ ...style, isFullscreen }}>
-          <DialogResizeComponent
-            {...{
-              isFullscreen,
-              minSize,
-              setSize,
-              setTranslate,
-              size,
-              translate,
-            }}
-          />
-          <DialogHeaderComponent
-            {...{
-              buttonCloseProps,
-              buttonFullscreenProps,
-              isFullscreen,
-              onClose,
-              setIsFullscreen,
-              setPosition,
-              setTranslate,
-              size,
-              title,
-              translate,
-            }}
-          />
-
-          {children}
-        </DialogContentComponent>
-      </DialogSlideAnimationComponent>
+      <DialogResizeComponent
+        {...{
+          disabled: isFullscreen,
+          minSize,
+          setSize,
+          setTranslate,
+          size,
+          translate,
+        }}
+      />
+      <DialogHeaderComponent
+        {...{
+          buttonCloseProps,
+          buttonFullscreenProps,
+          isFullscreen,
+          onClose,
+          setIsFullscreen,
+          setPosition,
+          setTranslate,
+          size,
+          title,
+          translate,
+        }}
+      />
+      {children}
     </DialogContainerComponentStyled>
   );
 };

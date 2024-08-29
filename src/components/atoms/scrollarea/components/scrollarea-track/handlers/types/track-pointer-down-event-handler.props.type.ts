@@ -1,8 +1,8 @@
-type GetContentScrollTopPropsType = {
+type TrackPointerDownEventHandlerPropsType = {
   contentRef: React.RefObject<HTMLDivElement>;
+  event: React.MouseEvent<HTMLDivElement>;
   thumbRef: React.RefObject<HTMLDivElement>;
-  thumbTranslateY: number;
   trackRef: React.RefObject<HTMLDivElement>;
 };
 
-export { GetContentScrollTopPropsType };
+export { TrackPointerDownEventHandlerPropsType };

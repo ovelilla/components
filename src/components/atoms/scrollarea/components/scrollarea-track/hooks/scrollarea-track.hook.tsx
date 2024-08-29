@@ -6,24 +6,17 @@ import { ScrollareaTrackHookReturnType } from './types/scrollarea-track.hook.ret
 
 const ScrollareaTrackHook = ({
   contentRef,
-  setInitialScrollTop,
-  setInitialPointerY,
-  setIsDragging,
   thumbRef,
   trackRef,
 }: ScrollareaTrackHookPropsType): ScrollareaTrackHookReturnType => {
-  const { handleTrackMouseDownEvent, handleTrackTouchStartEvent } = ScrollareaTrackHandlers({
+  const { handleTrackPointerDownEvent } = ScrollareaTrackHandlers({
     contentRef,
-    setInitialScrollTop,
-    setInitialPointerY,
-    setIsDragging,
     thumbRef,
     trackRef,
   });
 
   return {
-    handleTrackMouseDownEvent,
-    handleTrackTouchStartEvent,
+    handleTrackPointerDownEvent,
   };
 };
 

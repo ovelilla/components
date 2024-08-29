@@ -10,8 +10,8 @@ import { TooltipComponentPropsType } from 'components/atoms/tooltip/types/toolti
 
 type DialogComponentPropsType = {
   animation?: {
-    container?: { active?: boolean; duration?: number };
-    overlay?: { active?: boolean; duration?: number };
+    container?: { active?: boolean; duration?: number; type?: string };
+    overlay?: { active?: boolean; duration?: number; type?: string };
   };
   children: React.ReactNode;
   buttonCloseProps?: {

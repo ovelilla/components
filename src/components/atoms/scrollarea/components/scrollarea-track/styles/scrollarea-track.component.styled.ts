@@ -16,18 +16,20 @@ import {
 const ScrollareaTrackComponentStyled = styled.div.withConfig({
   shouldForwardProp: (prop: string): boolean => !EXCLUDED_PROPS.includes(prop),
 })<ScrollareaComponentTrackStyledPropsType>`
-  ${({ position, size, theme }) =>
-    position === ScrollareaComponentPositionEnum.ABSOLUTE
-      ? css`
-          position: absolute;
-          top: 0;
-          right: 0;
-          height: 100%;
-          width: ${getTrackWidth({ size, theme })};
-        `
-      : css``}
-  background-color: hsl(${({ showTrack, theme }) => getTrackBackgroundColor({ showTrack, theme })});
-  border-radius: ${({ borderRadius, theme }) => getTrackBorderRadius({ borderRadius, theme })};
+  ${({ borderRadius, position, showTrack, size, theme }) => css`
+    ${position === ScrollareaComponentPositionEnum.ABSOLUTE &&
+    css`
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: ${getTrackWidth({ size, theme })};
+    `}
+    background-color: hsl(${getTrackBackgroundColor({ showTrack, theme })});
+    border-radius: ${getTrackBorderRadius({ borderRadius, theme })};
+    user-select: none;
+    touch-action: none;
+  `}
 `;
 
 export { ScrollareaTrackComponentStyled };

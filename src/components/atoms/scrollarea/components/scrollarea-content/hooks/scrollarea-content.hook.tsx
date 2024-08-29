@@ -6,20 +6,14 @@ import { ScrollareaContentHookReturnType } from './types/scrollarea-content.hook
 
 const ScrollareaContentHook = ({
   contentRef,
-  hideDelay,
-  setShowScrollbar,
   setThumbTranslateY,
   thumbRef,
-  timerRef,
   trackRef,
 }: ScrollareaContentHookPropsType): ScrollareaContentHookReturnType => {
   const { handleScrollEvent } = ScrollareaContentHandlers({
     contentRef,
-    hideDelay,
-    setShowScrollbar,
     setThumbTranslateY,
     thumbRef,
-    timerRef,
     trackRef,
   });
 

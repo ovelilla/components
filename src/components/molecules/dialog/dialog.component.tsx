@@ -1,5 +1,4 @@
 // Vendors
-import { AnimatePresence } from 'framer-motion';
 import React, { Fragment } from 'react';
 // Components
 import { DialogContainerComponent } from './components/dialog-container/dialog-container.component';
@@ -32,39 +31,36 @@ const DialogComponent = ({
   });
 
   return (
-    <AnimatePresence>
-      {open && (
-        <Fragment>
-          <GlobalStyle {...{ hasHorizontalScroll, hasVerticalScroll }} />
-          <DialogOverlayComponent
-            {...{
-              animation: animation?.overlay,
-              onClose,
-              open,
-              setShouldClose,
-              shouldClose,
-              style: style?.overlay,
-            }}>
-            <DialogContainerComponent
-              {...{
-                animation: animation?.container,
-                buttonCloseProps,
-                buttonFullscreenProps,
-                isFullscreen,
-                minSize,
-                onClose,
-                position,
-                setShouldClose,
-                size,
-                style: style?.content,
-                title,
-              }}>
-              {children}
-            </DialogContainerComponent>
-          </DialogOverlayComponent>
-        </Fragment>
-      )}
-    </AnimatePresence>
+    <Fragment>
+      <GlobalStyle {...{ hasHorizontalScroll, hasVerticalScroll }} />
+      <DialogOverlayComponent
+        {...{
+          animation: animation?.overlay,
+          onClose,
+          open,
+          setShouldClose,
+          shouldClose,
+          style: style?.overlay,
+        }}>
+        <DialogContainerComponent
+          {...{
+            animation: animation?.container,
+            buttonCloseProps,
+            buttonFullscreenProps,
+            isFullscreen,
+            minSize,
+            onClose,
+            open,
+            position,
+            setShouldClose,
+            size,
+            style: style?.content,
+            title,
+          }}>
+          {children}
+        </DialogContainerComponent>
+      </DialogOverlayComponent>
+    </Fragment>
   );
 };
 

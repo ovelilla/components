@@ -13,38 +13,32 @@ const ScrollareaTrackComponent = ({
   borderRadius,
   children,
   contentRef,
-  isDragging,
-  showScrollbar,
   position,
-  setInitialScrollTop,
-  setInitialPointerY,
-  setIsDragging,
+  showScrollbar,
   showTrack,
   size,
   thumbRef,
   trackRef,
   variant,
 }: ScrollareaTrackComponentPropsType): React.ReactElement<ScrollareaTrackComponentPropsType> | null => {
-  const { handleTrackMouseDownEvent, handleTrackTouchStartEvent } = ScrollareaTrackHook({
+  const { handleTrackPointerDownEvent } = ScrollareaTrackHook({
     contentRef,
-    setInitialScrollTop,
-    setInitialPointerY,
-    setIsDragging,
     thumbRef,
     trackRef,
   });
+
   if (
     variant === ScrollareaComponentVariantEnum.HIDDEN ||
-    (variant === ScrollareaComponentVariantEnum.HOVER && !showScrollbar && !isDragging)
+    (variant === ScrollareaComponentVariantEnum.HOVER && !showScrollbar)
   ) {
     return null;
   }
+
   return (
     <ScrollareaTrackComponentStyled
       {...{
         borderRadius,
-        onMouseDown: handleTrackMouseDownEvent,
-        onTouchStart: handleTrackTouchStartEvent,
+        onPointerDown: handleTrackPointerDownEvent,
         position,
         ref: trackRef,
         showTrack,

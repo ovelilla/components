@@ -1,5 +1,5 @@
 // Vendors
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 // Constants
 import { EXCLUDED_PROPS } from './constants/scrollarea-thumb.component.styled.constants';
 // Types
@@ -14,12 +14,16 @@ const ScrollareaThumbComponentStyled = styled.div
   .attrs<ScrollareaComponentThumbStyledPropsType>(({ thumbHeight, thumbTranslateY }) => ({
     style: {
       height: thumbHeight,
-      transform: `translate3d(0, ${thumbTranslateY}px, 0)`,
+      transform: `translate(0, ${thumbTranslateY}px)`,
     },
   }))`
-  background-color: hsl(${({ theme }) => theme.colors.border});
-  border-radius: ${({ borderRadius, theme }) => getBorderRadius({ borderRadius, theme })};
-  width: 100%;
+  ${({ borderRadius, theme }) => css`
+    background-color: hsl(${theme.colors.border});
+    border-radius: ${getBorderRadius({ borderRadius, theme })};
+    user-select: none;
+    touch-action: none;
+    width: 100%;
+  `}
 `;
 
 export { ScrollareaThumbComponentStyled };

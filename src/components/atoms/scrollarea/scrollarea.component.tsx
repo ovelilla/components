@@ -35,20 +35,12 @@ const ScrollareaComponent = ({
     contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
-    initialPointerY,
-    initialScrollTop,
-    isDragging,
-    setInitialPointerY,
-    setInitialScrollTop,
     setIsDragging,
-    setShowScrollbar,
-    setThumbHeight,
     setThumbTranslateY,
     showScrollbar,
     thumbHeight,
     thumbRef,
     thumbTranslateY,
-    timerRef,
     trackRef,
   } = ScrollareaHook({ hideDelay });
   return (
@@ -64,11 +56,8 @@ const ScrollareaComponent = ({
       <ScrollareaContentComponent
         {...{
           contentRef,
-          hideDelay,
-          setShowScrollbar,
           setThumbTranslateY,
           thumbRef,
-          timerRef,
           trackRef,
         }}>
         {children}
@@ -77,12 +66,8 @@ const ScrollareaComponent = ({
         {...{
           borderRadius,
           contentRef,
-          isDragging,
-          showScrollbar,
           position,
-          setInitialScrollTop,
-          setInitialPointerY,
-          setIsDragging,
+          showScrollbar,
           showTrack,
           size,
           thumbRef,
@@ -93,15 +78,7 @@ const ScrollareaComponent = ({
           {...{
             borderRadius,
             contentRef,
-            gap,
-            initialPointerY,
-            initialScrollTop,
-            isDragging,
-            setInitialPointerY,
-            setInitialScrollTop,
             setIsDragging,
-            setThumbHeight,
-            setThumbTranslateY,
             size,
             thumbHeight,
             thumbRef,

@@ -10,20 +10,14 @@ import { ScrollareaContentComponentPropsType } from './types/scrollarea-content.
 const ScrollareaContentComponent = ({
   children,
   contentRef,
-  hideDelay,
-  setShowScrollbar,
   setThumbTranslateY,
   thumbRef,
-  timerRef,
   trackRef,
 }: ScrollareaContentComponentPropsType): React.ReactElement<ScrollareaContentComponentPropsType> => {
   const { handleScrollEvent } = ScrollareaContentHook({
     contentRef,
-    hideDelay,
-    setShowScrollbar,
     setThumbTranslateY,
     thumbRef,
-    timerRef,
     trackRef,
   });
   return (

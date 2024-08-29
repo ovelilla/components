@@ -6,7 +6,7 @@ import { DialogResizeHookPropsType } from './types/dialog-resize.hook.props.type
 import { DialogResizeHookReturnType } from './types/dialog-resize.hook.return.type';
 
 const DialogResizeHook = ({
-  isFullscreen,
+  disabled,
   minSize,
   setSize,
   setTranslate,
@@ -23,7 +23,7 @@ const DialogResizeHook = ({
     handleTopRightCornerPointerDownEvent,
     handleTopSidePointerDownEvent,
   } = DialogResizeHandlers({
-    isFullscreen,
+    disabled,
     minSize,
     setSize,
     setTranslate,

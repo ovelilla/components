@@ -7,14 +7,14 @@ type DialogOverlayComponentPropsType = {
   animation?: {
     active?: boolean;
     duration?: number;
+    type?: string;
   };
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onClose: VoidFunction;
+  open: boolean;
   setShouldClose: Dispatch<SetStateAction<boolean>>;
   shouldClose: boolean;
-  style?: {
-    opacity?: DialogOverlayComponentOpacityEnum;
-  };
+  style?: { opacity?: DialogOverlayComponentOpacityEnum };
 };
 
 export { DialogOverlayComponentPropsType };

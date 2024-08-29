@@ -2,7 +2,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 type DialogResizeHandlersPropsType = {
-  isFullscreen: boolean;
+  disabled?: boolean;
   minSize: { width: number; height: number };
   setSize: Dispatch<SetStateAction<{ width: number; height: number | null }>>;
   setTranslate: Dispatch<SetStateAction<{ x: number; y: number }>>;

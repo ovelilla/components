@@ -6,6 +6,7 @@ type DialogContainerHookPropsType = {
   initialMinSize?: { width?: number; height?: number };
   initialPosition?: { left?: number; top?: number };
   initialSize?: { width?: number; height?: number };
+  open: boolean;
   setShouldClose: Dispatch<SetStateAction<boolean>>;
 };
 

@@ -1,7 +1,31 @@
 Refactorizar scrollarea
 
-En dialog, max width y max height no tienen sentido
 
-En dialog creo que se puede quitar el componente de animacion DialogSlideAnimationComponent y aplicar la animacion directamente en el componente DialogContainerComponentStyled a partir del estado tranlate.
+// Vendors
+import { Dispatch, SetStateAction } from 'react';
+
+type ResizeEventHandlerPropsType = {
+  contentRef: React.RefObject<HTMLDivElement>;
+  setThumbHeight: Dispatch<SetStateAction<number>>;
+  setThumbTranslateY: Dispatch<SetStateAction<number>>;
+  thumbRef: React.RefObject<HTMLDivElement>;
+  trackRef: React.RefObject<HTMLDivElement>;
+};
+
+export { ResizeEventHandlerPropsType };
+
+const resizeEventHandler = ({
+  contentRef,
+  setThumbHeight,
+  setThumbTranslateY,
+  thumbRef,
+  trackRef,
+}: ResizeEventHandlerPropsType): void => {
+  setThumbHeight(getThumbHeight({ contentRef, trackRef }));
+  setThumbTranslateY(getThumbTranslateY({ contentRef, thumbRef, trackRef }));
+};
+
+
+
 
 Creo que el componente Resize puede ser un padre que recibe children y por tanto ser un componente agnostico.

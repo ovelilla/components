@@ -10,40 +10,22 @@ import { ScrollareaThumbComponentPropsType } from './types/scrollarea-thumb.comp
 const ScrollareaThumbComponent = ({
   borderRadius,
   contentRef,
-  // gap,
-  initialPointerY,
-  initialScrollTop,
-  isDragging,
-  setInitialPointerY,
-  setInitialScrollTop,
-  setIsDragging,
-  setThumbHeight,
-  setThumbTranslateY,
+  // setIsDragging,
   size,
   thumbHeight,
   thumbRef,
   thumbTranslateY,
   trackRef,
 }: ScrollareaThumbComponentPropsType): React.ReactElement<ScrollareaThumbComponentPropsType> => {
-  const { handleThumbMouseDownEvent, handleThumbTouchStartEvent } = ScrollareaThumbHook({
+  const { handleThumbPointerDownEvent } = ScrollareaThumbHook({
     contentRef,
-    initialPointerY,
-    initialScrollTop,
-    isDragging,
-    setInitialPointerY,
-    setInitialScrollTop,
-    setIsDragging,
-    setThumbHeight,
-    setThumbTranslateY,
-    thumbRef,
     trackRef,
   });
   return (
     <ScrollareaThumbComponentStyled
       {...{
         borderRadius,
-        onMouseDown: handleThumbMouseDownEvent,
-        onTouchStart: handleThumbTouchStartEvent,
+        onPointerDown: handleThumbPointerDownEvent,
         ref: thumbRef,
         size,
         thumbHeight,

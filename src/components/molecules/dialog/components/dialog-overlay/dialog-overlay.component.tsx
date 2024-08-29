@@ -1,8 +1,6 @@
 // Vendors
 import React from 'react';
 import ReactDOM from 'react-dom';
-// Configurations
-import { getOverlayAnimationConfiguration } from './configurations/dialog-overlay.configurations';
 // Hooks
 import { DialogOverlayHook } from './hooks/dialog-overlay.hook';
 // Styles
@@ -14,23 +12,37 @@ const DialogOverlayComponent = ({
   animation,
   children,
   onClose,
+  open,
   setShouldClose,
   shouldClose,
   style,
-}: DialogOverlayComponentPropsType): React.ReactElement<DialogOverlayComponentPropsType> => {
-  const { handlePointerDownEvent, handlePointerUpEvent, overlayRef } = DialogOverlayHook({
+}: DialogOverlayComponentPropsType): React.ReactElement<DialogOverlayComponentPropsType> | null => {
+  const {
+    handleAnimationEndEvent,
+    handlePointerDownEvent,
+    handlePointerUpEvent,
+    overlayRef,
+    shouldRender,
+  } = DialogOverlayHook({
     onClose,
+    open,
     setShouldClose,
     shouldClose,
   });
 
+  if (!shouldRender) {
+    return null;
+  }
+
   return ReactDOM.createPortal(
     <DialogOverlayComponentStyled
       {...{
-        ...getOverlayAnimationConfiguration({ ...animation }),
         ...style,
+        animation,
+        onAnimationEnd: handleAnimationEndEvent,
         onPointerDown: handlePointerDownEvent,
         onPointerUp: handlePointerUpEvent,
+        open,
         ref: overlayRef,
       }}>
       {children}

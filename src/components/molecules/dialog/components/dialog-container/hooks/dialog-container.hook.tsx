@@ -21,6 +21,7 @@ const DialogContainerHook = ({
   initialMinSize,
   initialPosition,
   initialSize,
+  open,
   setShouldClose,
 }: DialogContainerHookPropsType): DialogContainerHookReturnType => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,22 +30,26 @@ const DialogContainerHook = ({
   const [isFullscreen, setIsFullscreen] = useState<boolean>(
     getInitailIsFullscreen({ initialIsFullscreen, isMobile })
   );
-  const [position, setPosition] = useState<{ left: number; top: number }>(
-    getInitialPosition({ containerRef, initialPosition })
-  );
-  const [size, setSize] = useState<{ width: number; height: number | null }>(
-    getInitialSize({ containerRef, initialSize })
-  );
   const [minSize, setMinSize] = useState<{ width: number; height: number }>(
     getInitialMinSize({ initialMinSize })
   );
+  const [position, setPosition] = useState<{ left: number; top: number }>(
+    getInitialPosition({ containerRef, initialPosition })
+  );
+  const [shouldRender, setShouldRender] = useState(open);
+  const [size, setSize] = useState<{ width: number; height: number | null }>(
+    getInitialSize({ containerRef, initialSize })
+  );
   const [translate, setTranslate] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  const { handlePointerDownEvent, handlePointerUpEvent } = DialogContainerHandlers({
-    containerRef,
-    setPosition,
-    setShouldClose,
-  });
+  const { handleAnimationEndEvent, handlePointerDownEvent, handlePointerUpEvent } =
+    DialogContainerHandlers({
+      containerRef,
+      open,
+      setPosition,
+      setShouldClose,
+      setShouldRender,
+    });
 
   useLayoutEffect(() => {
     setSize(getInitialSize({ containerRef, initialSize }));
@@ -62,8 +67,15 @@ const DialogContainerHook = ({
     setIsFullscreen(getInitailIsFullscreen({ initialIsFullscreen, isMobile }));
   }, [initialIsFullscreen, isMobile]);
 
+  useEffect(() => {
+    if (open) {
+      setShouldRender(true);
+    }
+  }, [open]);
+
   return {
     containerRef,
+    handleAnimationEndEvent,
     handlePointerDownEvent,
     handlePointerUpEvent,
     isFullscreen,

@@ -1,3 +1,3 @@
-const EXCLUDED_PROPS = ['isFullscreen', 'minSize', 'position', 'size', 'translate'];
+const EXCLUDED_PROPS = ['isFullscreen', 'minSize', 'open', 'position', 'size', 'translate'];
 
 export { EXCLUDED_PROPS };

@@ -1,5 +1,5 @@
 // Vendors
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // Handlers
 import { DialogOverlayHandlers } from '../handlers/dialog-overlay.handlers';
 // Types
@@ -8,18 +8,36 @@ import { DialogOverlayHookReturnType } from './types/dialog-overlay.hook.return.
 
 const DialogOverlayHook = ({
   onClose,
+  open,
   setShouldClose,
   shouldClose,
 }: DialogOverlayHookPropsType): DialogOverlayHookReturnType => {
+  const [shouldRender, setShouldRender] = useState(open);
+
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const { handlePointerDownEvent, handlePointerUpEvent } = DialogOverlayHandlers({
-    onClose,
-    setShouldClose,
-    shouldClose,
-  });
+  useEffect(() => {
+    if (open) {
+      setShouldRender(true);
+    }
+  }, [open]);
 
-  return { handlePointerDownEvent, handlePointerUpEvent, overlayRef };
+  const { handleAnimationEndEvent, handlePointerDownEvent, handlePointerUpEvent } =
+    DialogOverlayHandlers({
+      onClose,
+      open,
+      setShouldClose,
+      setShouldRender,
+      shouldClose,
+    });
+
+  return {
+    handleAnimationEndEvent,
+    handlePointerDownEvent,
+    handlePointerUpEvent,
+    overlayRef,
+    shouldRender,
+  };
 };
 
 export { DialogOverlayHook };

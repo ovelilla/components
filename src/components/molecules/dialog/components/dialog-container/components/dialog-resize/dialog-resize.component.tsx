@@ -17,7 +17,7 @@ import {
 import { DialogResizeComponentPropsType } from './types/dialog-resize.component.props.type';
 
 const DialogResizeComponent = ({
-  isFullscreen,
+  disabled,
   minSize,
   setSize,
   setTranslate,
@@ -34,7 +34,7 @@ const DialogResizeComponent = ({
     handleTopRightCornerPointerDownEvent,
     handleTopSidePointerDownEvent,
   } = DialogResizeHook({
-    isFullscreen,
+    disabled,
     minSize,
     setSize,
     setTranslate,
@@ -44,21 +44,29 @@ const DialogResizeComponent = ({
   return (
     <Fragment>
       <DialogResizeComponentTopRigtCornerStyled
-        onPointerDown={handleTopRightCornerPointerDownEvent}
+        {...{ disabled, onPointerDown: handleTopRightCornerPointerDownEvent }}
       />
       <DialogResizeComponentTopLeftCornerStyled
-        onPointerDown={handleTopLeftCornerPointerDownEvent}
+        {...{ disabled, onPointerDown: handleTopLeftCornerPointerDownEvent }}
       />
       <DialogResizeComponentBottomRightCornerStyled
-        onPointerDown={handleBottomRightCornerPointerDownEvent}
+        {...{ disabled, onPointerDown: handleBottomRightCornerPointerDownEvent }}
       />
       <DialogResizeComponentBottomLeftCornerStyled
-        onPointerDown={handleBottomLeftCornerPointerDownEvent}
+        {...{ disabled, onPointerDown: handleBottomLeftCornerPointerDownEvent }}
       />
-      <DialogResizeComponentTopSideStyled onPointerDown={handleTopSidePointerDownEvent} />
-      <DialogResizeComponentRightSideStyled onPointerDown={handleRightSidePointerDownEvent} />
-      <DialogResizeComponentBottomSideStyled onPointerDown={handleBottomSidePointerDownEvent} />
-      <DialogResizeComponentLeftSideStyled onPointerDown={handleLeftSidePointerDownEvent} />
+      <DialogResizeComponentTopSideStyled
+        {...{ disabled, onPointerDown: handleTopSidePointerDownEvent }}
+      />
+      <DialogResizeComponentRightSideStyled
+        {...{ disabled, onPointerDown: handleRightSidePointerDownEvent }}
+      />
+      <DialogResizeComponentBottomSideStyled
+        {...{ disabled, onPointerDown: handleBottomSidePointerDownEvent }}
+      />
+      <DialogResizeComponentLeftSideStyled
+        {...{ disabled, onPointerDown: handleLeftSidePointerDownEvent }}
+      />
     </Fragment>
   );
 };

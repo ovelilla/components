@@ -1,6 +1,5 @@
 type ScrollareaThumbHookReturnType = {
-  handleThumbMouseDownEvent: (event: React.MouseEvent<HTMLDivElement>) => void;
-  handleThumbTouchStartEvent: (event: React.TouchEvent<HTMLDivElement>) => void;
+  handleThumbPointerDownEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
 };
 
 export { ScrollareaThumbHookReturnType };

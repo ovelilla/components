@@ -1,8 +1,18 @@
 // Types
+import { AnimationEndEventHandlerPropsType } from './types/animation-end-event-handler.props.type';
 import { DialogOverlayHandlersPropsType } from './types/dialog-overlay.handlers.props.type';
 import { DialogOverlayHandlersReturnType } from './types/dialog-overlay.handlers.return.type';
 import { PointerDownEventHandlerPropsType } from './types/pointer-down-event-handler.props.type';
 import { PointerUpEventHandlerPropsType } from './types/pointer-up-event-handler.props.type';
+
+const animationEndEventHandler = ({
+  open,
+  setShouldRender,
+}: AnimationEndEventHandlerPropsType): void => {
+  if (!open) {
+    setShouldRender(false);
+  }
+};
 
 const pointerDownEventHandler = ({
   event,
@@ -20,10 +30,13 @@ const pointerUpEventHandler = ({ onClose, shouldClose }: PointerUpEventHandlerPr
 
 const DialogOverlayHandlers = ({
   onClose,
+  open,
   setShouldClose,
+  setShouldRender,
   shouldClose,
 }: DialogOverlayHandlersPropsType): DialogOverlayHandlersReturnType => {
   return {
+    handleAnimationEndEvent: () => animationEndEventHandler({ open, setShouldRender }),
     handlePointerDownEvent: (event) => pointerDownEventHandler({ event, setShouldClose }),
     handlePointerUpEvent: () => pointerUpEventHandler({ shouldClose, onClose }),
   };

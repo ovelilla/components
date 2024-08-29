@@ -33,12 +33,14 @@ const DialogPage = (): React.ReactElement => {
           open,
           title: 'Lorem ipsum',
         }}>
-        <ParagraphComponent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero nec
-          ultricies. Integer nec sapien sit amet nulla ultrices ultricies. Sed nec metus id augue
-          fermentum fermentum. Nullam nec nunc eget libero ultricies ultricies. Sed nec metus id
-          augue fermentum fermentum. Nullam nec nunc eget libero ultricies ultricies.
-        </ParagraphComponent>
+        <div style={{ padding: '16px' }}>
+          <ParagraphComponent>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero nec
+            ultricies. Integer nec sapien sit amet nulla ultrices ultricies. Sed nec metus id augue
+            fermentum fermentum. Nullam nec nunc eget libero ultricies ultricies. Sed nec metus id
+            augue fermentum fermentum. Nullam nec nunc eget libero ultricies ultricies.
+          </ParagraphComponent>
+        </div>
       </DialogComponent>
     </DialogPageStyled>
   );

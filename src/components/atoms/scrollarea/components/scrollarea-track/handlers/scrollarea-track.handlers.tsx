@@ -1,78 +1,54 @@
 // Types
 import { ScrollareaTrackHandlersPropsType } from './types/scrollarea-track.handlers.props.type';
 import { ScrollareaTrackHandlersReturnType } from './types/scrollarea-track.handlers.return.type';
-import { TrackMouseDownEventHandlerPropsType } from './types/track-mouse-down-event-handler.props.type';
-import { TrackTouchStartEventHandlerPropsType } from './types/track-touch-start-event-handler.props.type';
-// Utils
-import { getContentScrollTop } from '../utils/scrollarea-track.utils';
+import { TrackPointerDownEventHandlerPropsType } from './types/track-pointer-down-event-handler.props.type';
 
-const trackMouseDownEventHandler = ({
+const trackPointerDownEventHandler = ({
   contentRef,
   event,
-  setInitialScrollTop,
-  setInitialPointerY,
-  setIsDragging,
   thumbRef,
   trackRef,
-}: TrackMouseDownEventHandlerPropsType): void => {
+}: TrackPointerDownEventHandlerPropsType): void => {
   event.preventDefault();
-  if (!contentRef.current) {
-    return;
-  }
-  const clientY = event.clientY;
-  const contentScrollTop = getContentScrollTop({ clientY, contentRef, thumbRef, trackRef });
-  contentRef.current.scrollTop = contentScrollTop;
-  setInitialPointerY(clientY);
-  setInitialScrollTop(contentScrollTop);
-  setIsDragging(true);
-};
 
-const trackTouchStartEventHandler = ({
-  contentRef,
-  event,
-  setInitialScrollTop,
-  setInitialPointerY,
-  setIsDragging,
-  thumbRef,
-  trackRef,
-}: TrackTouchStartEventHandlerPropsType): void => {
-  if (!contentRef.current) {
+  if (!contentRef.current || !thumbRef.current || !trackRef.current) {
     return;
   }
-  const clientY = event.touches[0].clientY;
-  const contentScrollTop = getContentScrollTop({ clientY, contentRef, thumbRef, trackRef });
+
+  const contentClientHeight = contentRef.current.clientHeight;
+  const contentScrollHeight = contentRef.current.scrollHeight;
+  const trackClientHeight = trackRef.current.clientHeight;
+  const trackClientTop = trackRef.current.getBoundingClientRect().top;
+  const thumbClientHeight = thumbRef.current.clientHeight;
+
+  const thumbCenterPosition = event.clientY - trackClientTop - thumbClientHeight / 2;
+  const scrollableTrackHeight = trackClientHeight - thumbClientHeight;
+  const thumbPositionRatio = thumbCenterPosition / scrollableTrackHeight;
+  const scrollableContentHeight = contentScrollHeight - contentClientHeight;
+  const contentScrollTop = thumbPositionRatio * scrollableContentHeight;
+
   contentRef.current.scrollTop = contentScrollTop;
-  setInitialPointerY(clientY);
-  setInitialScrollTop(contentScrollTop);
-  setIsDragging(true);
+
+  const newEvent = new PointerEvent('pointerdown', {
+    bubbles: true,
+    cancelable: true,
+    clientX: event.clientX,
+    clientY: event.clientY,
+  });
+
+  thumbRef.current.dispatchEvent(newEvent);
 };
 
 const ScrollareaTrackHandlers = ({
   contentRef,
-  setInitialScrollTop,
-  setInitialPointerY,
-  setIsDragging,
   thumbRef,
   trackRef,
 }: ScrollareaTrackHandlersPropsType): ScrollareaTrackHandlersReturnType => {
   return {
-    handleTrackMouseDownEvent: (event) =>
-      trackMouseDownEventHandler({
+    handleTrackPointerDownEvent: (event) =>
+      trackPointerDownEventHandler({
         contentRef,
         event,
-        setInitialScrollTop,
-        setInitialPointerY,
-        setIsDragging,
-        thumbRef,
-        trackRef,
-      }),
-    handleTrackTouchStartEvent: (event) =>
-      trackTouchStartEventHandler({
-        contentRef,
-        event,
-        setInitialScrollTop,
-        setInitialPointerY,
-        setIsDragging,
         thumbRef,
         trackRef,
       }),

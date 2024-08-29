@@ -1,6 +1,5 @@
 type ScrollareaTrackHookReturnType = {
-  handleTrackMouseDownEvent: (event: React.MouseEvent<HTMLDivElement>) => void;
-  handleTrackTouchStartEvent: (event: React.TouchEvent<HTMLDivElement>) => void;
+  handleTrackPointerDownEvent: (event: React.PointerEvent<HTMLDivElement>) => void;
 };
 
 export { ScrollareaTrackHookReturnType };

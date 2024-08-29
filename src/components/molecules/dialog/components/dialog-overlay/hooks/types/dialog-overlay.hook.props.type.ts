@@ -2,9 +2,10 @@
 import { Dispatch, SetStateAction } from 'react';
 
 type DialogOverlayHookPropsType = {
-  shouldClose: boolean;
   onClose: VoidFunction;
+  open: boolean;
   setShouldClose: Dispatch<SetStateAction<boolean>>;
+  shouldClose: boolean;
 };
 
 export { DialogOverlayHookPropsType };

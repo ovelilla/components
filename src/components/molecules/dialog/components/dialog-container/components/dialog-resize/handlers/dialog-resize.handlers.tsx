@@ -11,8 +11,8 @@ import { TopRightCornerPointerDownEventHandlerPropsType } from './types/top-righ
 import { TopSidePointerDownEventHandlerPropsType } from './types/top-side-pointer-down-event-handler.props.type';
 
 const bottomLeftCornerPointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   setTranslate,
@@ -22,7 +22,7 @@ const bottomLeftCornerPointerDownEventHandler = ({
   event.stopPropagation();
   event.preventDefault();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -69,8 +69,8 @@ const bottomLeftCornerPointerDownEventHandler = ({
 };
 
 const bottomRightCornerPointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   size,
@@ -78,7 +78,7 @@ const bottomRightCornerPointerDownEventHandler = ({
   event.stopPropagation();
   event.stopPropagation();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -115,8 +115,8 @@ const bottomRightCornerPointerDownEventHandler = ({
 };
 
 const bottomSidePointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   size,
@@ -124,7 +124,7 @@ const bottomSidePointerDownEventHandler = ({
   event.preventDefault();
   event.stopPropagation();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -153,8 +153,8 @@ const bottomSidePointerDownEventHandler = ({
 };
 
 const leftSidePointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   setTranslate,
@@ -164,7 +164,7 @@ const leftSidePointerDownEventHandler = ({
   event.stopPropagation();
   event.preventDefault();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -202,8 +202,8 @@ const leftSidePointerDownEventHandler = ({
 };
 
 const rightSidePointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   size,
@@ -211,7 +211,7 @@ const rightSidePointerDownEventHandler = ({
   event.stopPropagation();
   event.preventDefault();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -240,8 +240,8 @@ const rightSidePointerDownEventHandler = ({
 };
 
 const topLeftCornerPointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   setTranslate,
@@ -251,7 +251,7 @@ const topLeftCornerPointerDownEventHandler = ({
   event.stopPropagation();
   event.preventDefault();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -304,8 +304,8 @@ const topLeftCornerPointerDownEventHandler = ({
 };
 
 const topRightCornerPointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   setTranslate,
@@ -315,7 +315,7 @@ const topRightCornerPointerDownEventHandler = ({
   event.stopPropagation();
   event.preventDefault();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -362,8 +362,8 @@ const topRightCornerPointerDownEventHandler = ({
 };
 
 const topSidePointerDownEventHandler = ({
+  disabled,
   event,
-  isFullscreen,
   minSize,
   setSize,
   setTranslate,
@@ -373,7 +373,7 @@ const topSidePointerDownEventHandler = ({
   event.stopPropagation();
   event.preventDefault();
 
-  if (isFullscreen) {
+  if (disabled) {
     return;
   }
 
@@ -409,7 +409,7 @@ const topSidePointerDownEventHandler = ({
 };
 
 const DialogResizeHandlers = ({
-  isFullscreen,
+  disabled,
   minSize,
   setSize,
   setTranslate,
@@ -419,8 +419,8 @@ const DialogResizeHandlers = ({
   return {
     handleBottomLeftCornerPointerDownEvent: (event) =>
       bottomLeftCornerPointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         setTranslate,
@@ -429,24 +429,24 @@ const DialogResizeHandlers = ({
       }),
     handleBottomRightCornerPointerDownEvent: (event) =>
       bottomRightCornerPointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         size,
       }),
     handleBottomSidePointerDownEvent: (event) =>
       bottomSidePointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         size,
       }),
     handleLeftSidePointerDownEvent: (event) =>
       leftSidePointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         setTranslate,
@@ -455,16 +455,16 @@ const DialogResizeHandlers = ({
       }),
     handleRightSidePointerDownEvent: (event) =>
       rightSidePointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         size,
       }),
     handleTopLeftCornerPointerDownEvent: (event) =>
       topLeftCornerPointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         setTranslate,
@@ -473,8 +473,8 @@ const DialogResizeHandlers = ({
       }),
     handleTopRightCornerPointerDownEvent: (event) =>
       topRightCornerPointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         setTranslate,
@@ -483,8 +483,8 @@ const DialogResizeHandlers = ({
       }),
     handleTopSidePointerDownEvent: (event) =>
       topSidePointerDownEventHandler({
+        disabled,
         event,
-        isFullscreen,
         minSize,
         setSize,
         setTranslate,

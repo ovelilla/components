@@ -1,3 +1,3 @@
-const EXCLUDED_PROPS = ['opacity'];
+const EXCLUDED_PROPS = ['opacity', 'open'];
 
 export { EXCLUDED_PROPS };
