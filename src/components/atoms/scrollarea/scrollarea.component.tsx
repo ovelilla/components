@@ -36,11 +36,13 @@ const ScrollareaComponent = ({
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
     setIsDragging,
+    setShowScrollbar,
     setThumbTranslateY,
     showScrollbar,
     thumbHeight,
     thumbRef,
     thumbTranslateY,
+    timerRef,
     trackRef,
   } = ScrollareaHook({ hideDelay });
   return (
@@ -56,8 +58,11 @@ const ScrollareaComponent = ({
       <ScrollareaContentComponent
         {...{
           contentRef,
+          hideDelay,
+          setShowScrollbar,
           setThumbTranslateY,
           thumbRef,
+          timerRef,
           trackRef,
         }}>
         {children}

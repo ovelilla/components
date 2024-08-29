@@ -37,11 +37,13 @@ const ScrollareaHook = ({ hideDelay }: ScrollareaHookPropsType): ScrollareaHookR
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
     setIsDragging,
+    setShowScrollbar,
     setThumbTranslateY,
     showScrollbar,
     thumbHeight,
     thumbRef,
     thumbTranslateY,
+    timerRef,
     trackRef,
   };
 };
