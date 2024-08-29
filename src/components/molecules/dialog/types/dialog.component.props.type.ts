@@ -1,8 +1,8 @@
 // Enums
 import {
-  DialogContentComponentBorderRadiusEnum,
-  DialogContentComponentPaddingEnum,
-} from '../components/dialog-container/components/dialog-content/enums/dialog-content.component.enums';
+  DialogContainerComponentBorderRadiusEnum,
+  DialogContainerComponentPaddingEnum,
+} from '../components/dialog-container/enums/dialog-container.component.enums';
 import { DialogOverlayComponentOpacityEnum } from '../components/dialog-overlay/enums/dialog-overlay.component.enums';
 // Types
 import { ButtonComponentPropsType } from 'components/atoms/button/types/button.component.props.type';
@@ -30,8 +30,8 @@ type DialogComponentPropsType = {
   size?: { height?: number; width?: number };
   style?: {
     content?: {
-      borderRadius?: DialogContentComponentBorderRadiusEnum;
-      padding?: DialogContentComponentPaddingEnum;
+      borderRadius?: DialogContainerComponentBorderRadiusEnum;
+      padding?: DialogContainerComponentPaddingEnum;
     };
     overlay?: { opacity?: DialogOverlayComponentOpacityEnum };
   };
