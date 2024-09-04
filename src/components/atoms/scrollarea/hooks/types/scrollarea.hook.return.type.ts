@@ -5,6 +5,7 @@ type ScrollareaHookReturnType = {
   contentRef: React.RefObject<HTMLDivElement>;
   handleMouseEnterEvent: VoidFunction;
   handleMouseLeaveEvent: VoidFunction;
+  scrollareaRef: React.RefObject<HTMLDivElement>;
   setIsDragging: Dispatch<SetStateAction<boolean>>;
   setShowScrollbar: Dispatch<SetStateAction<boolean>>;
   setThumbTranslateY: Dispatch<SetStateAction<number>>;

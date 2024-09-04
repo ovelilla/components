@@ -35,6 +35,7 @@ const ScrollareaComponent = ({
     contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    scrollareaRef,
     setIsDragging,
     setShowScrollbar,
     setThumbTranslateY,
@@ -52,6 +53,7 @@ const ScrollareaComponent = ({
         onMouseEnter: handleMouseEnterEvent,
         onMouseLeave: handleMouseLeaveEvent,
         position,
+        ref: scrollareaRef,
         size,
         variant,
       }}>

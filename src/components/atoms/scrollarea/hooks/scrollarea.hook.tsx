@@ -1,12 +1,12 @@
 // Vendors
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 // Handlers
 import { ScrollareaHandlers } from '../handlers/scrollarea.handlers';
 // Types
 import { ScrollareaHookPropsType } from './types/scrollarea.hook.props.type';
 import { ScrollareaHookReturnType } from './types/scrollarea.hook.return.type';
 // Utils
-import { getThumbHeight } from '../utils/scrollarea.utils';
+import { getThumbHeight, getThumbTranslateY } from '../utils/scrollarea.utils';
 
 const ScrollareaHook = ({ hideDelay }: ScrollareaHookPropsType): ScrollareaHookReturnType => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -15,6 +15,7 @@ const ScrollareaHook = ({ hideDelay }: ScrollareaHookPropsType): ScrollareaHookR
   const [thumbTranslateY, setThumbTranslateY] = useState<number>(0);
 
   const contentRef = useRef<HTMLDivElement>(null);
+  const scrollareaRef = useRef<HTMLDivElement>(null);
   const thumbRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -32,10 +33,31 @@ const ScrollareaHook = ({ hideDelay }: ScrollareaHookPropsType): ScrollareaHookR
     setThumbHeight(thumbHeight);
   }, [showScrollbar]);
 
+  useEffect(() => {
+    if (!scrollareaRef.current) {
+      return;
+    }
+
+    const observer = new ResizeObserver(() => {
+      const thumbHeight = getThumbHeight({ contentRef, trackRef });
+      setThumbHeight(thumbHeight);
+
+      const thumbTranslateY = getThumbTranslateY({ contentRef, thumbRef, trackRef });
+      setThumbTranslateY(thumbTranslateY);
+    });
+
+    observer.observe(scrollareaRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return {
     contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    scrollareaRef,
     setIsDragging,
     setShowScrollbar,
     setThumbTranslateY,

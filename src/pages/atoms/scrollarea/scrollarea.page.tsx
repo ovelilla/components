@@ -15,7 +15,7 @@ import {
 const ScrollareaPage = (): React.ReactElement => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      <div style={{ height: 160 }}>
+      <div style={{ height: 160, resize: 'both', overflow: 'auto' }}>
         <ScrollareaComponent>
           <ParagraphComponent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
