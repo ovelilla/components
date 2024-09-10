@@ -31,7 +31,12 @@ const getThumbTranslateY = ({
   const thumbClientHeight = thumbRef.current.clientHeight;
 
   const scrollableContentHeight = contentScrollHeight - contentClientHeight;
-  const scrollableTrackHeight = trackClientHeight - thumbClientHeight;
+
+  if (scrollableContentHeight <= 0) {
+    return 0;
+  }
+
+  const scrollableTrackHeight = Math.max(trackClientHeight - thumbClientHeight, 0);
   const scrollRatio = contentScrollTop / scrollableContentHeight;
   const thumbTranslateY = scrollRatio * scrollableTrackHeight;
 

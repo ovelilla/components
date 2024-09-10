@@ -86,9 +86,9 @@ const DialogContainerComponent = ({
           translate,
         }}
       />
-      <div style={{ flex: 1 }}>
-        <ScrollareaComponent>{children}</ScrollareaComponent>
-      </div>
+      {/* <div style={{ overflow: 'hidden', flex: '1 1 auto', height: '100%' }}> */}
+      <ScrollareaComponent>{children}</ScrollareaComponent>
+      {/* </div> */}
     </DialogContainerComponentStyled>
   );
 };

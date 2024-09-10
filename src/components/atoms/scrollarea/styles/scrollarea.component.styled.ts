@@ -17,6 +17,7 @@ const ScrollareaComponentStyled = styled.div.withConfig({
       ? css`
           display: grid;
           grid-template-columns: 1fr ${getTrackWidth({ size, theme })};
+          grid-template-rows: 100%;
           gap: ${getScrollareaGap({ gap, theme })};
         `
       : css``}

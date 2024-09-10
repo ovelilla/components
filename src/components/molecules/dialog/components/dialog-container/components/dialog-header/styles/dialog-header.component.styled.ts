@@ -3,13 +3,14 @@ import styled from 'styled-components';
 
 const DialogHeaderComponentStyled = styled.div`
   align-items: center;
+  cursor: move;
   display: flex;
+  flex: 0 0 auto;
   gap: 16px;
   justify-content: space-between;
   padding: 16px;
-  cursor: move;
-  user-select: none;
   touch-action: none;
+  user-select: none;
 `;
 
 const DialogHeaderComponentTitleStyled = styled.div``;

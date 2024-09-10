@@ -64,7 +64,6 @@ const DialogContainerComponentStyled = styled('div')
      left: ${isFullscreen ? 0 : position.left}px;
      min-height: ${minSize.height}px;
      min-width: ${minSize.width}px;
-     overflow: hidden;
      padding: ${getPadding({ padding, theme })};
      position: absolute;
      top: ${isFullscreen ? 0 : position.top}px;
