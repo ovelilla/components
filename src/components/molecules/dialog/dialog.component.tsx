@@ -54,7 +54,7 @@ const DialogComponent = ({
             position,
             setShouldClose,
             size,
-            style: style?.content,
+            style: style?.container,
             title,
           }}>
           {children}

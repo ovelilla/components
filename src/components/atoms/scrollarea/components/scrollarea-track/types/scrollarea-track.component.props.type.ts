@@ -10,6 +10,7 @@ type ScrollareaTrackComponentPropsType = {
   borderRadius: ScrollareaComponentBorderRadiusEnum;
   children: React.ReactNode;
   contentRef: React.RefObject<HTMLDivElement>;
+  hasScrollbar: boolean;
   position: ScrollareaComponentPositionEnum;
   showScrollbar: boolean;
   showTrack: boolean;

@@ -10,6 +10,7 @@ import {
 
 type ScrollareaComponentStyledPropsType = {
   gap: ScrollareaComponentGapEnum;
+  hasScrollbar: boolean;
   position: ScrollareaComponentPositionEnum;
   size: ScrollareaComponentSizeEnum;
   theme: DefaultTheme;

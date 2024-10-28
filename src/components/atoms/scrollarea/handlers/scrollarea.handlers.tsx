@@ -1,8 +1,8 @@
 // Types
-import { ScrollareaHandlersPropsType } from './types/scrollarea.handlers.props.type';
-import { ScrollareaHandlersReturnType } from './types/scrollarea.handlers.return.type';
 import { MouseEnterEventHandlerPropsType } from './types/mouse-enter-event-handler.props.type';
 import { MouseLeaveEventHandlerPropsType } from './types/mouse-leave-event-handler.props.type';
+import { ScrollareaHandlersPropsType } from './types/scrollarea.handlers.props.type';
+import { ScrollareaHandlersReturnType } from './types/scrollarea.handlers.return.type';
 
 const mouseEnterEventHandler = ({
   setShowScrollbar,

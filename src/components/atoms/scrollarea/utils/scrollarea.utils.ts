@@ -1,8 +1,18 @@
 // Constants
 import { MIN_THUMB_HEIGHT } from './constants/scrollarea.utils.constants';
 // Types
+import { GetHasScrollbarPropsType } from './types/get-has-scrollbar.props.type';
 import { GetThumbHeightPropsType } from './types/get-thumb-height.props.type';
 import { GetThumnTranslateYPropsType } from './types/get-thumb-translate-y.props.type';
+
+const getHasScrollbar = ({ contentRef }: GetHasScrollbarPropsType): boolean => {
+  if (!contentRef.current) {
+    return false;
+  }
+  const contentScrollHeight = contentRef.current.scrollHeight;
+  const contentClientHeight = contentRef.current.clientHeight;
+  return contentScrollHeight > contentClientHeight;
+};
 
 const getThumbHeight = ({ contentRef, trackRef }: GetThumbHeightPropsType): number => {
   if (!contentRef.current || !trackRef.current) {
@@ -43,4 +53,4 @@ const getThumbTranslateY = ({
   return thumbTranslateY;
 };
 
-export { getThumbHeight, getThumbTranslateY };
+export { getHasScrollbar, getThumbHeight, getThumbTranslateY };

@@ -13,6 +13,7 @@ const ScrollareaTrackComponent = ({
   borderRadius,
   children,
   contentRef,
+  hasScrollbar,
   position,
   showScrollbar,
   showTrack,
@@ -28,6 +29,7 @@ const ScrollareaTrackComponent = ({
   });
 
   if (
+    !hasScrollbar ||
     variant === ScrollareaComponentVariantEnum.HIDDEN ||
     (variant === ScrollareaComponentVariantEnum.HOVER && !showScrollbar)
   ) {
@@ -43,7 +45,6 @@ const ScrollareaTrackComponent = ({
         ref: trackRef,
         showTrack,
         size,
-        variant,
       }}>
       {children}
     </ScrollareaTrackComponentStyled>

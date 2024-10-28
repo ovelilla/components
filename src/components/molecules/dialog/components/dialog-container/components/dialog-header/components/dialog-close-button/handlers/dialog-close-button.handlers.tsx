@@ -3,8 +3,7 @@ import { DialogCloseButtonHandlersPropsType } from './types/dialog-close-button.
 import { DialogCloseButtonHandlersReturnType } from './types/dialog-close-button.handlers.return.type';
 import { ClickEventHandlerPropsType } from './types/click-event-handler.props.type';
 
-const clickEventHandler = ({ onClose, setIsFullscreen }: ClickEventHandlerPropsType): void => {
-  setIsFullscreen(false);
+const clickEventHandler = ({ onClose }: ClickEventHandlerPropsType): void => {
   onClose();
 };
 
@@ -18,10 +17,9 @@ const pointerUpEventHandler = (event: React.PointerEvent<HTMLDivElement>): void 
 
 const DialogCloseButtonHandlers = ({
   onClose,
-  setIsFullscreen,
 }: DialogCloseButtonHandlersPropsType): DialogCloseButtonHandlersReturnType => {
   return {
-    handleClickEvent: () => clickEventHandler({ onClose, setIsFullscreen }),
+    handleClickEvent: () => clickEventHandler({ onClose }),
     handlePointerDownEvent: (event) => pointerDownEventHandler(event),
     handlePointerUpEvent: (event) => pointerUpEventHandler(event),
   };

@@ -18,6 +18,9 @@ const pointerDownEventHandler = ({
   event,
   setShouldClose,
 }: PointerDownEventHandlerPropsType): void => {
+  if (event.button === 2) {
+    return;
+  }
   event.preventDefault();
   setShouldClose(true);
 };

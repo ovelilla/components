@@ -15,7 +15,7 @@ const getAnimation = ({
   if (!active) {
     return 'none';
   }
-  return `${duration}ms ${type}`;
+  return `${duration}ms ${type} forwards`;
 };
 
 const getOpacity = ({

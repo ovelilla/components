@@ -40,7 +40,7 @@ const DialogHeaderComponent = ({
       <DialogHeaderComponentTitleStyled>{title}</DialogHeaderComponentTitleStyled>
       <DialogHeaderComponentActionsStyled>
         <DialogFullscreenButtonComponent {...{ setIsFullscreen, ...buttonFullscreenProps }} />
-        <DialogCloseButtonComponent {...{ onClose, setIsFullscreen, ...buttonCloseProps }} />
+        <DialogCloseButtonComponent {...{ onClose, ...buttonCloseProps }} />
       </DialogHeaderComponentActionsStyled>
     </DialogHeaderComponentStyled>
   );

@@ -10,7 +10,6 @@ import {
 import { DatepickerMonthHook } from './hooks/datepicker-month.hook';
 // Icons
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
-
 // Styles
 import {
   DatepickerMonthComponentStyled,

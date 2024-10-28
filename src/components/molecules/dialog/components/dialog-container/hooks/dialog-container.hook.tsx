@@ -1,5 +1,5 @@
 // Vendors
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 // Constants
 import { MEDIA_QUERY } from './constants/dialog-container.hook.constants';
@@ -54,11 +54,11 @@ const DialogContainerHook = ({
     setMinSize(getInitialMinSize({ initialMinSize }));
   }, [initialMinSize]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setPosition(getInitialPosition({ containerRef, initialPosition }));
   }, [initialPosition]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setIsFullscreen(getInitailIsFullscreen({ initialIsFullscreen, isMobile }));
   }, [initialIsFullscreen, isMobile]);
 

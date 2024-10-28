@@ -29,7 +29,7 @@ type DialogComponentPropsType = {
   position?: { left?: number; top?: number };
   size?: { height?: number; width?: number };
   style?: {
-    content?: {
+    container?: {
       borderRadius?: DialogContainerComponentBorderRadiusEnum;
       padding?: DialogContainerComponentPaddingEnum;
     };

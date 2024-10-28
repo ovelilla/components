@@ -12,8 +12,8 @@ import { getScrollareaGap, getTrackWidth } from './utils/scrollarea.component.st
 const ScrollareaComponentStyled = styled.div.withConfig({
   shouldForwardProp: (prop: string): boolean => !EXCLUDED_PROPS.includes(prop),
 })<ScrollareaComponentStyledPropsType>`
-  ${({ gap, position, size, theme }) =>
-    position === ScrollareaComponentPositionEnum.RELATIVE
+  ${({ gap, hasScrollbar, position, size, theme }) =>
+    position === ScrollareaComponentPositionEnum.RELATIVE && hasScrollbar
       ? css`
           display: grid;
           grid-template-columns: 1fr ${getTrackWidth({ size, theme })};

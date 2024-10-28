@@ -35,6 +35,7 @@ const ScrollareaComponent = ({
     contentRef,
     handleMouseEnterEvent,
     handleMouseLeaveEvent,
+    hasScrollbar,
     scrollareaRef,
     setIsDragging,
     setShowScrollbar,
@@ -50,6 +51,7 @@ const ScrollareaComponent = ({
     <ScrollareaComponentStyled
       {...{
         gap,
+        hasScrollbar,
         onMouseEnter: handleMouseEnterEvent,
         onMouseLeave: handleMouseLeaveEvent,
         position,
@@ -73,6 +75,7 @@ const ScrollareaComponent = ({
         {...{
           borderRadius,
           contentRef,
+          hasScrollbar,
           position,
           showScrollbar,
           showTrack,

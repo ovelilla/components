@@ -20,12 +20,10 @@ import { DialogCloseButtonComponentPropsType } from './types/dialog-close-button
 const DialogCloseButtonComponent = ({
   buttonProps,
   onClose,
-  setIsFullscreen,
   tooltipProps,
 }: DialogCloseButtonComponentPropsType): React.ReactElement<DialogCloseButtonComponentPropsType> | null => {
   const { handleClickEvent, handlePointerDownEvent, handlePointerUpEvent } = DialogCloseButtonHook({
     onClose,
-    setIsFullscreen,
   });
 
   return (

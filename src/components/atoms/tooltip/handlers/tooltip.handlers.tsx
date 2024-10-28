@@ -16,7 +16,7 @@ const mouseEnterEventHandler = ({
   if (isTouch) {
     return;
   }
-  console.log('mouseEnterEventHandler');
+
   if (hideTimeRef.current) {
     clearTimeout(hideTimeRef.current);
     hideTimeRef.current = null;
@@ -41,7 +41,6 @@ const mouseLeaveEventHandler = ({
   if (isTouch) {
     return;
   }
-  console.log('mouseLeaveEventHandler');
   if (showTimeRef.current) {
     clearTimeout(showTimeRef.current);
     showTimeRef.current = null;

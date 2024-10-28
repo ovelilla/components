@@ -29,7 +29,7 @@ const DialogOverlayComponentStyled = styled('div').withConfig({
   shouldForwardProp: (prop) => !EXCLUDED_PROPS.includes(prop),
 })<DialogOverlayComponentStyledPropsType>`
   ${({ animation, opacity, open, theme }) => css`
-    animation: ${open ? fadeIn : fadeOut} ${getAnimation({ animation })} forwards;
+    animation: ${open ? fadeIn : fadeOut} ${getAnimation({ animation })};
     background-color: rgba(0, 0, 0, ${getOpacity({ opacity, theme })});
     height: 100%;
     left: 0;
