@@ -16,7 +16,7 @@ const ThemeProviderStyled = createGlobalStyle`
     display: flex;
     flex-direction: column;
     font-family: 'Inter Variable', sans-serif;
-    line-height: 1.5;
+    line-height: 1;
     min-height: 100dvh;
   }
   input,

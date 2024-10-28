@@ -25,6 +25,7 @@ const DialogComponent = ({
   size,
   style,
   title,
+  titleProps,
 }: DialogComponentPropsType): React.ReactElement<DialogComponentPropsType> | null => {
   const { hasHorizontalScroll, hasVerticalScroll, setShouldClose, shouldClose } = DialogHook({
     open,
@@ -56,6 +57,7 @@ const DialogComponent = ({
             size,
             style: style?.container,
             title,
+            titleProps,
           }}>
           {children}
         </DialogContainerComponent>

@@ -7,7 +7,7 @@ type DialogOverlayComponentPropsType = {
   animation?: {
     active?: boolean;
     duration?: number;
-    type?: string;
+    timingFunction?: string;
   };
   children?: React.ReactNode;
   onClose: VoidFunction;

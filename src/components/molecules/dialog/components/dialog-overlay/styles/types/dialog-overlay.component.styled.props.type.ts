@@ -7,7 +7,7 @@ type DialogOverlayComponentStyledPropsType = {
   animation?: {
     active?: boolean;
     duration?: number;
-    type?: string;
+    timingFunction?: string;
   };
   opacity?: DialogOverlayComponentOpacityEnum;
   open: boolean;

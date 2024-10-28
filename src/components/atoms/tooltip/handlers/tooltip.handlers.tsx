@@ -61,7 +61,6 @@ const touchStartEventHandler = ({
   showDelay,
   showTimeRef,
 }: TouchStartEventHandlerPropsType): void => {
-  console.log('touchStartEventHandler');
   setIsTouch(true);
   if (hideTimeRef.current) {
     clearTimeout(hideTimeRef.current);
@@ -84,7 +83,6 @@ const touchEndEventHandler = ({
   setVisible,
   showTimeRef,
 }: TouchEndEventHandlerPropsType): void => {
-  console.log('touchEndEventHandler');
   setIsTouch(true);
   if (showTimeRef.current) {
     clearTimeout(showTimeRef.current);

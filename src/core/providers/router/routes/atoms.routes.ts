@@ -28,6 +28,13 @@ const atomsRoutes = [
     },
   },
   {
+    path: '/components/atoms/title',
+    async lazy() {
+      const { TitlePage } = await import('pages/atoms/title/title.page');
+      return { Component: TitlePage };
+    },
+  },
+  {
     path: '/components/atoms/tooltip',
     async lazy() {
       const { TooltipPage } = await import('pages/atoms/tooltip/tooltip.page');

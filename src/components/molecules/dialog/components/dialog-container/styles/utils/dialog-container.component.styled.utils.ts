@@ -1,9 +1,3 @@
-// Constants
-import {
-  DEFAULT_ACTIVE,
-  DEFAULT_DURATION,
-  DEFAULT_TYPE,
-} from './constants/dialog-container.component.styled.utils.constants';
 // Enums
 import {
   DialogContainerComponentBorderRadiusEnum,
@@ -11,15 +5,6 @@ import {
 } from '../../enums/dialog-container.component.enums';
 // Types
 import { DialogContainerComponentStyledPropsType } from '../types/dialog-container.component.styled.props.type';
-
-const getAnimation = ({
-  animation: { active = DEFAULT_ACTIVE, duration = DEFAULT_DURATION, type = DEFAULT_TYPE } = {},
-}: Pick<DialogContainerComponentStyledPropsType, 'animation'>) => {
-  if (!active) {
-    return 'none';
-  }
-  return `${duration}ms ${type}`;
-};
 
 const getBorderRadius = ({
   borderRadius = DialogContainerComponentBorderRadiusEnum.MEDIUM,
@@ -51,4 +36,4 @@ const getPadding = ({
   return paddingsMap[padding];
 };
 
-export { getAnimation, getBorderRadius, getPadding };
+export { getBorderRadius, getPadding };

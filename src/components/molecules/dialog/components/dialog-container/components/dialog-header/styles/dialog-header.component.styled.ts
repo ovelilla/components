@@ -8,12 +8,10 @@ const DialogHeaderComponentStyled = styled.div`
   flex: 0 0 auto;
   gap: 16px;
   justify-content: space-between;
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
   touch-action: none;
   user-select: none;
 `;
-
-const DialogHeaderComponentTitleStyled = styled.div``;
 
 const DialogHeaderComponentActionsStyled = styled.div`
   display: flex;
@@ -22,6 +20,5 @@ const DialogHeaderComponentActionsStyled = styled.div`
 
 export {
   DialogHeaderComponentStyled,
-  DialogHeaderComponentTitleStyled,
   DialogHeaderComponentActionsStyled,
 };

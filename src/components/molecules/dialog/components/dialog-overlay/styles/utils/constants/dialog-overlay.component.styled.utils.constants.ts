@@ -1,5 +1,0 @@
-const DEFAULT_ACTIVE = true;
-const DEFAULT_DURATION = 150;
-const DEFAULT_TYPE = 'ease-in-out';
-
-export { DEFAULT_ACTIVE, DEFAULT_DURATION, DEFAULT_TYPE };

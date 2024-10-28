@@ -10,7 +10,7 @@ type DialogContainerComponentStyledPropsType = {
   animation?: {
     active?: boolean;
     duration?: number;
-    type?: string;
+    timingFunction?: string;
   };
   borderRadius?: DialogContainerComponentBorderRadiusEnum;
   isFullscreen: boolean;

@@ -3,7 +3,6 @@ import React from 'react';
 // Components
 import { DialogHeaderComponent } from './components/dialog-header/dialog-header.component';
 import { DialogResizeComponent } from './components/dialog-resize/dialog-resize.component';
-import { ScrollareaComponent } from 'components/atoms/scrollarea/scrollarea.component';
 // Hooks
 import { DialogContainerHook } from './hooks/dialog-container.hook';
 // Styles
@@ -25,6 +24,7 @@ const DialogContainerComponent = ({
   size: initialSize,
   style,
   title,
+  titleProps,
 }: DialogContainerComponentPropsType): React.ReactElement<DialogContainerComponentPropsType> => {
   const {
     containerRef,
@@ -83,12 +83,11 @@ const DialogContainerComponent = ({
           setTranslate,
           size,
           title,
+          titleProps,
           translate,
         }}
       />
-      {/* <div style={{ overflow: 'hidden', flex: '1 1 auto', height: '100%' }}> */}
-      <ScrollareaComponent>{children}</ScrollareaComponent>
-      {/* </div> */}
+      {children}
     </DialogContainerComponentStyled>
   );
 };

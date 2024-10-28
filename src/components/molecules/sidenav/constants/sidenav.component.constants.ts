@@ -36,6 +36,10 @@ const SIDENAV = [
         link: '/components/atoms/scrollarea',
       },
       {
+        name: 'Title',
+        link: '/components/atoms/title',
+      },
+      {
         name: 'Tooltip',
         link: '/components/atoms/tooltip',
       },
@@ -44,6 +48,10 @@ const SIDENAV = [
   {
     title: 'Molecules',
     items: [
+      {
+        name: 'Confirm Dialog',
+        link: '/components/molecules/confirm-dialog',
+      },
       {
         name: 'Datepicker',
         link: '/components/molecules/datepicker',

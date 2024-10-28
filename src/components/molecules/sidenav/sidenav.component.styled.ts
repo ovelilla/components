@@ -31,6 +31,7 @@ const SidenavComponentTitleStyled = styled.h2`
   padding: 0 ${({ theme }) => theme.spaces.space16};
   text-transform: uppercase;
   color: hsl(${({ theme }) => theme.colors.foreground});
+  line-height: 1.5;
 `;
 
 export {

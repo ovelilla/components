@@ -1,5 +1,5 @@
 // Components
-import { ButtonComponent } from '../../atoms/button/button.component';
+import { ButtonComponent } from 'components/atoms/button/button.component';
 // Constants
 import { BUTTON_PROPS, SIDENAV } from './constants/sidenav.component.constants';
 // Styles
